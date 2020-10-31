@@ -93,14 +93,18 @@ Any function whose file name starts with an underscore (`_`) is internal to the 
 
 # Objectives
 
-- Add subscription handling
+- Add subscription handling _probably going to make this a separate repository that can be dragged into this codebase_
 
-- Add payment handling (MPesa + Stripe)
+- Add payment handling (MPesa + Stripe) - _Probably going to bundle this with the subscription._
 
-- Implement image upload & thumbnail generation functionality
+- Implement image upload & thumbnail generation functionality - _Probably going to make this its own repository that can be dragged into the project_
 
 - Refactor the code to allow for more custom behaviour as far as setting different user types is concerned. Currently, this information is loaded from the server while it should actually come from the database. _Yet to figure out how to properly abstract this_
 
 The goal is to eventually make this a good NodeJS boilerplate for applications that require OTP verification (SMS for now) and no password equipped with a built in subscription system as well as payment system.
 
 The only thing left to implement in most cases would be your business logic
+
+### TODO:
+
+Figure out how to prevent the `package.json` files from clashing.
