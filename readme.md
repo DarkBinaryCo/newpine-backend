@@ -8,7 +8,7 @@ This file will contain our database connection information.
 The format of this file should be:
 
 ```javascript
-const DB_NAME = "hipglam";
+const DB_NAME = "database_name";
 const DB_HOST = "root";
 const DB_PASSWORD = "";
 const DB_DIALECT = "mysql";
