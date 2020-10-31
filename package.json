@@ -1,0 +1,27 @@
+{
+  "name": "glam-backend",
+  "version": "0.0.1",
+  "description": "Request beauty services from the comfort of your home",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "debug": "nodemon --inspect src/server.js",
+    "test": "jest --watch"
+  },
+  "author": "Allan N. Jeremy",
+  "license": "ISC",
+  "dependencies": {
+    "africastalking": "^0.4.5",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mariadb": "^2.2.0",
+    "moment": "^2.24.0",
+    "morgan": "^1.9.1",
+    "mysql2": "^2.1.0",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.21.5"
+  },
+  "devDependencies": {
+    "jest": "^25.1.0"
+  }
+}
