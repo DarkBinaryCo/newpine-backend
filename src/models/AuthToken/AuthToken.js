@@ -1,5 +1,5 @@
 const db = require("../../database");
-const { DataTypes, Model } = require("sequelize");
+const { DataTypes } = require("sequelize");
 
 //* MODEL DEPENDENCIES
 const { User } = require("../User");
@@ -13,7 +13,7 @@ const _authTokenAttributes = {
     primaryKey: true,
   },
   userId: {
-    type: DataTypes.INTEGER(11).UNSIGNED,
+    type: DataTypes.UUID,
     allowNull: false,
   },
   expiresOn: {
