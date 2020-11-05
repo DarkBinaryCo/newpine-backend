@@ -1,9 +1,15 @@
 const db = require("../../database");
-const { DataTypes } = require("sequelize");
+const { DataTypes, Sequelize } = require("sequelize");
 
 //* MODEL DEPENDENCIES
 /** Attributes expected in the database */
 const _userAttributes = {
+  id: {
+    type: DataTypes.UUID,
+    defaultValue: Sequelize.UUIDV4,
+    primaryKey: true,
+    allowNull: false,
+  },
   firstName: {
     type: DataTypes.STRING(50),
     allowNull: true,
