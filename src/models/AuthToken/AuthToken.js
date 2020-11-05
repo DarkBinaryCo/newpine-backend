@@ -1,6 +1,9 @@
 const db = require("../../database");
 const { DataTypes } = require("sequelize");
 
+//* Utils
+const { hash } = require("../../utils/auth");
+
 //* MODEL DEPENDENCIES
 const { User } = require("../User");
 
@@ -9,8 +12,11 @@ const _authTokenAttributes = {
   //? Including this because sequelize only auto-detects primary keys called `id`
   token: {
     type: DataTypes.STRING(128),
-    allowNull: false,
     primaryKey: true,
+    allowNull: false,
+    set(value) {
+      this.setDataValue("token", hash(value));
+    },
   },
   userId: {
     type: DataTypes.UUID,
