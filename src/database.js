@@ -1,15 +1,15 @@
 const Sequelize = require("sequelize");
-const {
-  DB_NAME,
-  DB_HOST,
-  DB_PASSWORD,
-  DB_DIALECT,
-} = require("./config/database");
+const DbConfig = require("./config/database");
 
 //* Database setup
-const sequelize = new Sequelize(DB_NAME, DB_HOST, DB_PASSWORD, {
-  dialect: DB_DIALECT,
-});
+const sequelize = new Sequelize(
+  DbConfig.database,
+  DbConfig.username,
+  DbConfig.password,
+  {
+    dialect: DbConfig.dialect,
+  }
+);
 
 //* EXPORTS
 module.exports = sequelize;
