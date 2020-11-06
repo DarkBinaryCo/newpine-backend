@@ -16,6 +16,11 @@ PropertyGroup.init(
       type: DataTypes.STRING(20),
       allowNull: false,
     },
+    phase: {
+      type: DataTypes.STRING(20),
+      allowNull: true,
+      defaultValue: null,
+    },
     propertyGroupTypeId: {
       type: DataTypes.INTEGER,
       allowNull: false,
