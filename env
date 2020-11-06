@@ -1,0 +1,22 @@
+# --------------
+# Environment
+# --------------
+ENVIRONMENT = development|testing|production
+
+# --------------
+# Database
+# --------------
+DB_NAME = dbname
+DB_HOST = root
+DB_PASSWORD = password
+DB_DIALECT = mysql
+
+#! Do not change this - Changing this would mean everyone has to re-log in
+TOKEN_SALT = <Random 16 character string with no spaces>
+
+# --------------
+# AFRICA'S TALKING
+### Feel free to delete this if you are using a different SMS provider
+# --------------
+AT_API_KEY = <Africa's Talking API key>
+AT_USERNAME = <Africa's Talking username>

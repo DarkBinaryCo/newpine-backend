@@ -1,56 +1,15 @@
 # Before you start
 
-## Setup database
+## Setup
 
-Create a file in `src/config` called `database.js`.
-This file will contain our database connection information.
-
-The format of this file should be:
-
-```javascript
-const DB_NAME = "database_name";
-const DB_HOST = "root";
-const DB_PASSWORD = "";
-const DB_DIALECT = "mysql";
-
-//* EXPORTS
-module.exports = {
-  DB_NAME,
-  DB_HOST,
-  DB_PASSWORD,
-  DB_DIALECT,
-  TOKEN_SALT, // A random string at least 16 characters long ~ used for [hashing](https://auth0.com/blog/hashing-passwords-one-way-road-to-security/   ) our tokens
-};
-```
-
-### Setup authentication config
-
-Create another file in `src/config` called `auth.js`.
-
-This file will contain auth related config information such as our `HASH_SALT` value.
-
-The format of this file should be:
-
-```javascript
-const TOKEN_SALT = "Random 16 character (or more) string";
-
-//* EXPORTS
-module.exports = {
-  TOKEN_SALT,
-};
-```
+Copy or rename the `env` file to `.env`. Populate the environment values with the appropriate values.
 
 ### Setup SMS
 
 Currently, we are using [Africa's Talking](https://africastalking.com/) for SMSes.
 The plan is to use Africa's Talking for messages to countries where it is cheaper to use them and another API (eg. [Twillio](https://www.twilio.com/), [Routee](https://www.routee.net/)) for every other country.
 
-You will need to setup Africa's talking if you want to test out SMS related functionality (eg. Sending OTP). The current file is hidden due to the fact that it may contain sensitive application data.
-
-Create a file in `src/config` called `africastalking.js`.
-This file will contain AT related configuration.
-
-The format of this file should be
+You will need to setup Africa's talking credentials in your `.env` if you want to test out SMS related functionality (eg. Sending OTP).
 
 ### Install node modules
 
