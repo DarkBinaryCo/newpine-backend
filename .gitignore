@@ -1,6 +1,4 @@
 /node_modules
 package-lock.json
 /.vscode
-/src/config/database.js
-/src/config/auth.js
-src/config/africastalking.js
+.env
