@@ -1,25 +1,28 @@
-const db = require("../../database");
-const { DataTypes } = require("sequelize");
+const sequelize = require("../../database");
+const { DataTypes, Model } = require("sequelize");
 
-/** Attributes expected in the database */
-const _userTypeAttributes = {
-  name: {
-    type: DataTypes.STRING(20),
-    allowNull: false,
+class UserType extends Model {}
+
+// Schema definition
+UserType.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      allowNull: false,
+      autoIncrement: true,
+    },
+    name: {
+      type: DataTypes.STRING(20),
+      allowNull: false,
+    },
+    description: {
+      type: DataTypes.STRING(100),
+      allowNull: false,
+    },
   },
-  description: {
-    type: DataTypes.STRING(100),
-    allowNull: false,
-  },
-};
-
-/** Schema definition */
-const UserType = db.define("user_type", _userTypeAttributes);
-
-//* RELATIONSHIPS
-// UserType.hasMany(User, {
-//     foreignKey: 'id'
-// });
+  { sequelize, modelName: "UserType" }
+);
 
 //* EXPORTS
 module.exports = UserType;
