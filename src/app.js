@@ -5,15 +5,16 @@ const app = express();
 
 const routes = require("./routes");
 
-const db = require("./database");
+const sequelize = require("./database");
 
 // Connect to the database
-db.authenticate()
+sequelize
+  .authenticate()
   .then((_) => {
     console.log("Successfully connected to the database");
 
     //TODO: Use migrations instead
-    db.sync();
+    sequelize.sync();
   })
   .catch((err) => console.error("Failed to connect to database \n", err));
 
