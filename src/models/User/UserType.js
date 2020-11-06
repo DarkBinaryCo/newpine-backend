@@ -21,7 +21,7 @@ UserType.init(
       allowNull: false,
     },
   },
-  { sequelize, modelName: "UserType" }
+  { sequelize, modelName: "UserType", tableName: "user_types" }
 );
 
 //* EXPORTS

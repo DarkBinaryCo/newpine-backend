@@ -30,7 +30,7 @@ AuthToken.init(
       allowNull: true,
     },
   },
-  { sequelize, modelName: "AuthToken" }
+  { sequelize, modelName: "AuthToken", tableName: "auth_tokens" }
 );
 
 //* RELATIONSHIPS
