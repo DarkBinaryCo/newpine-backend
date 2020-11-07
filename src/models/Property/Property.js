@@ -1,5 +1,5 @@
 const sequelize = require("../../database");
-const { DataTypes, Model } = require("sequelize");
+const { DataTypes, Model, Sequelize } = require("sequelize");
 
 class Property extends Model {}
 
@@ -7,10 +7,10 @@ class Property extends Model {}
 Property.init(
   {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
+      defaultValue: Sequelize.UUIDV4,
       primaryKey: true,
       allowNull: false,
-      autoIncrement: true,
     },
     number: {
       type: DataTypes.STRING(20),
