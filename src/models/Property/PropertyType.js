@@ -18,7 +18,8 @@ PropertyType.init(
     },
     description: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
+      default: null,
     },
   },
   { sequelize, modelName: "PropertyType", tableName: "property_types" }
