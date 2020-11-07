@@ -16,6 +16,11 @@ PropertyGroup.init(
       type: DataTypes.STRING(20),
       allowNull: false,
     },
+    propertyCount: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      comment: "The number of properties in this group",
+    },
     phase: {
       type: DataTypes.STRING(20),
       allowNull: true,
