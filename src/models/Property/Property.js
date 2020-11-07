@@ -7,12 +7,12 @@ class Property extends Model {}
 Property.init(
   {
     id: {
-      type: DataTypes.UUID,
-      defaultValue: Sequelize.UUIDV4,
+      type: DataTypes.INTEGER,
       primaryKey: true,
       allowNull: false,
+      autoIncrement: true,
     },
-    number: {
+    propertyNumber: {
       type: DataTypes.STRING(20),
       allowNull: false,
     },
