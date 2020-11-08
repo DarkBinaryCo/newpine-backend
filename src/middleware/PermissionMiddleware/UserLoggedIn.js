@@ -14,9 +14,9 @@ const UserLoggedIn = async (req, res, next) => {
 
     next();
   } else {
-    // Don't go to next middleware
-    console.error(`Permission denied! Not logged in.`);
-    return false;
+    // User is not logged in ~ show authorization error
+    let apiResponse = getApiUnauthorizedError();
+    printApiResponse(res, apiResponse, next);
   }
 };
 
