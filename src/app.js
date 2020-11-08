@@ -1,8 +1,9 @@
 const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
-const app = express();
+const helmet = require("helmet");
 
+const app = express();
 const routes = require("./routes");
 
 const sequelize = require("./database");
@@ -12,14 +13,12 @@ sequelize
   .authenticate()
   .then((_) => {
     console.log("Successfully connected to the database");
-
-    //TODO: Use migrations instead
-    sequelize.sync();
   })
   .catch((err) => console.error("Failed to connect to database \n", err));
 
 // Default middleware
 app.use(morgan("dev"));
+app.use(helmet());
 app.use(
   bodyParser.urlencoded({
     extended: false,
