@@ -8,7 +8,6 @@ const {
 //? Duplicate this  file and change `AUTH_DATA` to the appropriate user type
 // Config
 const { USER_TYPE } = require("../../config/auth");
-const printResponse = require("../../utils/api/printResponse");
 
 /** Only proceeds to the next middleware if a sales user is logged in based on the `AuthToken` passed in.
  *
