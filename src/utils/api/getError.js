@@ -1,5 +1,5 @@
 // Internal
-const getResponse = require('./getResponse');
+const getResponse = require("./getResponse");
 
 /** Get an error response
  * @param {String} message The error message to return as part of the response
@@ -8,10 +8,10 @@ const getResponse = require('./getResponse');
  * @return {Object} An API response object
  */
 const getError = (message, error, statusCode = 500) => {
-    statusCode = statusCode;
-    let response = getResponse(false, message, null, statusCode);
-    response.error = error;
-    return response;
+  statusCode = statusCode || 500;
+  let response = getResponse(false, message, null, statusCode);
+  response.error = error;
+  return response;
 };
 
 //* EXPORTS
