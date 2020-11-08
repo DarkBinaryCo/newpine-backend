@@ -34,9 +34,9 @@ AuthToken.init(
 );
 
 //* RELATIONSHIPS
-// AuthToken.belongsTo(User, {
-//     foreignKey: 'userId'
-// });
+AuthToken.belongsTo(User, {
+  foreignKey: "userId",
+});
 
 //* EXPORTS
 module.exports = AuthToken;
