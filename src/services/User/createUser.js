@@ -29,12 +29,11 @@ const createUser = async (insertData = {}) => {
 
     // Update user instead of user with that phone already exists
     if (userWithPhone) {
-      const updateStatus = updateUser(
-        {
-          phone: insertData.phone,
-        },
-        insertData
-      );
+      const _updateFilter = {
+        phone: insertData.phone,
+      };
+
+      const updateStatus = updateUser(insertData, _updateFilter);
       console.info(
         `User with phone: ${insertData.phone} was found, updating instead of creating new account...`
       );

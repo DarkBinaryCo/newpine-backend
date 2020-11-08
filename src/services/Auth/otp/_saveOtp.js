@@ -1,10 +1,8 @@
 // Utils
-const {
-    getSqlTimestamp
-} = require('../../../utils/date');
+const { getSqlTimestamp } = require("../../../utils/date");
 
 // Services
-const UserService = require('../../User');
+const UserService = require("../../User");
 
 /** Save an OTP to the database ~ updates user information
  * @param {String} userId The id of the user the token belongs to
@@ -12,20 +10,22 @@ const UserService = require('../../User');
  * @return {Object} Hashed OTP saved
  */
 const _saveOtp = (userPhone, hashedOtp) => {
-    const lastOtpSentAt = getSqlTimestamp();
+  const lastOtpSentAt = getSqlTimestamp();
 
-    // Data to be inserted into the database
-    const updateData = {
-        otp: hashedOtp,
-        lastOtpSentAt
-    };
+  // Data to be inserted into the database
+  const _updateFilter = {
+    phone: userPhone,
+  };
 
-    // Update the user
-    const insertResponse = UserService.updateUser({
-        phone: userPhone
-    }, updateData);
+  const _updateData = {
+    otp: hashedOtp,
+    lastOtpSentAt,
+  };
 
-    return insertResponse;
-}
+  // Update the user
+  const insertResponse = UserService.updateUser(_updateData, _updateFilter);
+
+  return insertResponse;
+};
 
 module.exports = _saveOtp;

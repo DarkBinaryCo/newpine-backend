@@ -50,9 +50,9 @@ const sendOtp = async (userPhone) => {
   responseData.hasSent = sendStatus.hasSent;
 
   // Save the hashed version of the OTP to the database only if the OTP was actually sent
-  if (sendStatus.hasSent) {
-    _saveOtp(userPhone, hashedOtp);
-  }
+  // if (sendStatus.hasSent) {
+  _saveOtp(userPhone, hashedOtp);
+  // }
   //TODO: Remove this in production
   console.log("Sent otp: ", otp);
   console.log("Hashed otp: ", hashedOtp);
