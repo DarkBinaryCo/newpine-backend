@@ -15,13 +15,13 @@ const _getUserTokenData = async (req) => {
 
   // Get the token
   const token = req.headers.authorization.split(" ")[1];
-  const tokenOwner = await AuthService.getAuthToken(token);
+  const tokenData = await AuthService.getAuthToken(token);
 
-  if (!tokenOwner || !tokenOwner.user) return responseData;
+  if (!tokenData || !tokenData.user) return responseData;
 
   //* Getting here means that we found a token owner ~ user successfully logged in
   responseData.loggedIn = true;
-  responseData.tokenData = tokenOwner;
+  responseData.tokenData = tokenData;
 
   return responseData;
 };
