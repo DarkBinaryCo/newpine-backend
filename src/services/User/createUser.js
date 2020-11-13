@@ -4,7 +4,6 @@ const { User } = require("../../models");
 const { filterObjAttrs } = require("../../utils/filter");
 
 // Internal ~ UserService specific
-const getUserById = require("./getUserById");
 const getUserByPhone = require("./getUserByPhone");
 const updateUser = require("./updateUser");
 

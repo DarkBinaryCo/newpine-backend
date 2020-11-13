@@ -7,7 +7,7 @@ const { User } = require("../../models");
  * @param {Array<String>} extraAttributesToInclude An array of attributes to include along with the default included attributes
  * @return {Object|null} Return an object representing the user's data if found or null if no user is found
  */
-getUserByFilter = async (
+const getUserByFilter = async (
   filter,
   attributesToExclude = [],
   extraAttributesToInclude = []
