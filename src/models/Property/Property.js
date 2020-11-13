@@ -1,5 +1,5 @@
 const sequelize = require("../../database");
-const { DataTypes, Model, Sequelize } = require("sequelize");
+const { DataTypes, Model } = require("sequelize");
 
 class Property extends Model {}
 
