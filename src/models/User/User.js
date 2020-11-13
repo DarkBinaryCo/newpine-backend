@@ -1,6 +1,7 @@
 const sequelize = require("../../database");
 const { DataTypes, Model, Sequelize } = require("sequelize");
 
+//
 class User extends Model {}
 
 // Schema definition
@@ -10,7 +11,7 @@ User.init(
       type: DataTypes.UUID,
       defaultValue: Sequelize.UUIDV4,
       primaryKey: true,
-      allowNull: false,
+      // allowNull: false,
     },
     firstName: {
       type: DataTypes.STRING(50),
@@ -25,9 +26,13 @@ User.init(
       allowNull: false,
     },
     userTypeId: {
-      type: DataTypes.INTEGER(8).UNSIGNED,
+      type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: "4",
+      references: {
+        model: "user_types", //? Table name
+        key: "id",
+      },
     },
     bio: {
       type: DataTypes.TEXT,
@@ -40,11 +45,6 @@ User.init(
     lastOtpSentAt: {
       type: DataTypes.DATE,
       allowNull: true,
-    },
-    countryId: {
-      type: DataTypes.INTEGER(11).UNSIGNED,
-      allowNull: false,
-      defaultValue: "110",
     },
     profileImgUrl: {
       type: DataTypes.STRING(128),
