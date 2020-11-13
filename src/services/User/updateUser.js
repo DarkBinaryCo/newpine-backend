@@ -12,11 +12,13 @@ const { filterObjAttrs } = require("../../utils/filter");
  */
 const updateUser = async (updateData = {}, filter = {}, isAdmin = false) => {
   // Attributes that shouldn't be editable ~ unsetting them if set
-  updateData = filterObjAttrs(updateData, ["id", "createdAt"]);
+  let _filterAttrs = ["id", "createdAt"];
 
   if (!isAdmin) {
-    updateData = filterObjAttrs(updateData, ["isBanned", "isVerified"]);
+    _filterAttrs.push("isBanned", "isVerified");
   }
+  updateData = filterObjAttrs(updateData, _filterAttrs);
+
   const updateStatus = await User.update(updateData, {
     where: filter,
   });
