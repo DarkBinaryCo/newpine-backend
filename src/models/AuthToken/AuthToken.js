@@ -5,7 +5,7 @@ const { DataTypes, Model } = require("sequelize");
 const { hash } = require("../../utils/auth");
 
 //* MODEL DEPENDENCIES
-const { User } = require("../User");
+const { User } = require("../index");
 
 class AuthToken extends Model {}
 
@@ -34,9 +34,7 @@ AuthToken.init(
 );
 
 //* RELATIONSHIPS
-AuthToken.belongsTo(User, {
-  foreignKey: "userId",
-});
+AuthToken.belongsTo(User, { foreignKey: "userId" });
 
 //* EXPORTS
 module.exports = AuthToken;
