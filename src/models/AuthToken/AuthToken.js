@@ -1,12 +1,10 @@
 const sequelize = require("../../database");
-const { DataTypes, Model } = require("sequelize");
+const { DataTypes, Model, Sequelize } = require("sequelize");
 
 //* Utils
 const { hash } = require("../../utils/auth");
 
-//* MODEL DEPENDENCIES
-const { User } = require("../index");
-
+//
 class AuthToken extends Model {}
 
 // Schema definition
@@ -24,6 +22,10 @@ AuthToken.init(
     userId: {
       type: DataTypes.UUID,
       allowNull: false,
+      references: {
+        model: "users", //? Table name
+        key: "id",
+      },
     },
     expiresOn: {
       type: DataTypes.DATE,
@@ -32,9 +34,6 @@ AuthToken.init(
   },
   { sequelize, modelName: "AuthToken", tableName: "auth_tokens" }
 );
-
-//* RELATIONSHIPS
-AuthToken.belongsTo(User, { foreignKey: "userId" });
 
 //* EXPORTS
 module.exports = AuthToken;

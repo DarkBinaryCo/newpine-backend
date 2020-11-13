@@ -1,12 +1,9 @@
 const sequelize = require("../../database");
 const { DataTypes, Model, Sequelize } = require("sequelize");
 
-// Model references
-const { User, Property } = require("../index");
-
-// Schema definition
 class Resident extends Model {}
 
+// Schema definition
 Resident.init(
   {
     id: {
@@ -18,6 +15,10 @@ Resident.init(
     userId: {
       type: DataTypes.UUID,
       allowNull: false,
+      references: {
+        model: "users",
+        key: "id",
+      },
     },
     mpesaPhone: {
       type: DataTypes.STRING(20),
@@ -27,6 +28,10 @@ Resident.init(
     propertyId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      references: {
+        model: "properties",
+        key: "id",
+      },
     },
     residentOwnerId: {
       type: DataTypes.UUID,
@@ -41,10 +46,6 @@ Resident.init(
   },
   { sequelize, modelName: "Resident" }
 );
-
-//* RELATIONSHIPS
-Resident.belongsTo(User, { foreignKey: "userId" });
-Resident.hasOne(Property, { foreignKey: "propertyId" });
 
 //* EXPORTS
 module.exports = Resident;

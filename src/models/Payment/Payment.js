@@ -1,6 +1,7 @@
 const sequelize = require("../../database");
 const { DataTypes, Model, Sequelize } = require("sequelize");
 
+//
 class Payment extends Model {}
 
 // Schema definition
@@ -15,6 +16,10 @@ Payment.init(
     userId: {
       type: DataTypes.UUID,
       allowNull: false,
+      references: {
+        model: "users",
+        key: "id",
+      },
     },
     amount: {
       type: DataTypes.FLOAT,

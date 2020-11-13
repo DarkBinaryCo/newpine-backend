@@ -1,6 +1,7 @@
 const sequelize = require("../../database");
 const { DataTypes, Model } = require("sequelize");
 
+//
 class PropertyGroup extends Model {}
 
 // Schema definition
@@ -29,6 +30,10 @@ PropertyGroup.init(
     propertyGroupTypeId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      references: {
+        model: "property_group_types",
+        key: "id",
+      },
     },
   },
   { sequelize, modelName: "PropertyGroup", tableName: "property_groups" }
