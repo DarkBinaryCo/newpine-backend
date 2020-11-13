@@ -6,6 +6,7 @@ const AuthTokenModels = require("./AuthToken");
 const PaymentModels = require("./Payment");
 const UserModels = require("./User");
 const PropertyModels = require("./Property");
+const ResidentModels = require("./Resident");
 
 //* EXPORTS
 module.exports = {
@@ -13,4 +14,5 @@ module.exports = {
   ...PaymentModels,
   ...UserModels,
   ...PropertyModels,
+  ...ResidentModels,
 };
