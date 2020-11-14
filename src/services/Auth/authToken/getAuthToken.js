@@ -23,7 +23,7 @@ const getAuthToken = async (tokenEntered) => {
       },
     ],
   });
-  let tokenData = tokenResponse.dataValues || {};
+  let tokenData = tokenResponse ? tokenResponse.dataValues : {};
 
   if (tokenData) {
     //? Add the user as a direct object so we don't have to use `user.dataValues` each time we want a user's information
