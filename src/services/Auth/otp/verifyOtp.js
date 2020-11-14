@@ -1,5 +1,5 @@
 // Services
-const { UserService } = require("../../index");
+const UserService = require("../../User");
 
 // Utils
 const { AuthUtil } = require("../../../utils");
@@ -29,13 +29,8 @@ const verifyOtp = async (userPhone, otpEntered) => {
   const authToken = createAuthToken(user.id);
 
   // Reset the value of the OTP in the database
-  const _updateFilter = {
-    phone: userPhone,
-  };
-
-  const _updateData = {
-    otp: null,
-  };
+  const _updateFilter = { phone: userPhone };
+  const _updateData = { otp: null };
 
   UserService.updateUser(_updateData, _updateFilter);
 
