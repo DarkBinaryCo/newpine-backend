@@ -1,3 +1,6 @@
+// Utils
+const { ApiUtil } = require("../../utils");
+
 const _getUserTokenData = require("./_getUserTokenData");
 
 /** [Helper] Only proceeds to the next middleware if a user of the specified user type is logged in based on the AuthToken passed in
@@ -15,7 +18,7 @@ const UserLoggedIn = async (req, res, next) => {
     next();
   } else {
     // User is not logged in ~ show authorization error
-    let apiResponse = getApiUnauthorizedError();
+    let apiResponse = ApiUtil.getUnauthorizedError();
     ApiUtil.printResponse(res, apiResponse, next);
   }
 };

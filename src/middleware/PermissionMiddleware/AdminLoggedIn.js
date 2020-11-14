@@ -23,7 +23,7 @@ const AdminLoggedIn = async (req, res, next) => {
     // Admin is indeed logged in
     next();
   } else {
-    let apiResponse = ApiUtil.getApiUnauthorizedError();
+    let apiResponse = ApiUtil.getUnauthorizedError();
     ApiUtil.printResponse(res, apiResponse, next);
   }
 };
