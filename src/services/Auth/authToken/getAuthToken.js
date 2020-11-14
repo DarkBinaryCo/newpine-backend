@@ -1,14 +1,14 @@
 const { AuthToken, User } = require("../../../models");
 
 // Utils
-const { hash } = require("../../../utils/auth");
+const { AuthUtil } = require("../../../utils");
 
 /** Get the details of a token from the database
  * @param {String} tokenEntered The unhashed token whose information we want to fetch
  * @return {Object} The token's data
  */
 const getAuthToken = async (tokenEntered) => {
-  const token = hash(tokenEntered);
+  const token = AuthUtil.hash(tokenEntered);
 
   const tokenResponse = await AuthToken.findOne({
     where: {

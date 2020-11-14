@@ -1,41 +1,34 @@
 // Services
-const {
-    AuthService
-} = require('../../services');
+const { AuthService } = require("../../services");
 
 // Utils
-const {
-    attachApiErrorHandler,
-    getApiResponse,
-    printApiResponse
-} = require('../../utils/api');
+const { ApiUtil } = require("../../utils");
 
 /** Verify an OTP sent to the provided phone number */
 const verifyOtp = (req, res, next) => {
-    const {
-        phone,
-        otp
-    } = req.body.data;
+  const { phone, otp } = req.body.data;
 
-    //TODO: Add phone number validation ~ consider using a different middleware for that
-    attachApiErrorHandler(res,
-        AuthService.verifyOtp(phone, otp)
-        .then(response => {
-            const isOk = response !== false;
-            //? For security purposes - Same message displayed for when OTP doesn't verify because it is invalid or user doesn't exist
-            const message = isOk ? 'Successfully verified OTP' : 'Failed to verify OTP';
-            const responseData = {
-                isVerified: isOk
-            };
+  //TODO: Add phone number validation ~ consider using a different middleware for that
+  ApiUtil.attachErrorHandler(
+    res,
+    AuthService.verifyOtp(phone, otp).then((response) => {
+      const isOk = response !== false;
+      //? For security purposes - Same message displayed for when OTP doesn't verify because it is invalid or user doesn't exist
+      const message = isOk
+        ? "Successfully verified OTP"
+        : "Failed to verify OTP";
+      const responseData = {
+        isVerified: isOk,
+      };
 
-            // If the response is not `false` it is the `token` generated from confirming the OTP.
-            // This token should be stored on the client
-            if (isOk) responseData.token = response;
+      // If the response is not `false` it is the `token` generated from confirming the OTP.
+      // This token should be stored on the client
+      if (isOk) responseData.token = response;
 
-            const apiResponse = getApiResponse(isOk, message, responseData);
-            printApiResponse(res, apiResponse, next);
-        })
-    );
+      const apiResponse = ApiUtil.getResponse(isOk, message, responseData);
+      ApiUtil.printResponse(res, apiResponse, next);
+    })
+  );
 };
 
 //* EXPORTS

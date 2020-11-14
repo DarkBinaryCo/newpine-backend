@@ -1,7 +1,7 @@
 // Models
 const { User } = require("../../models");
 
-const { filterObjAttrs } = require("../../utils/filter");
+const { FilterUtil } = require("../../utils");
 
 // Internal ~ UserService specific
 const getUserByPhone = require("./getUserByPhone");
@@ -14,7 +14,7 @@ const updateUser = require("./updateUser");
 const createUser = async (insertData = {}) => {
   //REVIEW: Possibly reduce number of database requests being made when trying to create user ~ currently 2 getUser requests
   // Attributes that shouldn't be editable ~ unsetting them if set
-  insertData = filterObjAttrs(insertData, [
+  insertData = FilterUtil.filterObjAttrs(insertData, [
     "id",
     "isBanned",
     "isVerified",

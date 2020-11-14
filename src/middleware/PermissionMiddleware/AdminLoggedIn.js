@@ -1,8 +1,5 @@
 // Utils
-const {
-  getApiUnauthorizedError,
-  printApiResponse,
-} = require("../../utils/api");
+const { ApiUtil } = require("../../utils");
 
 //! For this file  to work, the user must be logged in (MUST be used after calling the UserLoggedIn middleware)
 //? Duplicate this  file and change `AUTH_DATA` to the appropriate user type
@@ -26,8 +23,8 @@ const AdminLoggedIn = async (req, res, next) => {
     // Admin is indeed logged in
     next();
   } else {
-    let apiResponse = getApiUnauthorizedError();
-    printApiResponse(res, apiResponse, next);
+    let apiResponse = ApiUtil.getApiUnauthorizedError();
+    ApiUtil.printResponse(res, apiResponse, next);
   }
 };
 

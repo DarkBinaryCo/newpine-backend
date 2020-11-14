@@ -2,7 +2,7 @@
 const { User } = require("../../models");
 
 // Utils
-const { filterObjAttrs } = require("../../utils/filter");
+const { FilterUtil } = require("../../utils");
 
 /** Update a user matching the `filter` with `updateData`
  * @param {Object} updateData Database information to update
@@ -17,7 +17,7 @@ const updateUser = async (updateData = {}, filter = {}, isAdmin = false) => {
   if (!isAdmin) {
     _filterAttrs.push("isBanned", "isVerified");
   }
-  updateData = filterObjAttrs(updateData, _filterAttrs);
+  updateData = FilterUtil.filterObjAttrs(updateData, _filterAttrs);
 
   const updateStatus = await User.update(updateData, {
     where: filter,

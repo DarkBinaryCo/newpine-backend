@@ -1,6 +1,6 @@
 const { AuthToken } = require("../../../models");
 
-const { getSqlTimestamp } = require("../../../utils/date");
+const { DateUtil } = require("../../../utils");
 
 const { TOKEN_EXPIRY_SECONDS } = require("../../../config/auth");
 
@@ -11,7 +11,7 @@ const { TOKEN_EXPIRY_SECONDS } = require("../../../config/auth");
  */
 const _saveAuthToken = async (userId, token) => {
   // Get token expiry ~ no need to refactor since this is only used here
-  const expiresOn = getSqlTimestamp({
+  const expiresOn = DateUtil.getSqlTimestamp({
     seconds: TOKEN_EXPIRY_SECONDS,
   });
 

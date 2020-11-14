@@ -1,8 +1,8 @@
 // Services
-const { verifyHash } = require("../../../utils/auth");
+const { UserService } = require("../../index");
 
 // Utils
-const UserService = require("../../User");
+const { AuthUtil } = require("../../../utils");
 
 // Auth related
 const { createAuthToken } = require("../authToken");
@@ -20,7 +20,7 @@ const verifyOtp = async (userPhone, otpEntered) => {
   const currentUserOtpHash = user.otp;
 
   // Check if the OTP entered matches the OTP in the database
-  const isValidOtp = verifyHash(otpEntered, currentUserOtpHash);
+  const isValidOtp = AuthUtil.verifyHash(otpEntered, currentUserOtpHash);
 
   // If the OTP is invalid ~ return false
   if (!isValidOtp) return false;

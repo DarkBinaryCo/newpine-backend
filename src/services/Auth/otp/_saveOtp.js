@@ -1,5 +1,5 @@
 // Utils
-const { getSqlTimestamp } = require("../../../utils/date");
+const { DateUtil } = require("../../../utils");
 
 // Services
 const UserService = require("../../User");
@@ -10,7 +10,7 @@ const UserService = require("../../User");
  * @return {Object} Hashed OTP saved
  */
 const _saveOtp = (userPhone, hashedOtp) => {
-  const lastOtpSentAt = getSqlTimestamp();
+  const lastOtpSentAt = DateUtil.getSqlTimestamp();
 
   // Data to be inserted into the database
   const _updateFilter = {

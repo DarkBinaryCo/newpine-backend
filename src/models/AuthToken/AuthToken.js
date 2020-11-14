@@ -2,7 +2,7 @@ const sequelize = require("../../database");
 const { DataTypes, Model, Sequelize } = require("sequelize");
 
 //* Utils
-const { hash } = require("../../utils/auth");
+const { AuthUtil } = require("../../utils");
 
 //
 class AuthToken extends Model {}
@@ -16,7 +16,7 @@ AuthToken.init(
       primaryKey: true,
       allowNull: false,
       set(value) {
-        this.setDataValue("token", hash(value));
+        this.setDataValue("token", AuthUtil.hash(value));
       },
     },
     userId: {
