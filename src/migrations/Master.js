@@ -8,6 +8,7 @@ const {
   PropertyGroup,
   Property,
   Payment,
+  Resident,
 } = require("../models");
 
 //* This migration syncs all models ~ creating every table in the database
@@ -22,6 +23,7 @@ module.exports = {
     await PropertyGroup.sync();
     await Property.sync();
     await Payment.sync();
+    await Resident.sync();
   },
   down: (queryInterface, Sequelize) => {
     queryInterface.dropDatabase();
