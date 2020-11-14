@@ -44,7 +44,7 @@ Resident.init(
       defaultValue: false,
     },
   },
-  { sequelize, modelName: "Resident" }
+  { sequelize, modelName: "Resident", paranoid: true }
 );
 
 //* EXPORTS
