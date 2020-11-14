@@ -10,9 +10,9 @@ const printResponse = require("./printResponse");
 
 //* EXPORTS
 module.exports = {
-  getApiResponse: getResponse,
-  getApiError: getError,
-  getApiUnauthorizedError: getUnauthorizedError,
-  attachApiErrorHandler: attachErrorHandler,
-  printApiResponse: printResponse,
+  getResponse,
+  getError,
+  getUnauthorizedError,
+  attachErrorHandler,
+  printResponse,
 };
