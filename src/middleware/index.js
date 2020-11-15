@@ -4,9 +4,13 @@
 */
 const AuthMiddleware = require("./AuthMiddleware");
 const PermissionMiddleware = require("./PermissionMiddleware");
+const ResidentMiddleware = require("./ResidentMiddleware");
+const OwnershipMiddleware = require("./OwnershipMiddleware");
 
 //* EXPORTS
 module.exports = {
   AuthMiddleware,
   PermissionMiddleware,
+  ResidentMiddleware,
+  OwnershipMiddleware,
 };
