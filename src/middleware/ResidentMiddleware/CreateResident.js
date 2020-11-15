@@ -10,7 +10,7 @@ let createResident = async (req, res, next) => {
   //* Getting here means this is a valid co-resident request
   ApiUtil.attachErrorHandler(
     res,
-    ResidentService.createResident(insertData).then((residentCreated) => {
+    ResidentService.createResident(insertData, true).then((residentCreated) => {
       let apiResponse = ApiUtil.getResponse(
         true,
         "Successfully created resident",
