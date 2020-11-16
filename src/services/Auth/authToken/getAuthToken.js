@@ -19,7 +19,7 @@ const getAuthToken = async (tokenEntered) => {
       {
         model: User,
         required: true,
-        attributes: ["firstName", "lastName", "userTypeId"],
+        attributes: ["id", "firstName", "lastName", "userTypeId"],
       },
     ],
   });
