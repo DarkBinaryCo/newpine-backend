@@ -55,7 +55,6 @@ const sendOtp = async (userPhone) => {
   // }
   //TODO: Remove this in production
   console.log("Sent otp: ", otp);
-  console.log("Hashed otp: ", hashedOtp);
 
   responseData.isWaiting = false;
   responseData.messageData = sendStatus;
