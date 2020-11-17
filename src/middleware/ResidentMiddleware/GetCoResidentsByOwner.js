@@ -17,7 +17,7 @@ const getCoResidentsByOwner = async (req, res, next) => {
     ResidentService.getResidents(filter).then((residentsFound) => {
       let apiResponse = ApiUtil.getResponse(
         true,
-        "Successfully retrieve co-residents",
+        "Successfully retrieved co-residents",
         residentsFound
       );
 
