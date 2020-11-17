@@ -3,13 +3,11 @@ const { ApiUtil } = require("../../utils");
 
 //! For this file  to work, the user must be logged in (MUST be used after calling the UserLoggedIn middleware)
 //? Duplicate this  file and change `AUTH_DATA` to the appropriate user type
+//* This middleware must be called after PermissionMiddleware.UserLoggedIn
 // Config
 const { USER_TYPE } = require("../../config/auth");
 
-/** Only proceeds to the next middleware if a sales user is logged in based on the `AuthToken` passed in.
- *
- * Also sets `userData` on the `request` as `req.userData` that can be used by any middleware that comes after
- */
+/** Only proceeds to the next middleware if an admin user is logged in based on the `AuthToken` passed in. */
 const AdminLoggedIn = async (req, res, next) => {
   let userData = req.userData;
 

@@ -4,7 +4,7 @@ const { ResidentService } = require("../../services");
 const { ApiUtil } = require("../../utils");
 
 /** Create a co-resident */
-let createResident = async (req, res, next) => {
+const createResident = async (req, res, next) => {
   let insertData = req.body.data || {};
 
   //* Getting here means this is a valid co-resident request
