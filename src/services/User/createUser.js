@@ -32,7 +32,7 @@ const createUser = async (insertData = {}) => {
         phone: insertData.phone,
       };
 
-      const updateStatus = updateUser(insertData, _updateFilter);
+      const updateStatus = await updateUser(insertData, _updateFilter);
       console.info(
         `User with phone: ${insertData.phone} was found, updating instead of creating new account...`
       );
@@ -41,9 +41,7 @@ const createUser = async (insertData = {}) => {
     }
   }
 
-  const createStatus = User.create(insertData);
-
-  return createStatus;
+  return User.create(insertData);
 };
 
 //* EXPORTS
