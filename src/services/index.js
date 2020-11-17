@@ -6,6 +6,7 @@ const AuthService = require("./Auth");
 const CommService = require("./Comm");
 const UploadService = require("./Upload");
 const UserService = require("./User");
+const ResidentService = require("./Resident");
 
 //* EXPORTS
 module.exports = {
@@ -13,4 +14,5 @@ module.exports = {
   CommService,
   UploadService,
   UserService,
+  ResidentService,
 };
