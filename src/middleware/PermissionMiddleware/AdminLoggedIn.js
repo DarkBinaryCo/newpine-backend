@@ -8,7 +8,7 @@ const { ApiUtil } = require("../../utils");
 const { USER_TYPE } = require("../../config/auth");
 
 /** Only proceeds to the next middleware if an admin user is logged in based on the `AuthToken` passed in. */
-const AdminLoggedIn = async (req, res, next) => {
+const adminLoggedIn = async (req, res, next) => {
   let userData = req.userData;
 
   // No point checking if we have the right user type logged in if we have no logged in user data to check
@@ -27,4 +27,4 @@ const AdminLoggedIn = async (req, res, next) => {
 };
 
 //* EXPORTS
-module.exports = AdminLoggedIn;
+module.exports = adminLoggedIn;

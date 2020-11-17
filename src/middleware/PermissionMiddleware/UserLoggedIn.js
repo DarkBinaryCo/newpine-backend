@@ -7,7 +7,7 @@ const _getUserTokenData = require("./_getUserTokenData");
  *
  * Also sets user data on the `req.userData` which is passed on any middleware that comes after
  */
-const UserLoggedIn = async (req, res, next) => {
+const userLoggedIn = async (req, res, next) => {
   const userTokenData = await _getUserTokenData(req);
 
   // Move to the next middleware if the user is logged in
@@ -24,4 +24,4 @@ const UserLoggedIn = async (req, res, next) => {
 };
 
 //* EXPORTS
-module.exports = UserLoggedIn;
+module.exports = userLoggedIn;
