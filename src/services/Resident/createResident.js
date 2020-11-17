@@ -7,11 +7,11 @@ const { FilterUtil } = require("../../utils");
  * @return {Promise<Object>} A promise that resolves to an object with the create operation information
  */
 const createResident = async (insertData, isResidentOwner = false) => {
-  let _filterAttrs = ["id", "isActive"];
+  let _filterAttrs = ["id"];
 
   // If we are the resident owner, then we should not be able to set our own residentOwnerId in the residents table
   if (isResidentOwner) {
-    _filterAttrs.push("residentOwnerId"); //? Unset it if it has been set
+    _filterAttrs.push("residentOwnerId", "isActive"); //? Unset it if it has been set
   }
 
   insertData = FilterUtil.filterObjAttrs(insertData, _filterAttrs);
