@@ -25,10 +25,15 @@ User.init(
       type: DataTypes.STRING(15),
       allowNull: false,
     },
+    email: {
+      type: DataTypes.STRING(50),
+      allowNull: true,
+      defaultValue: null,
+    },
     userTypeId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: "4",
+      defaultValue: "6",
       references: {
         model: "user_types", //? Table name
         key: "id",

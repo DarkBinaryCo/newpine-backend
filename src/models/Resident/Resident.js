@@ -52,7 +52,7 @@ Resident.init(
 );
 
 Resident.belongsTo(User, { foreignKey: "userId" });
-Resident.hasOne(Property, { foreignKey: "propertyId" });
+Resident.belongsTo(Property, { foreignKey: "propertyId" });
 
 //* EXPORTS
 module.exports = Resident;

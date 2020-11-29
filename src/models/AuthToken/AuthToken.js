@@ -1,6 +1,9 @@
 const sequelize = require("../../database");
 const { DataTypes, Model, Sequelize } = require("sequelize");
 
+// Model dependencies
+const { User } = require("../User");
+
 //* Utils
 const { AuthUtil } = require("../../utils");
 
@@ -34,6 +37,9 @@ AuthToken.init(
   },
   { sequelize, modelName: "AuthToken", tableName: "auth_tokens" }
 );
+
+// Relationships
+AuthToken.belongsTo(User, { foreignKey: "userId" });
 
 //* EXPORTS
 module.exports = AuthToken;

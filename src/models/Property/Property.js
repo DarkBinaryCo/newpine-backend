@@ -1,6 +1,10 @@
 const sequelize = require("../../database");
 const { DataTypes, Model } = require("sequelize");
 
+// Model dependencies
+const PropertyType = require("./PropertyType");
+const PropertyGroup = require("./PropertyGroup");
+
 //
 class Property extends Model {}
 
@@ -36,6 +40,10 @@ Property.init(
   },
   { sequelize, modelName: "Property" }
 );
+
+// Relationships
+Property.belongsTo(PropertyType, { foreignKey: "propertyTypeId" });
+Property.belongsTo(PropertyGroup, { foreignKey: "propertyGroupId" });
 
 //* EXPORTS
 module.exports = Property;
