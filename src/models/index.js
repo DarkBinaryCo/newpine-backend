@@ -7,6 +7,8 @@ const PaymentModels = require("./Payment");
 const UserModels = require("./User");
 const PropertyModels = require("./Property");
 const ResidentModels = require("./Resident");
+const VehicleModels = require("./Vehicle");
+const VisitorModels = require("./Visitor");
 
 //* EXPORTS
 module.exports = {
@@ -15,4 +17,6 @@ module.exports = {
   ...UserModels,
   ...PropertyModels,
   ...ResidentModels,
+  ...VehicleModels,
+  ...VisitorModels,
 };
