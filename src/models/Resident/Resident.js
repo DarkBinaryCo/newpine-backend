@@ -42,7 +42,7 @@ Resident.init(
       allowNull: true,
       defaultValue: null,
     },
-    isActive: {
+    isVerified: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: false,
