@@ -1,5 +1,5 @@
-const { Resident } = require("../../models");
-const { FilterUtil } = require("../../utils");
+const { Resident } = require("../../../models");
+const { FilterUtil } = require("../../../utils");
 
 /** Update a resident
  * @param {Object} updateData Update data

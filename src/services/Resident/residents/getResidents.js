@@ -1,4 +1,4 @@
-const { Resident, User } = require("../../models");
+const { Resident, User } = require("../../../models");
 
 /** Get residents */
 const getResidents = async (filter = {}, isAdmin = false) => {

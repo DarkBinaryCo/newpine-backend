@@ -1,5 +1,4 @@
-const { Resident } = require("../../models");
-const { FilterUtil } = require("../../utils");
+const { Resident } = require("../../../models");
 
 /** Create a resident account
  * @param {Object} insertData Data to be inserted into the database. Must contain user ID
@@ -7,16 +6,14 @@ const { FilterUtil } = require("../../utils");
  * @return {Promise<Object>} A promise that resolves to an object with the create operation information
  */
 const createResident = async (insertData, isResidentOwner = false) => {
-  let _filterAttrs = ["id"];
+  let settableFields = ["userId", "mpesaPhone", "propertyId"];
 
-  // If we are the resident owner, then we should not be able to set our own residentOwnerId in the residents table
-  if (isResidentOwner) {
-    _filterAttrs.push("residentOwnerId", "isActive"); //? Unset it if it has been set
+  // Non-resident owners can set their resident owner's id
+  if (!isResidentOwner) {
+    settableFields.push("residentOwnerId");
   }
 
-  insertData = FilterUtil.filterObjAttrs(insertData, _filterAttrs);
-
-  return Resident.create(insertData);
+  return Resident.create(insertData, { fields: settableFields });
 };
 
 //* EXPORTS

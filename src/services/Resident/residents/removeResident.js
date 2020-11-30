@@ -1,4 +1,4 @@
-const { Resident } = require("../../models");
+const { Resident } = require("../../../models");
 const { Op } = require("sequelize");
 
 /** Remove a resident by ID. Can be used to remove co-residents. Admin can use this to remove a resident account of any kind altogether

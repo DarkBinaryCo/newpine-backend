@@ -1,4 +1,4 @@
-const { Resident, User } = require("../../models");
+const { Resident, User } = require("../../../models");
 
 /** Get a single resident by their UserId
  * @param {String} userId The user ID of the resident you want to get
