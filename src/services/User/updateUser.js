@@ -1,9 +1,6 @@
 // Models
 const { User } = require("../../models");
 
-// Utils
-const { FilterUtil } = require("../../utils");
-
 /** Update a user matching the `filter` with `updateData`
  * @param {Object} updateData Database information to update
  * @param {Object} filter User filter
@@ -11,19 +8,25 @@ const { FilterUtil } = require("../../utils");
  * @return {Promise<Object>} A promise that resolves to an object with the update operation information
  */
 const updateUser = async (updateData = {}, filter = {}, isAdmin = false) => {
-  // Attributes that shouldn't be editable ~ unsetting them if set
-  let _filterAttrs = ["id", "createdAt"];
+  let settableFields = [
+    "firstName",
+    "lastName",
+    "phone",
+    "email",
+    "bio",
+    "profileImgUrl",
+    "profileImgThumbnailUrl",
+  ];
 
-  if (!isAdmin) {
-    _filterAttrs.push("isBanned", "isVerified");
+  // Only admins can ban/verify users
+  if (isAdmin) {
+    settableFields.push("isBanned", "isVerified");
   }
-  updateData = FilterUtil.filterObjAttrs(updateData, _filterAttrs);
 
-  const updateStatus = await User.update(updateData, {
+  return User.update(updateData, {
     where: filter,
+    fields: settableFields,
   });
-
-  return updateStatus;
 };
 
 //* EXPORTS

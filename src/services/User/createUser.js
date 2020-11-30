@@ -1,8 +1,6 @@
 // Models
 const { User } = require("../../models");
 
-const { FilterUtil } = require("../../utils");
-
 // Internal ~ UserService specific
 const getUserByPhone = require("./getUserByPhone");
 const updateUser = require("./updateUser");
@@ -12,15 +10,16 @@ const updateUser = require("./updateUser");
  * @return {Promise<Object>} A promise that resolves to an object with the create operation information
  */
 const createUser = async (insertData = {}) => {
-  //REVIEW: Possibly reduce number of database requests being made when trying to create user ~ currently 2 getUser requests
-  // Attributes that shouldn't be editable ~ unsetting them if set
-  insertData = FilterUtil.filterObjAttrs(insertData, [
-    "id",
-    "isBanned",
-    "isVerified",
-    "createdAt",
-    "updatedAt",
-  ]);
+  let settableFields = [
+    "firstName",
+    "lastName",
+    "phone",
+    "email",
+    "userTypeId",
+    "bio",
+    "profileImgUrl",
+    "profileImgThumbnailUrl",
+  ];
 
   // If phone number has been provided ~ check if a user with that phone number already exists
   if (insertData.phone) {
@@ -32,16 +31,11 @@ const createUser = async (insertData = {}) => {
         phone: insertData.phone,
       };
 
-      const updateStatus = await updateUser(insertData, _updateFilter);
-      console.info(
-        `User with phone: ${insertData.phone} was found, updating instead of creating new account...`
-      );
-
-      return updateStatus;
+      return updateUser(insertData, _updateFilter);
     }
   }
 
-  return User.create(insertData);
+  return User.create(insertData, { fields: settableFields });
 };
 
 //* EXPORTS
