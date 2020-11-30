@@ -32,11 +32,6 @@ Vehicle.init(
       allowNull: false,
       defaultValue: false,
     },
-    verifierUserId: {
-      type: DataTypes.UUID,
-      allowNull: true,
-      defaultValue: null,
-    },
   },
   { sequelize, modelName: "Vehicle" }
 );
