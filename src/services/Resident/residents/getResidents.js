@@ -1,6 +1,9 @@
 const { Resident, User } = require("../../../models");
 
-/** Get residents */
+/** Get residents
+ * @param {Object} filter Resident query filter
+ * @param {Boolean} isAdmin Whether the caller of the function is an admin or not
+ */
 const getResidents = async (filter = {}, isAdmin = false) => {
   let findOptions = {
     where: filter,
