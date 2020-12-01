@@ -1,8 +1,8 @@
 //* This middleware must be called after PermissionMiddleware.ResidentLoggedIn and OwnershipMiddleware.LoggedInUserIsOwner
-const { ResidentService } = require("../../services");
+const { ResidentService } = require("../../../services");
 
 // Utils
-const { ApiUtil } = require("../../utils");
+const { ApiUtil } = require("../../../utils");
 
 /** Get co-residents that share a residence with a given owner */
 const getCoResidentsByOwner = async (req, res, next) => {

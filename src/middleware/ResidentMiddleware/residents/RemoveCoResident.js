@@ -1,9 +1,9 @@
 //* This middleware must be called after PermissionMiddleware.ResidentLoggedIn and OwnershipMiddleware.LoggedInUserIsOwner
 // Services
-const { ResidentService } = require("../../services");
+const { ResidentService } = require("../../../services");
 
 // Utils
-const { ApiUtil } = require("../../utils");
+const { ApiUtil } = require("../../../utils");
 
 /** Remove a co-resident - Has to be done by the resident that 'owns' the co-resident */
 const removeCoResident = async (req, res, next) => {

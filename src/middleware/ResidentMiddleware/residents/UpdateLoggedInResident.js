@@ -1,9 +1,9 @@
 //* This middleware must be called after PermissionMiddleware.ResidentLoggedIn
 // Services
-const { ResidentService, UserService } = require("../../services");
+const { ResidentService, UserService } = require("../../../services");
 
 // Utils
-const { ApiUtil } = require("../../utils");
+const { ApiUtil } = require("../../../utils");
 
 /** Update the currently logged in resident */
 const updateLoggedInResident = async (req, res, next) => {

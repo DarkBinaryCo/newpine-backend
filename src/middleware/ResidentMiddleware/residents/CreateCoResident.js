@@ -1,8 +1,8 @@
 //* This middleware must be called after PermissionMiddleware.ResidentLoggedIn
-const { UserService, ResidentService } = require("../../services");
+const { UserService, ResidentService } = require("../../../services");
 
 // Utils
-const { ApiUtil } = require("../../utils");
+const { ApiUtil } = require("../../../utils");
 
 /** Create a co-resident.
  * Ensure residentOwnerId is passed in as part of this data

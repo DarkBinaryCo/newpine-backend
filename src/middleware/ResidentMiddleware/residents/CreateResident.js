@@ -1,7 +1,7 @@
-const { ResidentService } = require("../../services");
+const { ResidentService } = require("../../../services");
 
 // Utils
-const { ApiUtil } = require("../../utils");
+const { ApiUtil } = require("../../../utils");
 
 /** Create a co-resident */
 const createResident = async (req, res, next) => {
