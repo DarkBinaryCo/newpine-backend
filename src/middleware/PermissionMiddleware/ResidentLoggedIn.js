@@ -30,6 +30,8 @@ const residentLoggedIn = async (req, res, next) => {
       console.error(
         `\nCould not find a resident account belonging to that user (${userData.id}).\n Something went terribly wrong.`
       );
+      let apiResponse = ApiUtil.getUnauthorizedError();
+      ApiUtil.printResponse(res, apiResponse, next);
     }
   } else {
     let apiResponse = ApiUtil.getUnauthorizedError();
