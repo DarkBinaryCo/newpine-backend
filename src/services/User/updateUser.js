@@ -20,7 +20,7 @@ const updateUser = async (updateData = {}, filter = {}, isAdmin = false) => {
 
   // Only admins can ban/verify users
   if (isAdmin) {
-    settableFields.push("isBanned", "isVerified");
+    settableFields.push("otp", "lastOptSentAt", "isBanned", "isVerified");
   }
 
   return User.update(updateData, {
