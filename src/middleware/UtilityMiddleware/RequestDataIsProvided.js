@@ -12,7 +12,7 @@ const requestDataIsProvided = (req, res, next) => {
   } else {
     // Request data was not found/invalid request data format
     let err = new Error(
-      "Error: I was expecting a `data` object as part of the request body but I could not find it.Try adding an object with the key of `data` then try again."
+      "Error: I was expecting a `data` object as part of the request body but I could not find it. Try adding an object with the key of `data` then try again."
     );
     let apiResponse = ApiUtil.getError(err.message, err, 400);
 
