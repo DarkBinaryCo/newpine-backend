@@ -31,7 +31,7 @@ const updateLoggedInResident = async (req, res, next) => {
     ResidentService.updateResident(
       residentUpdateData,
       residentUpdateFilter
-    ).then((residentUpdated) => {
+    ).then((_) => {
       let apiResponse = ApiUtil.getResponse(
         true,
         "Successfully updated resident"

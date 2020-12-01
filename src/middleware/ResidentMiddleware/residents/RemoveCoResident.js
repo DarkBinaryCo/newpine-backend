@@ -17,7 +17,7 @@ const removeCoResident = async (req, res, next) => {
 
   ApiUtil.attachErrorHandler(
     res,
-    ResidentService.removeResident(deleteFilter).then((deletedResident) => {
+    ResidentService.removeResident(deleteFilter).then((_) => {
       let apiResponse = ApiUtil.getResponse(
         true,
         "Successfully deleted co-resident"

@@ -14,11 +14,10 @@ const removeVehicle = (req, res, next) => {
   //
   ApiUtil.attachErrorHandler(
     res,
-    ResidentService.removeVehicle(deleteFilter).then((removedVehicle) => {
+    ResidentService.removeVehicle(deleteFilter).then((_) => {
       let apiResponse = ApiUtil.getResponse(
         true,
-        "Successfully removed vehicle",
-        removedVehicle
+        "Successfully removed vehicle"
       );
 
       ApiUtil.printResponse(res, apiResponse, next);
