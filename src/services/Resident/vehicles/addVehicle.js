@@ -5,7 +5,14 @@ const { Vehicle } = require("../../../models");
  * @return {Promise<Object>} A promise that resolves to an object with the create operation information
  */
 const addVehicle = async (insertData) => {
-  let settableFields = ["numberPlate", "residentId"];
+  let settableFields = [
+    "name",
+    "model",
+    "color",
+    "year",
+    "numberPlate",
+    "residentId",
+  ];
 
   return Vehicle.create(insertData, { fields: settableFields });
 };

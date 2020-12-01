@@ -14,6 +14,26 @@ Vehicle.init(
       primaryKey: true,
       allowNull: false,
     },
+    name: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
+    },
+    model: {
+      //TODO: Actually find a database for this
+      type: DataTypes.STRING(25),
+      allowNull: true,
+      defaultValue: null,
+    },
+    year: {
+      type: DataTypes.STRING(4),
+      allowNull: true,
+      defaultValue: null,
+    },
+    color: {
+      type: DataTypes.STRING(15),
+      allowNull: true,
+      defaultValue: null,
+    },
     numberPlate: {
       type: DataTypes.STRING(10),
       allowNull: true,

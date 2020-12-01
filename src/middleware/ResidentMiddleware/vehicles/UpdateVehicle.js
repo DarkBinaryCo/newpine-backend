@@ -12,10 +12,13 @@ const updateVehicle = (req, res, next) => {
     residentId: req.residentData.id,
   };
 
+  // De-activate vehicle when the user updates it
+  updateData.isVerified = false;
+
   //
   ApiUtil.attachErrorHandler(
     res,
-    ResidentService.updateResident(updateData, updateFilter, false).then(
+    ResidentService.updateResident(updateData, updateFilter).then(
       (vehicleUpdated) => {
         let apiResponse = ApiUtil.getResponse(
           true,
