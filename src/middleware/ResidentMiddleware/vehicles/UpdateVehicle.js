@@ -18,17 +18,14 @@ const updateVehicle = (req, res, next) => {
   //
   ApiUtil.attachErrorHandler(
     res,
-    ResidentService.updateResident(updateData, updateFilter).then(
-      (vehicleUpdated) => {
-        let apiResponse = ApiUtil.getResponse(
-          true,
-          "Successfully updated vehicle",
-          vehicleUpdated
-        );
+    ResidentService.updateVehicle(updateData, updateFilter).then((_) => {
+      let apiResponse = ApiUtil.getResponse(
+        true,
+        "Successfully updated vehicle"
+      );
 
-        ApiUtil.printResponse(res, apiResponse, next);
-      }
-    )
+      ApiUtil.printResponse(res, apiResponse, next);
+    })
   );
 };
 
