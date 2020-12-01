@@ -3,9 +3,12 @@ const { ResidentService } = require("../../../services");
 // Utils
 const { ApiUtil } = require("../../../utils");
 
-/** Create a co-resident */
+/** Create a resident account for the current user */
 const createResident = async (req, res, next) => {
   let insertData = req.body.data || {};
+
+  // The resident created
+  insertData.userId = req.userData.id;
 
   //* Getting here means this is a valid co-resident request
   ApiUtil.attachErrorHandler(
