@@ -27,9 +27,18 @@ VisitorInvitation.init(
       type: DataTypes.STRING(50),
       allowNull: false,
     },
+    phone: {
+      type: DataTypes.STRING(15),
+      allowNull: false,
+    },
+    email: {
+      type: DataTypes.STRING(50),
+      allowNull: true,
+      defaultValue: null,
+    },
     identificationTypeId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: "identification_types", //? Table name
         key: "id",
@@ -67,6 +76,7 @@ VisitorInvitation.init(
     sequelize,
     modelName: "VisitorInvitation",
     tableName: "visitor_invitations",
+    paranoid: true,
   }
 );
 
