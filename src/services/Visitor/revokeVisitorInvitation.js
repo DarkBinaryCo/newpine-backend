@@ -4,7 +4,7 @@ const { VisitorInvitation } = require("../../models");
  * @param {Object} filter The filter that determines which invitation is revoked
  */
 const revokeVisitorInvitation = (filter) => {
-  return VisitorInvitation.destroy(inviteData, { where: filter });
+  return VisitorInvitation.destroy({ where: filter });
 };
 
 //* EXPORTS

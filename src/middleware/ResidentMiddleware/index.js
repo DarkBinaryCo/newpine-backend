@@ -4,9 +4,11 @@
 */
 const ResidentsFunctions = require("./residents");
 const VehiclesFunctions = require("./vehicles");
+const VisitorsFunctions = require("./visitors");
 
 //* EXPORTS
 module.exports = {
   ...ResidentsFunctions,
   ...VehiclesFunctions,
+  ...VisitorsFunctions,
 };
