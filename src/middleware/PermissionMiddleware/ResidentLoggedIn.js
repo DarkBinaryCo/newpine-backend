@@ -28,9 +28,14 @@ const residentLoggedIn = async (req, res, next) => {
     } else {
       // Resident was not found
       console.error(
-        `\nCould not find a resident account belonging to that user (${userData.id}).\n Something went terribly wrong.`
+        `\nCould not find a resident account belonging to that user (${userData.id}).`
       );
-      let apiResponse = ApiUtil.getUnauthorizedError();
+      let apiResponse = ApiUtil.getResponse(
+        false,
+        "Resident account for that user could not be found.\nPlease create the resident before attempting to access resident functionality.",
+        { isNew: true } //? Passing this to inform the user that this is a new account
+      );
+
       ApiUtil.printResponse(res, apiResponse, next);
     }
   } else {
