@@ -1,8 +1,7 @@
 // Utils
 const { ApiUtil } = require("../../utils");
 
-//! For this file  to work, the user must be logged in (MUST be used after calling the UserLoggedIn middleware)
-//? Duplicate this  file and change `AUTH_DATA` to the appropriate user type
+//! For this file  to work, the user must be logged in (MUST be used after calling the UserLoggedIn middleware
 //* This middleware must be called after PermissionMiddleware.UserLoggedIn
 // Config
 const { USER_TYPE } = require("../../config/auth");
@@ -17,8 +16,7 @@ const adminLoggedIn = async (req, res, next) => {
       "\nIt would appear the middleware was called before calling UserLoggedIn. Please call the UserLoggedIn middleware before calling this.\n"
     );
   } else if (userData.userTypeId === USER_TYPE.ADMIN) {
-    console.debug("Admin is logged in");
-    // Admin is indeed logged in
+    //? Admin is logged in
     next();
   } else {
     let apiResponse = ApiUtil.getUnauthorizedError();
