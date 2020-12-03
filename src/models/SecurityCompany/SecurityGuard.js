@@ -1,5 +1,5 @@
 const sequelize = require("../../database");
-const { DataTypes, Model } = require("sequelize");
+const { DataTypes, Model, Sequelize } = require("sequelize");
 
 //! TODO: Find way to use model aggregator to fetch this information
 const { PropertyGroup } = require("../Property");
