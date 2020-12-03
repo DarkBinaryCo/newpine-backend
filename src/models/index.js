@@ -9,6 +9,7 @@ const PropertyModels = require("./Property");
 const ResidentModels = require("./Resident");
 const VehicleModels = require("./Vehicle");
 const VisitorModels = require("./Visitor");
+const SecurityCompanyModels = require("./SecurityCompany");
 
 //* EXPORTS
 module.exports = {
@@ -19,4 +20,5 @@ module.exports = {
   ...ResidentModels,
   ...VehicleModels,
   ...VisitorModels,
+  ...SecurityCompanyModels,
 };
