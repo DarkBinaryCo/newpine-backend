@@ -1,3 +1,5 @@
+const uuid = require("uuid");
+
 // Models
 const { User } = require("../../models");
 
@@ -5,7 +7,14 @@ const { User } = require("../../models");
  * @param {Array<Object>} usersData An array of user objects
  */
 const createUserBatch = (usersData) => {
+  // Generate a unique ID for each user
+  usersData = usersData.map((user) => {
+    user.id = uuid.v4();
+    return user;
+  });
+
   let settableFields = [
+    "id",
     "firstName",
     "lastName",
     "phone",
@@ -16,7 +25,10 @@ const createUserBatch = (usersData) => {
     "profileImgThumbnailUrl",
   ];
 
-  return User.bulkCreate(usersData, { fields: settableFields });
+  return User.bulkCreate(usersData, {
+    fields: settableFields,
+    returning: true,
+  });
 };
 
 //* EXPORTS
