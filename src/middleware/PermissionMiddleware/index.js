@@ -5,10 +5,12 @@
 const AdminLoggedIn = require("./AdminLoggedIn");
 const UserLoggedIn = require("./UserLoggedIn");
 const ResidentLoggedIn = require("./ResidentLoggedIn");
+const SecurityManagerLoggedIn = require("./SecurityManagerLoggedIn");
 
 //* EXPORTS
 module.exports = {
   AdminLoggedIn,
   UserLoggedIn,
   ResidentLoggedIn,
+  SecurityManagerLoggedIn,
 };
