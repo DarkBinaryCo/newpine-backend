@@ -1,6 +1,6 @@
 // Listed in the order they should be created in
 const {
-  IdentificationTypes,
+  IdentificationType,
   UserType,
   User,
   AuthToken,
@@ -12,13 +12,15 @@ const {
   Resident,
   Vehicle,
   VisitorInvitation,
+  SecurityShift,
+  SecurityGuard,
 } = require("../models");
 
 //* This migration syncs all models ~ creating every table in the database
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     // Order matters, so we can set the relationships correctly
-    await IdentificationTypes.sync();
+    await IdentificationType.sync();
     await UserType.sync();
     await User.sync();
     await AuthToken.sync();
@@ -30,6 +32,8 @@ module.exports = {
     await Resident.sync();
     await Vehicle.sync();
     await VisitorInvitation.sync();
+    await SecurityShift.sync();
+    await SecurityGuard.sync();
   },
   down: (queryInterface, Sequelize) => {
     queryInterface.dropDatabase();

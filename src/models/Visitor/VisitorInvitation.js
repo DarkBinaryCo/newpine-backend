@@ -2,7 +2,7 @@ const sequelize = require("../../database");
 const { DataTypes, Model, Sequelize } = require("sequelize");
 
 const { Resident } = require("../Resident");
-const { IdentificationTypes } = require("../User");
+const { IdentificationType } = require("../User");
 //
 class VisitorInvitation extends Model {}
 
@@ -82,7 +82,7 @@ VisitorInvitation.init(
 
 // Relationships
 VisitorInvitation.belongsTo(Resident, { foreignKey: "residentInviterId" });
-VisitorInvitation.belongsTo(IdentificationTypes, {
+VisitorInvitation.belongsTo(IdentificationType, {
   foreignKey: "identificationTypeId",
 });
 

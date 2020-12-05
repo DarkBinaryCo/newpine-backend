@@ -1,10 +1,10 @@
 const sequelize = require("../../database");
 const { DataTypes, Model } = require("sequelize");
 
-class IdentificationTypes extends Model {}
+class IdentificationType extends Model {}
 
 // Schema definition
-IdentificationTypes.init(
+IdentificationType.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -24,10 +24,10 @@ IdentificationTypes.init(
   },
   {
     sequelize,
-    modelName: "IdentificationTypes",
+    modelName: "IdentificationType",
     tableName: "identification_types",
   }
 );
 
 //* EXPORTS
-module.exports = IdentificationTypes;
+module.exports = IdentificationType;
