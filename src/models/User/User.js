@@ -1,6 +1,14 @@
 const sequelize = require("../../database");
 const { DataTypes, Model, Sequelize } = require("sequelize");
 
+// Config
+const { USER_TYPE } = require("../../config/auth");
+
+// Dependencies
+//! TODO: Find a way to use model aggregator ~ currently throws an error (can't find reference)
+const IdentificationType = require("./IdentificationType");
+const UserType = require("./UserType");
+
 //
 class User extends Model {}
 
@@ -33,7 +41,7 @@ User.init(
     userTypeId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: "6",
+      defaultValue: USER_TYPE.RESIDENT,
       references: {
         model: "user_types", //? Table name
         key: "id",
@@ -42,6 +50,22 @@ User.init(
     bio: {
       type: DataTypes.TEXT,
       allowNull: true,
+      defaultValue: null,
+    },
+    identificationTypeId: {
+      //! Possibly normalize this into its own table `usersIdentification`
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      defaultValue: 1,
+      references: {
+        model: "identification_types", //? Table name
+        key: "id",
+      },
+    },
+    identificationNumber: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+      defaultValue: null,
     },
     otp: {
       type: DataTypes.STRING(128),
@@ -59,6 +83,12 @@ User.init(
       type: DataTypes.STRING(128),
       allowNull: true,
     },
+    isAdult: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true,
+      comment: "Is this user an adult or not?",
+    },
     isVerified: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
@@ -72,6 +102,10 @@ User.init(
   },
   { sequelize, modelName: "User" }
 );
+
+// Relationships
+User.belongsTo(UserType, { foreignKey: "userTypeId" });
+User.belongsTo(IdentificationType, { foreignKey: "identificationTypeId" });
 
 //* EXPORTS
 module.exports = User;
