@@ -18,7 +18,8 @@ IdentificationTypes.init(
     },
     description: {
       type: DataTypes.STRING(100),
-      allowNull: false,
+      allowNull: true,
+      defaultValue: null,
     },
   },
   {
