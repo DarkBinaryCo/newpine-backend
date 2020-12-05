@@ -14,7 +14,10 @@ const addVehicle = async (insertData) => {
     "residentId",
   ];
 
-  return Vehicle.create(insertData, { fields: settableFields });
+  return Vehicle.create(insertData, {
+    fields: settableFields,
+    returning: true,
+  });
 };
 
 //* EXPORTS

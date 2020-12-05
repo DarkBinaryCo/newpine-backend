@@ -16,7 +16,10 @@ const inviteVisitor = (inviteData) => {
     "isAdult",
   ];
 
-  return VisitorInvitation.create(inviteData, { fields: settableFields });
+  return VisitorInvitation.create(inviteData, {
+    fields: settableFields,
+    returning: true,
+  });
 };
 
 //* EXPORTS

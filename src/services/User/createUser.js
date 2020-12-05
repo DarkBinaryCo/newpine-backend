@@ -35,7 +35,7 @@ const createUser = async (insertData = {}) => {
     }
   }
 
-  return User.create(insertData, { fields: settableFields });
+  return User.create(insertData, { fields: settableFields, returning: true });
 };
 
 //* EXPORTS

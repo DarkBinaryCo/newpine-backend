@@ -13,7 +13,10 @@ const createResident = async (insertData, isResidentOwner = false) => {
     settableFields.push("residentOwnerId");
   }
 
-  return Resident.create(insertData, { fields: settableFields });
+  return Resident.create(insertData, {
+    fields: settableFields,
+    returning: true,
+  });
 };
 
 //* EXPORTS

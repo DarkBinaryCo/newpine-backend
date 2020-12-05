@@ -13,7 +13,7 @@ const inviteVisitor = (req, res, next) => {
 
   ApiUtil.attachErrorHandler(
     res,
-    VisitorService.inviteVisitor(inviteData).then((_) => {
+    VisitorService.inviteVisitor(inviteData).then((invitedVisitor) => {
       // If there is an email text
       if (inviteData.email) {
         console.log(`Sending invitation email to ${inviteData.email}`);
@@ -23,7 +23,7 @@ const inviteVisitor = (req, res, next) => {
       let apiResponse = ApiUtil.getResponse(
         true,
         "Invitation sent to the user",
-        null,
+        invitedVisitor,
         201
       );
 
