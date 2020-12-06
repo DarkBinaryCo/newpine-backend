@@ -18,7 +18,9 @@ const residentLoggedIn = async (req, res, next) => {
     );
   } else if (userData.userTypeId === USER_TYPE.RESIDENT) {
     // Resident is logged in
-    let residentFound = await ResidentService.getResidentByUserId(userData.id);
+    let residentFound = await ResidentService.getSingleResident({
+      userId: userData.id,
+    });
 
     // Resident belonging to the currently logged in user was found ~ pass the data to the next middleware
     if (residentFound) {

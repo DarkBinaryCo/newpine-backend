@@ -1,14 +1,10 @@
 const { Resident, User } = require("../../../models");
 
 /** Get a single resident by their UserId
- * @param {String} userId The user ID of the resident you want to get
+ * @param {String} filter Get filter
  * @return {Object|null} An object containing the resident found(if any) or null if no resident by the `userId` was found
  */
-const getResidentByUserId = async (userId) => {
-  const filter = {
-    userId,
-  };
-
+const getSingleResident = async (filter) => {
   //TODO: Set the attributes that should be returned
   let residentFound = await Resident.findOne({
     where: filter,
@@ -21,4 +17,4 @@ const getResidentByUserId = async (userId) => {
 };
 
 //* EXPORTS
-module.exports = getResidentByUserId;
+module.exports = getSingleResident;

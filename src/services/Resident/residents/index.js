@@ -3,7 +3,7 @@
     This file does not implement any logic of its own and simply serves the purpose of importing functions and exporting them out together so that they can be loaded from one file.
 */
 const createResident = require("./createResident");
-const getResidentByUserId = require("./getResidentByUserId");
+const getSingleResident = require("./getSingleResident");
 const getResidents = require("./getResidents");
 const updateResident = require("./updateResident");
 const removeResident = require("./removeResident");
@@ -11,7 +11,7 @@ const removeResident = require("./removeResident");
 //* EXPORTS
 module.exports = {
   createResident,
-  getResidentByUserId,
+  getSingleResident,
   getResidents,
   updateResident,
   removeResident,
