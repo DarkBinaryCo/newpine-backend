@@ -14,11 +14,10 @@ const _otpHasExpired = require("./_otpHasExpired");
  * @return {Object} An object representing the status of the OTP send operation
  */
 const sendOtp = async (userPhone) => {
-  let user = await UserService.getUserByPhone(
-    userPhone,
-    [],
-    ["otp", "lastOtpSentAt"]
-  );
+  let user = await UserService.getSingleUser({ phone: userPhone }, [
+    "otp",
+    "lastOtpSentAt",
+  ]);
 
   // If the user does not exist ~ create them
   if (!user) {

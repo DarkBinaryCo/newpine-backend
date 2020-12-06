@@ -13,19 +13,19 @@ const _saveOtp = async (userPhone, hashedOtp) => {
   const lastOtpSentAt = DateUtil.getSqlTimestamp();
 
   // Data to be inserted into the database
-  const _updateFilter = {
+  const updateFilter = {
     phone: userPhone,
   };
 
-  const _updateData = {
+  const updateData = {
     otp: hashedOtp,
     lastOtpSentAt,
   };
 
   // Update the user
   const insertResponse = await UserService.updateUser(
-    _updateData,
-    _updateFilter,
+    updateData,
+    updateFilter,
     true
   );
 

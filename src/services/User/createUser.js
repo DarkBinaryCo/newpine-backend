@@ -2,7 +2,7 @@
 const { User } = require("../../models");
 
 // Internal ~ UserService specific
-const getUserByPhone = require("./getUserByPhone");
+const getSingleUser = require("./getSingleUser");
 const updateUser = require("./updateUser");
 
 /** Create a new user with `insertData`
@@ -23,7 +23,7 @@ const createUser = async (insertData = {}) => {
 
   // If phone number has been provided ~ check if a user with that phone number already exists
   if (insertData.phone) {
-    const userWithPhone = await getUserByPhone(insertData.phone);
+    const userWithPhone = await getSingleUser({ phone: insertData.phone });
 
     // Update user instead of user with that phone already exists
     if (userWithPhone) {

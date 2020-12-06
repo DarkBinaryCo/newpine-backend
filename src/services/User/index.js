@@ -4,17 +4,13 @@
 */
 const createUser = require("./createUser");
 const createUserBatch = require("./createUserBatch");
-const getUserByFilter = require("./getUserByFilter");
-const getUserById = require("./getUserById");
-const getUserByPhone = require("./getUserByPhone");
 const updateUser = require("./updateUser");
+const getSingleUser = require("./getSingleUser");
 
 //* EXPORTS
 module.exports = {
   createUser,
   createUserBatch,
   updateUser,
-  getUserByFilter,
-  getUserById,
-  getUserByPhone,
+  getSingleUser,
 };

@@ -12,7 +12,10 @@ const { createAuthToken } = require("../authToken");
  * @return {Promsie<Boolean>} A promise that resolves to `true` if the OTP was valid and `false` if the otp was NOT valid
  */
 const verifyOtp = async (userPhone, otpEntered) => {
-  const user = await UserService.getUserByPhone(userPhone, [], ["id", "otp"]);
+  const user = await UserService.getSingleUser({ phone: userPhone }, [
+    "id",
+    "otp",
+  ]);
 
   // Return false if the user does not exist ~ no need for further checks
   if (!user) return false;
