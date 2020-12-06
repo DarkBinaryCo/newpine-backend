@@ -4,7 +4,7 @@
 */
 const createSecurityGuard = require("./createSecurityGuard");
 const getSecurityGuards = require("./getSecurityGuards");
-const getSecurityGuardById = require("./getSecurityGuardById");
+const getSingleSecurityGuard = require("./getSingleSecurityGuard");
 const updateSecurityGuard = require("./updateSecurityGuard");
 const removeSecurityGuard = require("./removeSecurityGuard");
 
@@ -12,7 +12,7 @@ const removeSecurityGuard = require("./removeSecurityGuard");
 module.exports = {
   createSecurityGuard,
   getSecurityGuards,
-  getSecurityGuardById,
+  getSingleSecurityGuard,
   updateSecurityGuard,
   removeSecurityGuard,
 };

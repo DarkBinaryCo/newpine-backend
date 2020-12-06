@@ -1,9 +1,9 @@
 const { SecurityGuard, User } = require("../../models");
 
-/** Get security guard by their id
+/** Get security guard by a filter
  * @param {Object} filter Security guard query filter
  */
-const getSecurityGuardById = async (securityGuardId) => {
+const getSingleSecurityGuard = async (filter = {}) => {
   let findOptions = {
     where: filter,
     include: { model: User, required: true },
@@ -14,4 +14,4 @@ const getSecurityGuardById = async (securityGuardId) => {
 };
 
 //* EXPORTS
-module.exports = getSecurityGuardById;
+module.exports = getSingleSecurityGuard;
