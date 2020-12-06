@@ -10,7 +10,16 @@ const getSingleSecurityGuard = async (filter = {}) => {
     // attributes: attributesToInclude,
   };
 
-  return SecurityGuard.findByPk(securityGuardId, findOptions);
+  const securityGuardFound = await SecurityGuard.findOne({
+    where: filter,
+    /* attributes: []*/
+  });
+
+  const securityGuardData = securityGuardFound
+    ? securityGuardFound.dataValues
+    : null;
+
+  return securityGuardData;
 };
 
 //* EXPORTS
