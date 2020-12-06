@@ -7,7 +7,7 @@ const { ApiUtil } = require("../../../utils");
 /** Update a vehicle */
 const updateVehicle = (req, res, next) => {
   let updateData = req.body.data || {};
-  let updateFilter = {
+  let filter = {
     id: req.params.vehicleId,
     residentId: req.residentData.id,
   };
@@ -18,7 +18,7 @@ const updateVehicle = (req, res, next) => {
   //
   ApiUtil.attachErrorHandler(
     res,
-    ResidentService.updateVehicle(updateData, updateFilter).then((_) => {
+    ResidentService.updateVehicle(updateData, filter).then((_) => {
       let apiResponse = ApiUtil.getResponse(
         true,
         "Successfully updated vehicle"

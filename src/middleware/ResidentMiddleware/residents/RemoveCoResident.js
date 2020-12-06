@@ -10,14 +10,14 @@ const removeCoResident = async (req, res, next) => {
   let residentOwnerId = req.residentData.id; //? Currently logged in resident id
   let coResidentId = req.params.residentId;
 
-  let deleteFilter = {
+  let filter = {
     id: coResidentId,
     residentOwnerId, //? Only delete if they actually belong to the resident logged in
   };
 
   ApiUtil.attachErrorHandler(
     res,
-    ResidentService.removeResident(deleteFilter).then((_) => {
+    ResidentService.removeResident(filter).then((_) => {
       let apiResponse = ApiUtil.getResponse(
         true,
         "Successfully deleted co-resident"

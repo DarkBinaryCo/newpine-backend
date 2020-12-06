@@ -6,7 +6,7 @@ const { ApiUtil } = require("../../../utils");
 
 /** Remove a vehicle */
 const removeVehicle = (req, res, next) => {
-  let deleteFilter = {
+  let filter = {
     id: req.params.vehicleId,
     residentId: req.residentData.id,
   };
@@ -14,7 +14,7 @@ const removeVehicle = (req, res, next) => {
   //
   ApiUtil.attachErrorHandler(
     res,
-    ResidentService.removeVehicle(deleteFilter).then((_) => {
+    ResidentService.removeVehicle(filter).then((_) => {
       let apiResponse = ApiUtil.getResponse(
         true,
         "Successfully removed vehicle"

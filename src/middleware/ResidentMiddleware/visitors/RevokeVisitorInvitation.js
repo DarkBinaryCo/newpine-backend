@@ -9,7 +9,7 @@ const revokeVisitorInvitation = (req, res, next) => {
   let invitationId = req.params.invitationId;
   console.log(`Invitation ID: ${invitationId}`);
 
-  let deleteFilter = {
+  let filter = {
     id: invitationId,
     residentInviterId: req.residentData.id,
   };
@@ -17,7 +17,7 @@ const revokeVisitorInvitation = (req, res, next) => {
   //
   ApiUtil.attachErrorHandler(
     res,
-    VisitorService.revokeVisitorInvitation(deleteFilter).then((_) => {
+    VisitorService.revokeVisitorInvitation(filter).then((_) => {
       //? Showing success whether the invitation exists or not (prevents attackers from knowing whether an invitation exists or not)
       let apiResponse = ApiUtil.getResponse(
         true,
