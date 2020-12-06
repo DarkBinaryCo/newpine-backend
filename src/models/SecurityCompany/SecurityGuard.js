@@ -27,12 +27,6 @@ SecurityGuard.init(
       allowNull: false,
       comment: "The user account this security guard belongs to",
     },
-    securityIdNumber: {
-      type: DataTypes.STRING(50),
-      allowNull: true,
-      defaultValue: null,
-      comment: "The security company's identification number for this guard",
-    },
     propertyGroupId: {
       type: DataTypes.INTEGER,
       references: {
