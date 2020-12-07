@@ -4,8 +4,10 @@
     Access to individual files is restricted only to files in the same directory or children of that directory
 */
 const Resident = require("./Resident");
+const ResidentCheckin = require("./ResidentCheckin");
 
 //* EXPORTS
 module.exports = {
   Resident,
+  ResidentCheckin,
 };
