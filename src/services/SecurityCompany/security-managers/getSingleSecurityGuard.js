@@ -1,4 +1,4 @@
-const { SecurityGuard, User } = require("../../models");
+const { SecurityGuard, User } = require("../../../models");
 
 /** Get security guard by a filter
  * @param {Object} filter Security guard query filter

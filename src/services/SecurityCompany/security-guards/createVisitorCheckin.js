@@ -5,7 +5,7 @@ const { VisitorCheckin } = require("../../../models");
  * @return {Promise<Object>} A promise that resolves to an object with the create operation information
  */
 const createVisitorCheckin = async (insertData) => {
-  let settableFields = [["visitorInvitationId", "securityGuardId", "isCheckin"];
+  let settableFields = ["visitorInvitationId", "securityGuardId", "isCheckin"];
 
   return VisitorCheckin.create(insertData, {
     fields: settableFields,
