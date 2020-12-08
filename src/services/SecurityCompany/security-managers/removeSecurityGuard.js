@@ -1,4 +1,4 @@
-const { SecurityGuard } = require("../../models");
+const { SecurityGuard } = require("../../../models");
 const { Op } = require("sequelize");
 
 /** Remove a security guard

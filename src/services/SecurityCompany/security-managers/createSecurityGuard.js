@@ -1,5 +1,5 @@
 // Models
-const { SecurityGuard } = require("../../models");
+const { SecurityGuard } = require("../../../models");
 
 /** Create security guard
  * @param {Object} insertData Database information to insert
