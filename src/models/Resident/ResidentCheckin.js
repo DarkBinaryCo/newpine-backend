@@ -2,7 +2,7 @@ const sequelize = require("../../database");
 const { DataTypes, Model, Sequelize } = require("sequelize");
 
 // Model dependencies
-const Resident = require("./Resident");
+const { Vehicle } = require("../Vehicle");
 const { SecurityGuard } = require("../SecurityCompany");
 
 class ResidentCheckin extends Model {}
@@ -16,13 +16,16 @@ ResidentCheckin.init(
       primaryKey: true,
       allowNull: false,
     },
-    residentId: {
+    vehicleId: {
       type: DataTypes.UUID,
-      allowNull: false,
+      allowNull: true,
+      defaultValue: null,
       references: {
-        model: "residents", //? Table name
+        model: "vehicles", //? Table name
         key: "id",
       },
+      comment:
+        "This assumes that all residents that checkin check in through a vehicle",
     },
     securityGuardId: {
       type: DataTypes.UUID,
@@ -38,6 +41,11 @@ ResidentCheckin.init(
       allowNull: false,
       comment: "If true, it was a checkin; if false, it was a checkout",
     },
+    dateInitiated: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: Sequelize.NOW,
+    },
   },
   {
     sequelize,
@@ -47,8 +55,8 @@ ResidentCheckin.init(
   }
 );
 
-//
-ResidentCheckin.belongsTo(Resident, { foreignKey: "residentId" });
+// Relationships
+ResidentCheckin.belongsTo(Vehicle, { foreignKey: "vehicleId" });
 ResidentCheckin.belongsTo(SecurityGuard, { foreignKey: "securityGuardId" });
 
 //* EXPORTS
