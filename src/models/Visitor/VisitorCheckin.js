@@ -38,6 +38,11 @@ VisitorCheckin.init(
       allowNull: false,
       comment: "If true, it was a checkin; if false, it was a checkout",
     },
+    dateInitiated: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: Sequelize.NOW,
+    },
   },
   {
     sequelize,
