@@ -32,15 +32,11 @@ VisitorCheckin.init(
         key: "id",
       },
     },
-    dateCheckin: {
-      type: DataTypes.DATE,
-      allowNull: true,
-      defaultValue: null,
-    },
-    dateCheckout: {
-      type: DataTypes.DATE,
-      allowNull: true,
-      defaultValue: null,
+    isCheckin: {
+      //? Used as such to prevent complications of trying to figure out whether we should update an existing checkin or create a new checkin/checkout
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      comment: "If true, it was a checkin; if false, it was a checkout",
     },
   },
   {
