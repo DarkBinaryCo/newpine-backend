@@ -8,13 +8,9 @@ const getResidents = async (filter = {}, isAdmin = false) => {
   let findOptions = {
     where: filter,
     include: { model: User, required: true },
+    paranoid: !isAdmin, //? Only admins can see all records (including paranoid deleted ones)
     // attributes: attributesToInclude,
   };
-
-  // When a normal user requests residents, only return the non-deleted residents. Otherwise, if an admin requests the details, then they should get  all the residents ~ including the "deleted" ones.
-  if (!isAdmin) {
-    findOptions.paranoid = true;
-  }
 
   return Resident.findAll(findOptions);
 };
