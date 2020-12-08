@@ -10,8 +10,10 @@ const {
   Property,
   Payment,
   Resident,
+  ResidentCheckin,
   Vehicle,
   VisitorInvitation,
+  VisitorCheckin,
   SecurityShift,
   SecurityGuard,
 } = require("../models");
@@ -31,7 +33,9 @@ module.exports = {
     await Payment.sync();
     await Resident.sync();
     await Vehicle.sync();
+    await ResidentCheckin.sync();
     await VisitorInvitation.sync();
+    await VisitorCheckin.sync();
     await SecurityShift.sync();
     await SecurityGuard.sync();
   },
