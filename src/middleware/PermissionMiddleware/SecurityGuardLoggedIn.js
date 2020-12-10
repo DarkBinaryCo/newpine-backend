@@ -37,7 +37,7 @@ const adminLoggedIn = async (req, res, next) => {
       );
       let apiResponse = ApiUtil.getResponse(
         false,
-        "Security guard account for that user could not be found.\nPlease create the security guard before attempting to access resident functionality.",
+        "Security guard account for that user could not be found.\nPlease create the security guard before attempting to access security guard functionality.",
         { isNew: true } //? Passing this to inform the user that this is a new account
       );
 
