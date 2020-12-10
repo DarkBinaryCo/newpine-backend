@@ -30,14 +30,14 @@ module.exports = {
     await PropertyGroupType.sync();
     await PropertyGroup.sync();
     await Property.sync();
+    await SecurityShift.sync();
+    await SecurityGuard.sync();
     await Payment.sync();
     await Resident.sync();
     await Vehicle.sync();
     await ResidentCheckin.sync();
     await VisitorInvitation.sync();
     await VisitorCheckin.sync();
-    await SecurityShift.sync();
-    await SecurityGuard.sync();
   },
   down: (queryInterface, Sequelize) => {
     queryInterface.dropDatabase();
