@@ -1,4 +1,4 @@
-//* This middleware should be called after SecurityCompanyMiddleware.SecurityManagerLoggedIn
+//* This middleware should be called after PermissionMiddleware.SecurityManagerLoggedIn
 
 const { SecurityCompanyService } = require("../../../services");
 
