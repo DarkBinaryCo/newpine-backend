@@ -6,13 +6,7 @@ const { VisitorCheckin } = require("../../../models");
  * @return {Promise<Object>} A promise that resolves to an object with the update operation information
  */
 const removeResidentCheckin = async (filter) => {
-  // Updateable fields
-  let settableFields = ["name", "model", "color", "year", "isVerified"];
-
-  return VisitorCheckin.update(updateData, {
-    where: filter,
-    fields: settableFields,
-  });
+  return VisitorCheckin.destroy({ where: filter });
 };
 
 //* EXPORTS

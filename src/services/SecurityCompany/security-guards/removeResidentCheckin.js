@@ -5,14 +5,8 @@ const { ResidentCheckin } = require("../../../models");
  * @param {Object} filter Delete filter
  * @return {Promise<Object>} A promise that resolves to an object with the update operation information
  */
-const removeResidentCheckin = async () => {
-  // Updateable fields
-  let settableFields = ["name", "model", "color", "year", "isVerified"];
-
-  return ResidentCheckin.update(updateData, {
-    where: filter,
-    fields: settableFields,
-  });
+const removeResidentCheckin = async (filter) => {
+  return ResidentCheckin.destroy({ where: filter });
 };
 
 //* EXPORTS
