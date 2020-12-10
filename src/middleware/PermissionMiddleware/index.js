@@ -6,6 +6,7 @@ const AdminLoggedIn = require("./AdminLoggedIn");
 const UserLoggedIn = require("./UserLoggedIn");
 const ResidentLoggedIn = require("./ResidentLoggedIn");
 const SecurityManagerLoggedIn = require("./SecurityManagerLoggedIn");
+const SecurityGuardLoggedIn = require("./SecurityGuardLoggedIn");
 
 //* EXPORTS
 module.exports = {
@@ -13,4 +14,5 @@ module.exports = {
   UserLoggedIn,
   ResidentLoggedIn,
   SecurityManagerLoggedIn,
+  SecurityGuardLoggedIn,
 };
