@@ -52,7 +52,7 @@ SecurityGuard.init(
 // Relationships
 SecurityGuard.belongsTo(User, { foreignKey: "userId" });
 SecurityGuard.belongsTo(PropertyGroup, { foreignKey: "propertyGroupId" });
-SecurityGuard.belongsTo(SecurityGuard, { foreignKey: "shiftId" });
+SecurityGuard.belongsTo(SecurityShift, { foreignKey: "shiftId" });
 
 //* EXPORTS
 module.exports = SecurityGuard;
