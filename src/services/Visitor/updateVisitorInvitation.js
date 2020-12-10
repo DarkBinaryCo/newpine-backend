@@ -4,7 +4,7 @@ const { VisitorInvitation } = require("../../models");
  * @param {Object} updateData The data that will be used to updated the invitation
  * @param {Object} filter The filter that determines which invitations are returned
  */
-const updateVisitorInvitations = (updateData, filter) => {
+const updateVisitorInvitation = (updateData, filter) => {
   let settableFields = [
     "fullName",
     "phone",
@@ -24,4 +24,4 @@ const updateVisitorInvitations = (updateData, filter) => {
 };
 
 //* EXPORTS
-module.exports = updateVisitorInvitations;
+module.exports = updateVisitorInvitation;
