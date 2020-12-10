@@ -27,8 +27,13 @@ const DEFAULT_ADMIN_USERS = [
 //* EXPORTS
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    queryInterface.bulkDelete(TABLE_NAME);
-    queryInterface.bulkInsert(TABLE_NAME, DEFAULT_ADMIN_USERS);
+    // queryInterface.bulkDelete(TABLE_NAME);
+    let insertion = await queryInterface.bulkInsert(
+      TABLE_NAME,
+      DEFAULT_ADMIN_USERS
+    );
+
+    console.log(insertion);
   },
 
   down: async (queryInterface, Sequelize) => {
