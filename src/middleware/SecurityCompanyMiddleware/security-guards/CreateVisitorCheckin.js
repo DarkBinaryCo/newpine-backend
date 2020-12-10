@@ -9,6 +9,8 @@ const { ApiUtil } = require("../../../utils");
 const createVisitorCheckin = (req, res, next) => {
   let insertData = req.body.data || {};
 
+  insertData.securityGuardId = req.securityGuardData.id;
+
   //
   ApiUtil.attachErrorHandler(
     res,
