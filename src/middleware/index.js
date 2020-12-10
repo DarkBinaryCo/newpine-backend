@@ -4,7 +4,11 @@
 */
 const AuthMiddleware = require("./AuthMiddleware");
 const PermissionMiddleware = require("./PermissionMiddleware");
+
+const AdminMiddleware = require("./AdminMiddleware");
 const ResidentMiddleware = require("./ResidentMiddleware");
+const SecurityCompanyMiddleware = require("./SecurityCompanyMiddleware");
+
 const OwnershipMiddleware = require("./OwnershipMiddleware");
 const UtilityMiddleware = require("./UtilityMiddleware");
 
@@ -12,7 +16,9 @@ const UtilityMiddleware = require("./UtilityMiddleware");
 module.exports = {
   AuthMiddleware,
   PermissionMiddleware,
+  AdminMiddleware,
   ResidentMiddleware,
+  SecurityCompanyMiddleware,
   OwnershipMiddleware,
   UtilityMiddleware,
 };
