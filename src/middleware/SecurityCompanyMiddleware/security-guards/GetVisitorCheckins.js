@@ -15,7 +15,8 @@ const getVisitorCheckins = (req, res, next) => {
     SecurityCompanyService.getVisitorCheckins(filter).then((checkinsFound) => {
       let apiResponse = ApiUtil.getResponse(
         true,
-        `${checkinsFound.length} visitor checkins found`
+        `${checkinsFound.length} visitor checkins found`,
+        checkinsFound
       );
 
       ApiUtil.printResponse(res, apiResponse, next);
