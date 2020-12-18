@@ -5,6 +5,7 @@
 const createSecurityGuardBatch = require("./createSecurityGuardBatch");
 const getSecurityGuards = require("./getSecurityGuards");
 const getSingleSecurityGuard = require("./getSingleSecurityGuard");
+const getSecurityShifts = require("./getSecurityShifts");
 const updateSecurityGuard = require("./updateSecurityGuard");
 const removeSecurityGuard = require("./removeSecurityGuard");
 
@@ -13,6 +14,7 @@ module.exports = {
   createSecurityGuardBatch,
   getSecurityGuards,
   getSingleSecurityGuard,
+  getSecurityShifts,
   updateSecurityGuard,
   removeSecurityGuard,
 };
