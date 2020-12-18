@@ -5,6 +5,7 @@
 const CreateGuardUserAccounts = require("./CreateGuardUserAccounts");
 const CreateSecurityGuardBatch = require("./CreateSecurityGuardBatch");
 const GetGuards = require("./GetGuards");
+const GetSecurityShifts = require("./GetSecurityShifts");
 const UpdateGuard = require("./UpdateGuard");
 const RemoveGuard = require("./RemoveGuard");
 
@@ -12,6 +13,7 @@ const RemoveGuard = require("./RemoveGuard");
 module.exports = {
   CreateGuardUserAccounts,
   CreateSecurityGuardBatch,
+  GetSecurityShifts,
   GetGuards,
   UpdateGuard,
   RemoveGuard,
