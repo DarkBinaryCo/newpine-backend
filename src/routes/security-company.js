@@ -17,13 +17,20 @@ router.post(
   SecurityCompanyMiddleware.CreateGuardUserAccounts
 );
 
-// Create a security guard ~ contains extra details about the guards
+// Create multiple security guards ~ contains extra details about the guards ie. shift
 router.post(
-  "/security-guards",
+  "/manager/security-guards",
   UtilityMiddleware.RequestDataIsProvided,
   PermissionMiddleware.UserLoggedIn,
   PermissionMiddleware.SecurityManagerLoggedIn,
   SecurityCompanyMiddleware.CreateSecurityGuardBatch
+);
+
+// Get security shifts
+router.get(
+  "/manager/security-shifts",
+  PermissionMiddleware.UserLoggedIn,
+  SecurityCompanyMiddleware.GetSecurityShifts
 );
 
 // Get security guards
