@@ -8,8 +8,6 @@ const GetCoResidentsByOwner = require("./GetCoResidentsByOwner");
 const UpdateLoggedInResident = require("./UpdateLoggedInResident");
 const RemoveCoResident = require("./RemoveCoResident");
 
-// Vehicles
-
 //* EXPORTS
 module.exports = {
   CreateResident,

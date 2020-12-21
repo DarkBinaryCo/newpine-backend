@@ -7,8 +7,6 @@ const GetResidentVehicles = require("./GetResidentVehicles");
 const UpdateVehicle = require("./UpdateVehicle");
 const RemoveVehicle = require("./RemoveVehicle");
 
-// Vehicles
-
 //* EXPORTS
 module.exports = {
   AddVehicle,
