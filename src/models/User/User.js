@@ -19,7 +19,7 @@ User.init(
       type: DataTypes.UUID,
       defaultValue: Sequelize.UUIDV4,
       primaryKey: true,
-      // allowNull: false,
+      allowNull: false,
     },
     firstName: {
       type: DataTypes.STRING(50),
@@ -37,6 +37,17 @@ User.init(
       type: DataTypes.STRING(50),
       allowNull: true,
       defaultValue: null,
+    },
+    dob: {
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+      comment: "Date of birth",
+    },
+    gender: {
+      type: DataTypes.ENUM,
+      allowNull: false,
+      values: ["male", "female", "unknown"],
+      defaultValue: "unknown",
     },
     userTypeId: {
       type: DataTypes.INTEGER,
