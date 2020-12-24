@@ -11,6 +11,8 @@ const updateUser = async (updateData = {}, filter = {}, isAdmin = false) => {
   let settableFields = [
     "firstName",
     "lastName",
+    "dob",
+    "gender",
     "phone",
     "email",
     "bio",

@@ -15,6 +15,8 @@ const createUser = async (insertData = {}) => {
     "lastName",
     "phone",
     "email",
+    "dob",
+    "gender",
     "userTypeId",
     "bio",
     "profileImgUrl",
