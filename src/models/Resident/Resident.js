@@ -42,6 +42,12 @@ Resident.init(
       allowNull: true,
       defaultValue: null,
     },
+    residentType: {
+      type: DataTypes.ENUM,
+      values: ["owner", "tenant"],
+      allowNull: false,
+      defaultValue: "tenant",
+    },
     isVerified: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
