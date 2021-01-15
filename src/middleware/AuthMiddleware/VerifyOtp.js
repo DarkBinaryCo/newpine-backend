@@ -17,13 +17,14 @@ const verifyOtp = (req, res, next) => {
       const message = isOk
         ? "Successfully verified OTP"
         : "Failed to verify OTP";
-      const responseData = {
+
+      let responseData = {
         isVerified: isOk,
       };
 
       // If the response is not `false` it is the `token` generated from confirming the OTP.
       // This token should be stored on the client
-      if (isOk) responseData.token = response;
+      if (isOk) responseData = { ...responseData, ...response };
 
       const apiResponse = ApiUtil.getResponse(isOk, message, responseData);
       ApiUtil.printResponse(res, apiResponse, next);

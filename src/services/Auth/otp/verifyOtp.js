@@ -37,7 +37,7 @@ const verifyOtp = async (userPhone, otpEntered) => {
 
   UserService.updateUser(_updateData, _updateFilter);
 
-  return authToken;
+  return { token: authToken, user };
 };
 
 //* EXPORTS
