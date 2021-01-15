@@ -40,7 +40,8 @@ User.init(
     },
     dob: {
       type: DataTypes.DATEONLY,
-      allowNull: false,
+      allowNull: true,
+      defaultValue: null,
       comment: "Date of birth",
     },
     gender: {
