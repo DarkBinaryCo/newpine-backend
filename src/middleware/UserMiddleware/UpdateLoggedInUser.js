@@ -20,3 +20,6 @@ const updateLoggedInUser = (req, res, next) => {
     })
   );
 };
+
+//* EXPORTS
+module.exports = updateLoggedInUser;

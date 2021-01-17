@@ -10,6 +10,7 @@ const getLoggedInUser = (req, res, next) => {
   //! Making a second get request to the user table to fetch additional information ~ possible area for optimization
   let filter = { id: req.userData.id };
 
+  //
   ApiUtil.attachErrorHandler(
     res,
     UserService.getSingleUser(filter).then((userFound) => {
@@ -23,3 +24,6 @@ const getLoggedInUser = (req, res, next) => {
     })
   );
 };
+
+//* EXPORTS
+module.exports = getLoggedInUser;
