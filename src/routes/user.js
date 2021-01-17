@@ -2,22 +2,40 @@ const express = require("express");
 const router = express.Router();
 
 // Middleware
-const { PermissionMiddleware, UtilityMiddleware } = require("../middleware");
+const {
+  PermissionMiddleware,
+  UserMiddleware,
+  UtilityMiddleware,
+} = require("../middleware");
 
 //? These are endpoints that can be accessed by any type of logged in user
-//* GENERAL
+// Get the currently logged in user's details
+router.get(
+  "/",
+  PermissionMiddleware.UserLoggedIn,
+  UserMiddleware.GetLoggedInUser
+);
+
+// Update the currently logged in user
+router.patch(
+  "/",
+  PermissionMiddleware.UserLoggedIn,
+  UtilityMiddleware.RequestDataIsProvided,
+  UserMiddleware.UpdateLoggedInUser
+);
+
 // Get identification types
 router.get(
   "/id-types",
   PermissionMiddleware.UserLoggedIn,
-  UtilityMiddleware.GetIdentificationTypes
+  UserMiddleware.GetIdentificationTypes
 );
 
 // Get user types
 router.get(
   "/user-types",
   PermissionMiddleware.UserLoggedIn,
-  UtilityMiddleware.GetUserTypes
+  UserMiddleware.GetUserTypes
 );
 
 //* EXPORTS
