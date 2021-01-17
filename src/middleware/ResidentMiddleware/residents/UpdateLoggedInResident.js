@@ -10,28 +10,15 @@ const updateLoggedInResident = async (req, res, next) => {
   let loggedInResidentData = req.residentData;
 
   // Request data
-  let requestData = req.body.data || {};
-  let residentUpdateData = requestData.resident || {};
-  let userUpdateData = requestData.user || {};
-
-  let userUpdateFilter = {
-    id: loggedInResidentData.userId,
-  };
-
-  let residentUpdateFilter = {
+  let updateData = req.body.data || {};
+  let filter = {
     id: loggedInResidentData.id,
   };
-
-  // Update resident user details first before attempting to update the resident
-  await UserService.updateUser(userUpdateData, userUpdateFilter);
 
   // Update resident details
   ApiUtil.attachErrorHandler(
     res,
-    ResidentService.updateResident(
-      residentUpdateData,
-      residentUpdateFilter
-    ).then((_) => {
+    ResidentService.updateResident(updateData, filter).then((_) => {
       let apiResponse = ApiUtil.getResponse(
         true,
         "Successfully updated resident"
