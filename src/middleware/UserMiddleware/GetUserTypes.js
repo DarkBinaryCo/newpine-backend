@@ -3,7 +3,7 @@
 const { UserService } = require("../../services");
 
 // Utils
-const { ApiUtil } = require("../../../utils");
+const { ApiUtil } = require("../../utils");
 
 /** Get user types */
 const getUserTypes = (req, res, next) => {

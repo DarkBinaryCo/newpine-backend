@@ -3,7 +3,7 @@
 const { UserService } = require("../../services");
 
 // Utils
-const { ApiUtil } = require("../../../utils");
+const { ApiUtil } = require("../../utils");
 
 /** Get identification types */
 const getIdentificationTypes = (req, res, next) => {
