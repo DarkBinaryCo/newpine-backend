@@ -16,6 +16,8 @@ const updateUser = async (updateData = {}, filter = {}, isAdmin = false) => {
     "phone",
     "email",
     "bio",
+    "identificationTypeId",
+    "identificationNumber",
     "profileImgUrl",
     "profileImgThumbnailUrl",
   ];
