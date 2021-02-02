@@ -9,6 +9,7 @@ const sendOtp = (req, res, next) => {
   const { phone } = req.body.data;
 
   // Convert the phone number to international so that our SMS provider API is not angry
+  //TODO: Add country code logic
   const phoneInternational = FormatUtil.getPhoneInternationalFormat(phone);
 
   ApiUtil.attachErrorHandler(

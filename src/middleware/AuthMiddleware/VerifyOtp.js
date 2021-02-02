@@ -2,16 +2,20 @@
 const { AuthService } = require("../../services");
 
 // Utils
-const { ApiUtil } = require("../../utils");
+const { ApiUtil, FormatUtil } = require("../../utils");
 
 /** Verify an OTP sent to the provided phone number */
 const verifyOtp = (req, res, next) => {
   const { phone, otp } = req.body.data;
 
+  // Convert the phone number to international so that our Database is not angry
+  //TODO: Add country code logic
+  const phoneInternational = FormatUtil.getPhoneInternationalFormat(phone);
+
   //TODO: Add phone number validation ~ consider using a different middleware for that
   ApiUtil.attachErrorHandler(
     res,
-    AuthService.verifyOtp(phone, otp).then((response) => {
+    AuthService.verifyOtp(phoneInternational, otp).then((response) => {
       const isOk = response !== false;
       //? For security purposes - Same message displayed for when OTP doesn't verify because it is invalid or user doesn't exist
       const message = isOk
