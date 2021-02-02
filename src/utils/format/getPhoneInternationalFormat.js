@@ -1,6 +1,7 @@
 /** Gets the phone number entered in an international format
  * Currently only implements logic for Kenyan phone numbers
  * @param {String} phone The phone number
+ * @return {String} The phone number in the international format: +${countryCode}${phoneNumber}
  */
 const getPhoneInternationalFormat = (phone) => {
   const cleanPhone = phone.replace(/\s+/gi, "");
