@@ -1,6 +1,9 @@
 const sequelize = require("../../database");
 const { DataTypes, Model, Sequelize } = require("sequelize");
 
+// Utils
+const { FormatUtil } = require("../../utils");
+
 // Model dependencies
 const { User } = require("../User");
 const { Property } = require("../Property");
@@ -28,6 +31,12 @@ Resident.init(
       type: DataTypes.STRING(20),
       allowNull: true,
       defaultValue: null,
+      set(value) {
+        this.setDataValue(
+          "mpesaPhone",
+          FormatUtil.getPhoneInternationalFormat(value)
+        );
+      },
     },
     propertyId: {
       type: DataTypes.INTEGER,

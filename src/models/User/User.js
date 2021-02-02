@@ -4,6 +4,9 @@ const { DataTypes, Model, Sequelize } = require("sequelize");
 // Config
 const { USER_TYPE } = require("../../config/auth");
 
+// Utils
+const { FormatUtil } = require("../../utils");
+
 // Dependencies
 //! TODO: Find a way to use model aggregator ~ currently throws an error (can't find reference)
 const IdentificationType = require("./IdentificationType");
@@ -32,6 +35,12 @@ User.init(
     phone: {
       type: DataTypes.STRING(15),
       allowNull: false,
+      set(value) {
+        this.setDataValue(
+          "phone",
+          FormatUtil.getPhoneInternationalFormat(value)
+        );
+      },
     },
     email: {
       type: DataTypes.STRING(50),
