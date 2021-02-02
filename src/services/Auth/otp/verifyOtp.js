@@ -35,7 +35,7 @@ const verifyOtp = async (userPhone, otpEntered) => {
   const _updateFilter = { phone: userPhone };
   const _updateData = { otp: null };
 
-  UserService.updateUser(_updateData, _updateFilter);
+  UserService.updateUser(_updateData, _updateFilter, true);
 
   return { token: authToken, user };
 };
