@@ -5,6 +5,7 @@
 const ApiUtil = require("./api");
 const AuthUtil = require("./auth");
 const DateUtil = require("./date");
+const FormatUtil = require("./format");
 const FilterUtil = require("./filter");
 const RandomUtil = require("./random");
 
@@ -13,6 +14,7 @@ module.exports = {
   ApiUtil,
   AuthUtil,
   DateUtil,
+  FormatUtil,
   FilterUtil,
   RandomUtil,
 };
