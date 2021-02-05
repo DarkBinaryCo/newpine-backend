@@ -9,6 +9,14 @@ const {
 } = require("../middleware");
 
 //? RESIDENTS
+// Get the current resident
+router.get(
+  "/",
+  PermissionMiddleware.UserLoggedIn,
+  PermissionMiddleware.ResidentLoggedIn,
+  ResidentMiddleware.GetCurrentResident
+);
+
 // Create resident
 router.post(
   "/",

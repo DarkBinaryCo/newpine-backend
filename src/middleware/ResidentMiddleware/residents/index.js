@@ -5,6 +5,7 @@
 const CreateResident = require("./CreateResident");
 const CreateCoResident = require("./CreateCoResident");
 const GetCoResidentsByOwner = require("./GetCoResidentsByOwner");
+const GetCurrentResident = require("./GetCurrentResident");
 const UpdateLoggedInResident = require("./UpdateLoggedInResident");
 const RemoveCoResident = require("./RemoveCoResident");
 
@@ -13,6 +14,7 @@ module.exports = {
   CreateResident,
   CreateCoResident,
   GetCoResidentsByOwner,
+  GetCurrentResident,
   UpdateLoggedInResident,
   RemoveCoResident,
 };
