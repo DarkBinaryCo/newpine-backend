@@ -34,7 +34,7 @@ const residentLoggedIn = async (req, res, next) => {
       );
       let apiResponse = ApiUtil.getResponse(
         false,
-        "Resident account for that user could not be found.\nPlease create the resident before attempting to access resident functionality.",
+        "Resident account for that user could not be found. Please create the resident before attempting to access resident functionality.",
         { isNew: true } //? Passing this to inform the user that this is a new account
       );
 
