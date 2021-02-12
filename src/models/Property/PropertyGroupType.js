@@ -21,6 +21,11 @@ PropertyGroupType.init(
       allowNull: true,
       defaultValue: null,
     },
+    isIndependentCluster: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
   },
   {
     sequelize,
