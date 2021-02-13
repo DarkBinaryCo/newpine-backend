@@ -1,5 +1,5 @@
 const sequelize = require("../../database");
-const { DataTypes, Model } = require("sequelize");
+const { DataTypes, Model, Sequelize } = require("sequelize");
 
 class PropertyGroupType extends Model {}
 
@@ -15,6 +15,7 @@ PropertyGroupType.init(
     name: {
       type: DataTypes.STRING(20),
       allowNull: false,
+      comment: "The administrative name of this property group type",
     },
     description: {
       type: DataTypes.STRING(100),
@@ -25,6 +26,16 @@ PropertyGroupType.init(
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: false,
+    },
+    friendlyName: {
+      type: DataTypes.STRING(20),
+      allowNull: false,
+      comment: "A name by which this is referred to by the general public",
+    },
+    canHaveAccount: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true,
     },
   },
   {
