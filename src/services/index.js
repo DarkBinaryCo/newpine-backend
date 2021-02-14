@@ -9,6 +9,7 @@ const UserService = require("./User");
 const ResidentService = require("./Resident");
 const SecurityCompanyService = require("./SecurityCompany");
 const VisitorService = require("./Visitor");
+const PropertyService = require("./Property");
 
 //* EXPORTS
 module.exports = {
@@ -19,4 +20,5 @@ module.exports = {
   ResidentService,
   SecurityCompanyService,
   VisitorService,
+  PropertyService,
 };
