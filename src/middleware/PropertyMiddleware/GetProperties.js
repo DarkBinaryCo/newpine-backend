@@ -1,3 +1,5 @@
+const _ = require("lodash");
+
 // Services
 const { PropertyService } = require("../../services");
 
@@ -6,7 +8,7 @@ const { ApiUtil } = require("../../utils");
 
 //
 const getProperties = (req, res, next) => {
-  let filter = req.body.filter || {};
+  let filter = _.isEmpty(req.query) ? {} : req.query;
 
   ApiUtil.attachErrorHandler(
     res,
