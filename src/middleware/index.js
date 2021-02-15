@@ -13,6 +13,8 @@ const SecurityCompanyMiddleware = require("./SecurityCompanyMiddleware");
 const OwnershipMiddleware = require("./OwnershipMiddleware");
 const UtilityMiddleware = require("./UtilityMiddleware");
 
+const PropertyMiddleware = require("./PropertyMiddleware");
+
 //* EXPORTS
 module.exports = {
   AuthMiddleware,
@@ -23,4 +25,5 @@ module.exports = {
   SecurityCompanyMiddleware,
   OwnershipMiddleware,
   UtilityMiddleware,
+  PropertyMiddleware,
 };
