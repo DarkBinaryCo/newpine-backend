@@ -32,7 +32,7 @@ PropertyGroupType.init(
       allowNull: false,
       comment: "A name by which this is referred to by the general public",
     },
-    canHaveAccount: {
+    canHaveResidentAccount: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: true,
