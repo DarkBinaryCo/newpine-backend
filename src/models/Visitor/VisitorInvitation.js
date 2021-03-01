@@ -27,6 +27,12 @@ VisitorInvitation.init(
       type: DataTypes.STRING(50),
       allowNull: false,
     },
+    gender: {
+      type: DataTypes.ENUM,
+      allowNull: false,
+      values: ["male", "female", "unknown"],
+      defaultValue: "unknown",
+    },
     phone: {
       type: DataTypes.STRING(15),
       allowNull: false,
@@ -64,6 +70,18 @@ VisitorInvitation.init(
       type: DataTypes.BOOLEAN,
       defaultValue: true,
       allowNull: false,
+    },
+    hasLuggage: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+      allowNull: false,
+    },
+    luggageDetails: {
+      type: DataTypes.TEXT,
+      defaultValue: null,
+      allowNull: true,
+      comment:
+        "Any additional details on what type of luggage they are carrying/leaving with",
     },
     isActive: {
       // Can this invitation be used to check them in?
