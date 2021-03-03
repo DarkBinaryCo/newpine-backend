@@ -5,15 +5,18 @@ const { VisitorInvitation } = require("../../models");
  */
 const inviteVisitor = (inviteData) => {
   let settableFields = [
+    "fullName",
     "phone",
     "email",
+    "gender",
     "residentInviterId",
-    "fullName",
     "identificationTypeId",
     "identificationNumber",
     "transportMeans",
     "vehicleNumberplate",
     "isAdult",
+    "hasLuggage",
+    "luggageDetails",
   ];
 
   return VisitorInvitation.create(inviteData, {
