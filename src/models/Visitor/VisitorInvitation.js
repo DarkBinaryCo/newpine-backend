@@ -28,10 +28,9 @@ VisitorInvitation.init(
       allowNull: false,
     },
     gender: {
-      type: DataTypes.ENUM,
-      allowNull: false,
-      values: ["male", "female", "unknown"],
-      defaultValue: "unknown",
+      type: DataTypes.STRING(10),
+      allowNull: true,
+      defaultValue: 'unknown'
     },
     phone: {
       type: DataTypes.STRING(15),

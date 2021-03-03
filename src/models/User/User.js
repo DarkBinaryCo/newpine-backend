@@ -54,9 +54,8 @@ User.init(
       comment: "Date of birth",
     },
     gender: {
-      type: DataTypes.ENUM,
-      allowNull: false,
-      values: ["male", "female", "unknown"],
+      type: DataTypes.STRING(10),
+      allowNull: true,
       defaultValue: "unknown",
     },
     userTypeId: {
