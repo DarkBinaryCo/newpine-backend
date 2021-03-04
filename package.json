@@ -1,5 +1,5 @@
 {
-  "name": "sms-auth-boilerplate",
+  "name": "newpine-backend",
   "version": "1.0.0",
   "description": "Create a file in `src/config` called `database.js`.\r This file will contain our database connection information.",
   "main": "index.js",
