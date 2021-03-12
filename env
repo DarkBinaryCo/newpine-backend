@@ -13,7 +13,7 @@ DB_PASSWORD = password
 DB_DIALECT = mysql
 
 #! Do not change this - Changing this would mean everyone has to re-log in
-TOKEN_SALT = <Random 16 character string with no spaces>
+TOKEN_SALT = <Random 32 character string with no spaces>
 
 # --------------
 # AFRICA'S TALKING
