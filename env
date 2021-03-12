@@ -20,4 +20,5 @@ TOKEN_SALT = <Random 32 character string with no spaces>
 ### Feel free to delete this if you are using a different SMS provider
 # --------------
 AT_API_KEY = <Africa's Talking API key>
+AT_SENDER_ID = <Africa's Talking Sender ID>
 AT_USERNAME = <Africa's Talking username>
