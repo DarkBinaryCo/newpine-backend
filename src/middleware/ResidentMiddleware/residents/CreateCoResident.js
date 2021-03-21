@@ -19,7 +19,7 @@ const createCoResident = async (req, res, next) => {
 
   //? Set the co-resident defaults
   let residentData = {
-    isActive: true,
+    isActive: req.residentData.isActive, // Same value for active as the logged in resident
     userId: coResidentUserCreated.id,
     residentOwnerId: req.residentData.id,
     propertyId: req.residentData.propertyId,
