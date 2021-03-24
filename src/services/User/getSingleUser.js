@@ -8,7 +8,13 @@ const { User } = require("../../models");
  */
 const getSingleUser = async (filter, extraAttributesToInclude = []) => {
   //TODO : Refactor defaults to config file
-  let attributesToInclude = ["firstName", "lastName", "phone", "userTypeId"];
+  let attributesToInclude = [
+    "firstName",
+    "lastName",
+    "phone",
+    "email",
+    "userTypeId",
+  ];
 
   // Add extra attributes
   attributesToInclude = attributesToInclude.concat(extraAttributesToInclude);
