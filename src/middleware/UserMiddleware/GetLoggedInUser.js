@@ -10,18 +10,34 @@ const getLoggedInUser = (req, res, next) => {
   //! Making a second get request to the user table to fetch additional information ~ possible area for optimization
   let filter = { id: req.userData.id };
 
+  // Include all other non-sensitive information to the security of a user's account
+  const extraAttributesToFetch = [
+    "bio",
+    "dob",
+    "gender",
+    "isAdult",
+    "isBanned",
+    "isVerified",
+    "identificationTypeId",
+    "identificationNumber",
+    "profileImgUrl",
+    "profileImgThumbnailUrl",
+  ];
+
   //
   ApiUtil.attachErrorHandler(
     res,
-    UserService.getSingleUser(filter).then((userFound) => {
-      let apiResponse = ApiUtil.getResponse(
-        true,
-        "Successfully retrieved user details",
-        userFound
-      );
+    UserService.getSingleUser(filter, extraAttributesToFetch).then(
+      (userFound) => {
+        let apiResponse = ApiUtil.getResponse(
+          true,
+          "Successfully retrieved user details",
+          userFound
+        );
 
-      ApiUtil.printResponse(res, apiResponse, next);
-    })
+        ApiUtil.printResponse(res, apiResponse, next);
+      }
+    )
   );
 };
 
