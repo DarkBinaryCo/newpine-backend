@@ -1,4 +1,10 @@
-const { Resident, User } = require("../../../models");
+const {
+  Resident,
+  Property,
+  PropertyGroup,
+  PropertyGroupType,
+  PropertyType,
+} = require("../../../models");
 
 /** Get a single resident by a filter
  * @param {String} filter Get filter
@@ -11,9 +17,26 @@ const getSingleResident = async (filter, isAdmin = false) => {
     where: filter,
     paranoid: !isAdmin, //? Only admins can see all records (including paranoid deleted ones)
     include: {
-      model: User,
+      model: Property,
       required: true,
-      /* attributes: [] */
+      attributes: ["id", "propertyGroupId", "propertyNumber", "propertyTypeId"],
+      include: [
+        {
+          model: PropertyGroup,
+          required: true,
+          attributes: ["id", "name", "phase", "propertyGroupTypeId"],
+          include: {
+            model: PropertyGroupType,
+            required: true,
+            attributes: ["id", "name", "isIndependentCluster"],
+          },
+        },
+        {
+          model: PropertyType,
+          required: true,
+          attributes: ["id", "name"],
+        },
+      ],
     },
   });
 
