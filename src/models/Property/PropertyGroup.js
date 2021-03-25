@@ -1,6 +1,8 @@
 const sequelize = require("../../database");
 const { DataTypes, Model } = require("sequelize");
 
+const PropertyGroupType = require("./PropertyGroupType");
+
 //
 class PropertyGroup extends Model {}
 
@@ -38,6 +40,11 @@ PropertyGroup.init(
   },
   { sequelize, modelName: "PropertyGroup", tableName: "property_groups" }
 );
+
+// Relationships
+PropertyGroup.belongsTo(PropertyGroupType, {
+  foreignKey: "propertyGroupTypeId",
+});
 
 //* EXPORTS
 module.exports = PropertyGroup;
