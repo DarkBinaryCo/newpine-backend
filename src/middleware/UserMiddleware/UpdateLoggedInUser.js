@@ -10,6 +10,9 @@ const updateLoggedInUser = (req, res, next) => {
   let filter = { id: req.userData.id };
   let updateData = req.body.data;
 
+  // A user is no longer considered new when they are updated via this middleware
+  updateData.isNew = false;
+
   //
   ApiUtil.attachErrorHandler(
     res,

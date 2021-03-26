@@ -28,9 +28,6 @@ const updateUser = async (updateData = {}, filter = {}, isAdmin = false) => {
     settableFields.push("otp", "lastOtpSentAt", "isBanned", "isVerified");
   }
 
-  // A user is no longer considered new when they are updated
-  updateData.isNew = false;
-
   // Actually update the user
   return User.update(updateData, {
     where: filter,
