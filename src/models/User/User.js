@@ -73,6 +73,12 @@ User.init(
       allowNull: true,
       defaultValue: null,
     },
+    isNew: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+      allowNull: false,
+      comment: "Has the user completed the onboarding or not?",
+    },
     identificationTypeId: {
       //! Possibly normalize this into its own table `usersIdentification`
       type: DataTypes.INTEGER,

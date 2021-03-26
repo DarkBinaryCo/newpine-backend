@@ -14,6 +14,7 @@ const getSingleUser = async (filter, extraAttributesToInclude = []) => {
     "phone",
     "email",
     "userTypeId",
+    "isNew",
   ];
 
   // Add extra attributes
