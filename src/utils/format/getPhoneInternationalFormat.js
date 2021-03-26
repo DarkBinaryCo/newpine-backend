@@ -4,7 +4,7 @@
  * @return {String} The phone number in the international format: +${countryCode}${phoneNumber}
  */
 const getPhoneInternationalFormat = (phone) => {
-  const cleanPhone = phone.replace(/\s+/gi, "");
+  const cleanPhone = (phone || "").replace(/\s+/gi, "");
   const isInternational = cleanPhone[0] === "+";
 
   //TODO: Validate the phone number
