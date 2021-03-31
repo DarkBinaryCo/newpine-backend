@@ -4,7 +4,13 @@ const { VisitorInvitation } = require("../../models");
  * @param {Object} filter The filter that determines which invitations are returned
  */
 const getVisitorInvitations = (filter, isAdmin = false) => {
-  return VisitorInvitation.findAll({ where: filter, paranoid: !isAdmin });
+  const findOptions = {
+    where: filter,
+    paranoid: !isAdmin,
+    order: [["updatedAt", "DESC"]],
+  };
+
+  return VisitorInvitation.findAll(findOptions);
 };
 
 //* EXPORTS
