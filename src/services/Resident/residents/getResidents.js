@@ -16,7 +16,6 @@ const getResidents = async (filter = {}, isAdmin = false) => {
         "phone",
         "email",
         "userTypeId",
-        "userType",
         "identificationTypeId",
         "identificationNumber",
         "isAdult",
@@ -24,7 +23,6 @@ const getResidents = async (filter = {}, isAdmin = false) => {
       ],
     },
     paranoid: !isAdmin, //? Only admins can see all records (including paranoid deleted ones)
-    // attributes: attributesToInclude,
   };
 
   return Resident.findAll(findOptions);
