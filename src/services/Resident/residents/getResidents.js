@@ -23,6 +23,7 @@ const getResidents = async (filter = {}, isAdmin = false) => {
       ],
     },
     paranoid: !isAdmin, //? Only admins can see all records (including paranoid deleted ones)
+    order: [["updatedAt", "DESC"]],
   };
 
   return Resident.findAll(findOptions);
