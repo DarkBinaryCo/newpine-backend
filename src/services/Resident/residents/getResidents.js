@@ -15,6 +15,7 @@ const getResidents = async (filter = {}, isAdmin = false) => {
         "lastName",
         "phone",
         "email",
+        "gender",
         "userTypeId",
         "identificationTypeId",
         "identificationNumber",
