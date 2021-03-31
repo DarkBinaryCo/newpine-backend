@@ -7,7 +7,7 @@ const getVehicles = async (filter = {}) => {
   let findOptions = {
     where: filter,
     include: { model: Resident, required: true },
-    // attributes: attributesToInclude,
+    order: [["updatedAt", "DESC"]],
   };
 
   return Vehicle.findAll(findOptions);
