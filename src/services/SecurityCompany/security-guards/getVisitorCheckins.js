@@ -9,7 +9,7 @@ const getVisitorCheckins = async (filter = {}, isAdmin = false) => {
     where: filter,
     include: { model: VisitorInvitation, required: true },
     paranoid: !isAdmin, //? Only admins can see all records (including paranoid deleted ones)
-    // attributes: attributesToInclude,
+    order: [["updatedAt", "DESC"]],
   };
 
   return VisitorCheckin.findAll(findOptions);
