@@ -13,7 +13,7 @@ const getResidentCheckins = async (filter = {}, isAdmin = false) => {
       /* attributes: [] */
     },
     paranoid: !isAdmin, //? Only admins can see all records (including paranoid deleted ones)
-    // attributes: attributesToInclude,
+    order: [["updatedAt", "DESC"]],
   };
 
   return ResidentCheckin.findAll(findOptions);
