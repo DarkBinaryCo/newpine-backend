@@ -28,7 +28,7 @@ This document will constantly be evolving as the project grows.
 
 ## Running unit tests
 
-HipGlam uses Jest to run unit tests on various components (utils and services at the moment).
+NewPine uses [Jest](https://jestjs.io/) to run unit tests on various components (utils and services at the moment).
 
 To run tests, use `npm run test`. All tests should be succeeding.
 
