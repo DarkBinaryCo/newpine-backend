@@ -1,3 +1,6 @@
+// Constants
+const { USER_TYPE } = require("../../config/auth");
+
 // Models
 const { User } = require("../../models");
 
@@ -34,6 +37,19 @@ const createUser = async (insertData = {}) => {
       };
 
       return updateUser(insertData, _updateFilter);
+    }
+  }
+
+  // If a userTypeId has been provided - only add it if it is a valid user type ID
+  if ((userTypeIdEntered = parseInt(insertData.userTypeId))) {
+    const possibleUserTypes = Object.values(USER_TYPE);
+
+    // Was the userTypeIdEntered a valid ID ? If so, then
+    if (possibleUserTypes.includes(userTypeIdEntered)) {
+      insertData.userTypeId = userTypeIdEntered;
+    } else {
+      // Invalid user type ID - unset it and let the database set the appropriate default value (specified by the Model)
+      insertData.userTypeId = undefined;
     }
   }
 
