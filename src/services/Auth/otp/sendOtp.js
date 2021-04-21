@@ -1,3 +1,7 @@
+// Config
+const { USER_TYPE } = require("../../../config/auth");
+
+// Localization
 const { sendConfirmOtpMessage } = require("../../../lang/messages");
 
 // Other services
@@ -11,21 +15,33 @@ const _otpHasExpired = require("./_otpHasExpired");
 
 /** Send OTP to a user with the phone specified
  * @param {String} userPhone The phone number to send the OTP to
+ * @param {Number} userType What type of user will be created ? Defaults to DB default
  * @return {Object} An object representing the status of the OTP send operation
  */
-const sendOtp = async (userPhone) => {
+const sendOtp = async (userPhone, userType = null) => {
   let user = await UserService.getSingleUser({ phone: userPhone }, [
     "otp",
     "lastOtpSentAt",
   ]);
 
+  /**
+   //! Note: Ideally, user creation should not happen in the `sendOtp` function but rather be treated as its own functionality with its own endpoint
+   The downside to this is that users need to make multiple requests to create the user which means it is slightly slower.
+   The upside is it is more flexible and more secure since we do not expose unwanted user creation functionality to users (such as creating admins)
+  */
   // If the user does not exist ~ create them
   if (!user) {
-    const newUser = await UserService.createUser({
+    const newUserData = {
       phone: userPhone,
-    });
+    };
 
-    user = newUser.dataValues || {}; //? Consider removing the || - Possibly  a scenario we don't need to handle
+    // If a user type was specified ~ add it to the new user's data
+    if (userType) {
+      newUserData.userTypeId = userType;
+    }
+
+    const newUser = await UserService.createUser(newUserData);
+    user = newUser.dataValues;
   }
 
   // Send more specific information on what happened
