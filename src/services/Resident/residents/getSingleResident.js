@@ -8,7 +8,7 @@ const {
 
 /** Get a single resident by a filter
  * @param {String} filter Get filter
- * @param {Boolean} isAdmin Whether the caller of the function is an admin or not
+ * @param {Boolean} isAdmin Whether the caller of the function is an admin or not. Admins can view 'deleted' resident accounts.
  * @return {Object|null} An object containing the resident found(if any) or null if no resident by the `userId` was found
  */
 const getSingleResident = async (filter, isAdmin = false) => {
