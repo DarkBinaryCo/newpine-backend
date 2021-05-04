@@ -18,12 +18,12 @@ const verifyResidentAccount = async (req, res, next) => {
       residentUpdateData,
       residentUpdateFilter,
       true
-    ).then((_) => {
-      let userUpdateFilter = {id: userIdToUpdate};
-      let userUpdateData = {isVerified: true};
+    ).then(async (_) => {
+      let userUpdateFilter = { id: userIdToUpdate };
+      let userUpdateData = { isVerified: true };
 
       // Verify the user account attached to the resident as well
-      await UserService.updateUser(userUpdateData,userUpdateFilter,true);
+      await UserService.updateUser(userUpdateData, userUpdateFilter, true);
 
       let apiResponse = ApiUtil.getResponse(
         true,
