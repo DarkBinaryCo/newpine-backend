@@ -11,8 +11,8 @@ const {
 router.get(
   "/resident/:propertyId",
   PermissionMiddleware.UserLoggedIn,
-  PermissionMiddleware.ResidentRepLoggedIn
-  //TODO: Add implementation
+  PermissionMiddleware.ResidentRepLoggedIn,
+  ResidentMiddleware.GetPropertyResidentOwner
 );
 
 // Verify residents belonging to a certain property
