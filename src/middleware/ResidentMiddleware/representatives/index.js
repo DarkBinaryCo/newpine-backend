@@ -4,13 +4,13 @@
 */
 const GetPropertyResidentOwner = require("./GetPropertyResidentOwner");
 const GetPropertyVehicles = require("./GetPropertyVehicles");
-const VerifyResidentAccount = require("./VerifyResidentAccount");
+const VerifyPropertyResidents = require("./VerifyPropertyResidents");
 const VerifyVehicle = require("./VerifyVehicle");
 
 //* EXPORTS
 module.exports = {
   GetPropertyResidentOwner,
   GetPropertyVehicles,
-  VerifyResidentAccount,
+  VerifyPropertyResidents,
   VerifyVehicle,
 };
