@@ -16,7 +16,7 @@ const updateResident = async (
 
   // Only resident admin should be able to update the active status
   if (isResidentRep) {
-    settableFields.push("isActive", "residentType");
+    settableFields.push("isActive", "isVerified", "residentType");
   }
 
   return Resident.update(updateData, { where: filter, fields: settableFields });
