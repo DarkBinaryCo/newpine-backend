@@ -5,7 +5,7 @@ const { PermissionMiddleware, ResidentMiddleware } = require("../middleware");
 
 // Get the resident owner for a given property
 router.get(
-  "/resident/:propertyId",
+  "/resident-owner/:propertyId",
   PermissionMiddleware.UserLoggedIn,
   PermissionMiddleware.ResidentRepLoggedIn,
   ResidentMiddleware.GetPropertyResidentOwner
