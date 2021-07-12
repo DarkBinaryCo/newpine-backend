@@ -1,11 +1,7 @@
 const express = require("express");
 const router = express();
 
-const {
-  PermissionMiddleware,
-  ResidentMiddleware,
-  UtilityMiddleware,
-} = require("../middleware");
+const { PermissionMiddleware, ResidentMiddleware } = require("../middleware");
 
 // Get the resident owner for a given property
 router.get(
