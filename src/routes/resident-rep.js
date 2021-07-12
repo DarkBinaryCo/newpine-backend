@@ -31,5 +31,13 @@ router.get(
   ResidentMiddleware.GetPropertyVehicles
 );
 
+// Verify a vehicle
+router.post(
+  "/verify/vehicle/:vehicleId",
+  PermissionMiddleware.UserLoggedIn,
+  PermissionMiddleware.ResidentRepLoggedIn,
+  ResidentMiddleware.VerifyVehicle
+);
+
 //* EXPORTS
 module.exports = router;
