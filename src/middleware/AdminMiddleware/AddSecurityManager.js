@@ -24,7 +24,7 @@ const addSecurityManager = (req, res, next) => {
         201
       );
 
-      ApiUtil.printResponse(res, apiResponse, next);
+      ApiUtil.printResponse(res, apiResponse);
       ``;
     })
   );

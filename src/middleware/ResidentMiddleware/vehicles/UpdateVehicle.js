@@ -24,7 +24,7 @@ const updateVehicle = (req, res, next) => {
         "Successfully updated vehicle"
       );
 
-      ApiUtil.printResponse(res, apiResponse, next);
+      ApiUtil.printResponse(res, apiResponse);
     })
   );
 };

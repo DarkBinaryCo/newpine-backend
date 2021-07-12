@@ -22,7 +22,7 @@ const removeCoResident = async (req, res, next) => {
         true,
         "Successfully deleted co-resident"
       );
-      ApiUtil.printResponse(res, apiResponse, next);
+      ApiUtil.printResponse(res, apiResponse);
     })
   );
 };

@@ -20,7 +20,7 @@ const removeGuard = (req, res, next) => {
         "Successfully removed security guard "
       );
 
-      ApiUtil.printResponse(res, apiResponse, next);
+      ApiUtil.printResponse(res, apiResponse);
     })
   );
 };

@@ -14,7 +14,7 @@ const loggedInUserIsResidentOwner = async (req, res, next) => {
     let apiResponse = ApiUtil.getUnauthorizedError(
       "Permission denied! Non-owners are not allowed to perform this action"
     );
-    ApiUtil.printResponse(res, apiResponse, next);
+    ApiUtil.printResponse(res, apiResponse);
   }
 };
 

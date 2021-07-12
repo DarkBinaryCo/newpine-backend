@@ -21,7 +21,7 @@ const updateGuard = (req, res, next) => {
         "Successfully updated security guard"
       );
 
-      ApiUtil.printResponse(res, apiResponse, next);
+      ApiUtil.printResponse(res, apiResponse);
     })
   );
 };

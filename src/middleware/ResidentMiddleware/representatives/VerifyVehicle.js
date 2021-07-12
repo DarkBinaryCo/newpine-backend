@@ -19,7 +19,7 @@ const verifyVehicle = async (req, res, next) => {
         "Successfully verified vehicle"
       );
 
-      ApiUtil.printResponse(res, apiResponse, next);
+      ApiUtil.printResponse(res, apiResponse);
     })
   );
 };

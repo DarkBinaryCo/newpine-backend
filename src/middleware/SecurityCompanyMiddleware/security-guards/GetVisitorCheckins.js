@@ -19,7 +19,7 @@ const getVisitorCheckins = (req, res, next) => {
         checkinsFound
       );
 
-      ApiUtil.printResponse(res, apiResponse, next);
+      ApiUtil.printResponse(res, apiResponse);
     })
   );
 };

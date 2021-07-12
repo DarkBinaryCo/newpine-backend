@@ -19,7 +19,7 @@ const userLoggedIn = async (req, res, next) => {
   } else {
     // User is not logged in ~ show authorization error
     let apiResponse = ApiUtil.getUnauthorizedError();
-    ApiUtil.printResponse(res, apiResponse, next);
+    ApiUtil.printResponse(res, apiResponse);
   }
 };
 

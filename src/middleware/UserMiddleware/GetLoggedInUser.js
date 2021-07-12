@@ -35,7 +35,7 @@ const getLoggedInUser = (req, res, next) => {
           userFound
         );
 
-        ApiUtil.printResponse(res, apiResponse, next);
+        ApiUtil.printResponse(res, apiResponse);
       }
     )
   );

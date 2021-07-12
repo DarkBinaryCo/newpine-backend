@@ -28,7 +28,7 @@ const getPropertyGroupTypes = (req, res, next) => {
           );
         }
 
-        ApiUtil.printResponse(res, apiResponse, next);
+        ApiUtil.printResponse(res, apiResponse);
       }
     )
   );

@@ -16,7 +16,7 @@ const requestDataIsProvided = (req, res, next) => {
     );
     let apiResponse = ApiUtil.getError(err.message, err, 400);
 
-    ApiUtil.printResponse(res, apiResponse, next);
+    ApiUtil.printResponse(res, apiResponse);
   }
 };
 

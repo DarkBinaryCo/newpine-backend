@@ -39,7 +39,7 @@ const sendOtp = (req, res, next) => {
           statusCode
         );
 
-        ApiUtil.printResponse(res, apiResponse, next);
+        ApiUtil.printResponse(res, apiResponse);
       }
     )
   );

@@ -21,9 +21,10 @@ const adminLoggedIn = async (req, res, next) => {
   } else if (userData.userTypeId === USER_TYPE.SECURITY_GUARD) {
     //? Security guard is logged in - find out if they have a guard account
 
-    let securityGuardFound = await SecurityCompanyService.getSingleSecurityGuard(
-      { userId: userData.id }
-    );
+    let securityGuardFound =
+      await SecurityCompanyService.getSingleSecurityGuard({
+        userId: userData.id,
+      });
 
     // Resident belonging to the currently logged in user was found ~ pass the data to the next middleware
     if (securityGuardFound) {
@@ -41,11 +42,11 @@ const adminLoggedIn = async (req, res, next) => {
         { isNew: true } //? Passing this to inform the user that this is a new account
       );
 
-      ApiUtil.printResponse(res, apiResponse, next);
+      ApiUtil.printResponse(res, apiResponse);
     }
   } else {
     let apiResponse = ApiUtil.getUnauthorizedError();
-    ApiUtil.printResponse(res, apiResponse, next);
+    ApiUtil.printResponse(res, apiResponse);
   }
 };
 

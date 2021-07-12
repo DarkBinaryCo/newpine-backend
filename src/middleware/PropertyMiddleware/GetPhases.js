@@ -21,7 +21,7 @@ const getPhases = (_, res, next) => {
         apiResponse = ApiUtil.getResponse(false, "No phases found", null);
       }
 
-      ApiUtil.printResponse(res, apiResponse, next);
+      ApiUtil.printResponse(res, apiResponse);
     })
   );
 };

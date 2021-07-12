@@ -35,7 +35,7 @@ const createGuardUserAccounts = (req, res, next) => {
           createdSecurityGuards
         );
 
-        ApiUtil.printResponse(res, apiResponse, next);
+        ApiUtil.printResponse(res, apiResponse);
       }
     )
   );

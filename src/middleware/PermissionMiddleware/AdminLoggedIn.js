@@ -20,7 +20,7 @@ const adminLoggedIn = async (req, res, next) => {
     next();
   } else {
     let apiResponse = ApiUtil.getUnauthorizedError();
-    ApiUtil.printResponse(res, apiResponse, next);
+    ApiUtil.printResponse(res, apiResponse);
   }
 };
 

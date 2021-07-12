@@ -38,11 +38,11 @@ const residentLoggedIn = async (req, res, next) => {
         { isNew: true } //? Passing this to inform the user that this is a new account
       );
 
-      ApiUtil.printResponse(res, apiResponse, next);
+      ApiUtil.printResponse(res, apiResponse);
     }
   } else {
     let apiResponse = ApiUtil.getUnauthorizedError();
-    ApiUtil.printResponse(res, apiResponse, next);
+    ApiUtil.printResponse(res, apiResponse);
   }
 };
 

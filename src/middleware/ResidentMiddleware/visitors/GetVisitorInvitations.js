@@ -20,7 +20,7 @@ const getVisitorInvitations = (req, res, next) => {
         visitorsFound
       );
 
-      ApiUtil.printResponse(res, apiResponse, next);
+      ApiUtil.printResponse(res, apiResponse);
     })
   );
 };

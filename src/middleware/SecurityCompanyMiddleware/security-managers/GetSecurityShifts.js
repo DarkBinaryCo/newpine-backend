@@ -19,7 +19,7 @@ const getSecurityShifts = (req, res, next) => {
           securityShiftsFound
         );
 
-        ApiUtil.printResponse(res, apiResponse, next);
+        ApiUtil.printResponse(res, apiResponse);
       }
     )
   );

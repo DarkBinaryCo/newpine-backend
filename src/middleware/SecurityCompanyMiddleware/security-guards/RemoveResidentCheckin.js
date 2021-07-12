@@ -20,7 +20,7 @@ const removeResidentCheckin = (req, res, next) => {
         "Successfully removed resident checkin"
       );
 
-      ApiUtil.printResponse(res, apiResponse, next);
+      ApiUtil.printResponse(res, apiResponse);
     })
   );
 };

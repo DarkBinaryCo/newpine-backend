@@ -23,7 +23,7 @@ const visitorCanCheckin = (req, res, next) => {
             "Check-in denied! Please ensure that the visitor you are trying to invite has an active invitation before attempting to check them in."
           );
 
-          ApiUtil.printResponse(res, apiResponse, next);
+          ApiUtil.printResponse(res, apiResponse);
         } else {
           next();
         }

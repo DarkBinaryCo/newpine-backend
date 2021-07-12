@@ -18,7 +18,7 @@ const getUserTypes = (req, res, next) => {
         `${userTypesFound.length} user types found`
       );
 
-      ApiUtil.printResponse(res, apiResponse, next);
+      ApiUtil.printResponse(res, apiResponse);
     })
   );
 };

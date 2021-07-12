@@ -22,7 +22,7 @@ const verifyResidentAccount = async (req, res, next) => {
             null,
             404
           );
-          return ApiUtil.printResponse(res, apiResponse, next);
+          return ApiUtil.printResponse(res, apiResponse);
         } else {
           //
           apiResponse = ApiUtil.getResponse(
@@ -31,7 +31,7 @@ const verifyResidentAccount = async (req, res, next) => {
           );
         }
 
-        ApiUtil.printResponse(res, apiResponse, next);
+        ApiUtil.printResponse(res, apiResponse);
       }
     )
   );

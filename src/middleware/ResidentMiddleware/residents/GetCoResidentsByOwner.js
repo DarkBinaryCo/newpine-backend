@@ -21,7 +21,7 @@ const getCoResidentsByOwner = async (req, res, next) => {
         residentsFound
       );
 
-      ApiUtil.printResponse(res, apiResponse, next);
+      ApiUtil.printResponse(res, apiResponse);
     })
   );
 };

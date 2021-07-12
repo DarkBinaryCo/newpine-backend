@@ -24,7 +24,7 @@ const revokeVisitorInvitation = (req, res, next) => {
         "Successfully revoked invitation"
       );
 
-      ApiUtil.printResponse(res, apiResponse, next);
+      ApiUtil.printResponse(res, apiResponse);
     })
   );
 };

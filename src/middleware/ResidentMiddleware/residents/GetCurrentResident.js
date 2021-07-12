@@ -13,7 +13,7 @@ const getCurrentResident = (req, res, next) => {
     "Successfully retrieved the currently logged in resident",
     req.residentData
   );
-  ApiUtil.printResponse(res, apiResponse, next);
+  ApiUtil.printResponse(res, apiResponse);
 };
 
 //* EXPORTS

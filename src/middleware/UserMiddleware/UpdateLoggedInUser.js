@@ -19,7 +19,7 @@ const updateLoggedInUser = (req, res, next) => {
     UserService.updateUser(updateData, filter).then((_) => {
       let apiResponse = ApiUtil.getResponse(true, "Successfully updated user");
 
-      ApiUtil.printResponse(res, apiResponse, next);
+      ApiUtil.printResponse(res, apiResponse);
     })
   );
 };

@@ -1,11 +1,16 @@
 //* This middleware MUST be called after PermissionMiddleware.UserLoggedIn
+const { UserLoggedIn } = require(".");
 const { USER_TYPE } = require("../../config/auth");
 
 // Utils
 const { ApiUtil } = require("../../utils");
 
+// /PermissionMiddleware.UserLoggedIn,
 /** Only proceeds to the next middleware if an admin user is logged in based on the `AuthToken` passed in. */
 const residentRepLoggedIn = async (req, res, next) => {
+  UserLoggedIn(req, res, next);
+
+  //! -👇🏾 should not run
   let userData = req.userData;
 
   // No point checking if we have the right user type logged in if we have no logged in user data to check
@@ -18,7 +23,7 @@ const residentRepLoggedIn = async (req, res, next) => {
     next();
   } else {
     let apiResponse = ApiUtil.getUnauthorizedError();
-    ApiUtil.printResponse(res, apiResponse, next);
+    ApiUtil.printResponse(res, apiResponse);
   }
 };
 

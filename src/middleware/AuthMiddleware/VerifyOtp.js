@@ -31,7 +31,7 @@ const verifyOtp = (req, res, next) => {
       if (isOk) responseData = { ...responseData, ...response };
 
       const apiResponse = ApiUtil.getResponse(isOk, message, responseData);
-      ApiUtil.printResponse(res, apiResponse, next);
+      ApiUtil.printResponse(res, apiResponse);
     })
   );
 };

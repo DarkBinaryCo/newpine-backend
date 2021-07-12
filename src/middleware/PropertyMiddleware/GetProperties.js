@@ -25,7 +25,7 @@ const getProperties = (req, res, next) => {
         apiResponse = ApiUtil.getResponse(false, "No properties found", null);
       }
 
-      ApiUtil.printResponse(res, apiResponse, next);
+      ApiUtil.printResponse(res, apiResponse);
     })
   );
 };

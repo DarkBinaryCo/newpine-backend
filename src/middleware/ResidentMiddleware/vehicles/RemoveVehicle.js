@@ -20,7 +20,7 @@ const removeVehicle = (req, res, next) => {
         "Successfully removed vehicle"
       );
 
-      ApiUtil.printResponse(res, apiResponse, next);
+      ApiUtil.printResponse(res, apiResponse);
     })
   );
 };

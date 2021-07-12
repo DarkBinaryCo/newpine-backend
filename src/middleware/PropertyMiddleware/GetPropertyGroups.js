@@ -29,7 +29,7 @@ const getPropertyGroups = (req, res, next) => {
         );
       }
 
-      ApiUtil.printResponse(res, apiResponse, next);
+      ApiUtil.printResponse(res, apiResponse);
     })
   );
 };

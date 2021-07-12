@@ -9,7 +9,7 @@ const userIsVerified = async (req, res, next) => {
       "It would appear you attempted to verify a user without first confirming that the user is logged in. Please call PermissionMiddleware.userLoggedIn before attempting to verify user.";
     let apiResponse = ApiUtil.getError(responseMessage, {});
 
-    ApiUtil.printResponse(res, apiResponse, next);
+    ApiUtil.printResponse(res, apiResponse);
   } else if (req.userData.isVerified === true) {
     next();
   } else {
@@ -18,7 +18,7 @@ const userIsVerified = async (req, res, next) => {
       "Permission denied! You need to be a verified user to do that. Please request verification from the appropriate authority.";
     let apiResponse = ApiUtil.getUnauthorizedError(responseMessage);
 
-    ApiUtil.printResponse(res, apiResponse, next);
+    ApiUtil.printResponse(res, apiResponse);
   }
 };
 

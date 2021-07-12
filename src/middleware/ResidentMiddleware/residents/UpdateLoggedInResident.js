@@ -23,7 +23,7 @@ const updateLoggedInResident = async (req, res, next) => {
         true,
         "Successfully updated resident"
       );
-      ApiUtil.printResponse(res, apiResponse, next);
+      ApiUtil.printResponse(res, apiResponse);
     })
   );
 };

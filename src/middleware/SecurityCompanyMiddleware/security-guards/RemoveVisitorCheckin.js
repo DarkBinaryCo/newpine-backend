@@ -21,7 +21,7 @@ const removeVisitorCheckin = (req, res, next) => {
         "Successfully removed visitor checkin"
       );
 
-      ApiUtil.printResponse(res, apiResponse, next);
+      ApiUtil.printResponse(res, apiResponse);
     })
   );
 };
