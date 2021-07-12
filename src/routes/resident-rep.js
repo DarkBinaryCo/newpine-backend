@@ -27,8 +27,8 @@ router.post(
 router.get(
   "/vehicles/:propertyId",
   PermissionMiddleware.UserLoggedIn,
-  PermissionMiddleware.ResidentRepLoggedIn
-  // TODO: Add implementation
+  PermissionMiddleware.ResidentRepLoggedIn,
+  ResidentMiddleware.GetPropertyVehicles
 );
 
 //* EXPORTS
