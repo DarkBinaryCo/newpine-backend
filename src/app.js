@@ -1,6 +1,5 @@
 const express = require("express");
 const morgan = require("morgan");
-const bodyParser = require("body-parser");
 const helmet = require("helmet");
 
 const app = express();
@@ -20,11 +19,11 @@ sequelize
 app.use(morgan("dev"));
 app.use(helmet());
 app.use(
-  bodyParser.urlencoded({
+  express.urlencoded({
     extended: false,
   })
 );
-app.use(bodyParser.json());
+app.use(express.json());
 
 // Prevent CORS
 app.use((req, res, next) => {
