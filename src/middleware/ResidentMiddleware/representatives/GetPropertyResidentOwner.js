@@ -12,7 +12,7 @@ const getPropertyResidentOwner = (req, res, next) => {
   ApiUtil.attachErrorHandler(
     res,
     ResidentService.getSingleResident(filter).then((residentFound) => {
-      const isOk = Object.keys(residentFound).length > 0;
+      const isOk = !!residentFound;
       const message = isOk
         ? "Successfully retrieved property resident owner"
         : "No resident owner for that property was found";
