@@ -9,9 +9,17 @@ const { ApiUtil } = require("../../../utils");
 const getPropertyResidentOwner = (req, res, next) => {
   const filter = { propertyId: req.params.propertyId, residentOwnerId: null };
 
+  const _includeUserDetails = true;
+  const _includePropertyDetails = false;
+
   ApiUtil.attachErrorHandler(
     res,
-    ResidentService.getSingleResident(filter).then((residentFound) => {
+    ResidentService.getSingleResident(
+      filter,
+      false,
+      _includeUserDetails,
+      _includePropertyDetails
+    ).then((residentFound) => {
       const isOk = !!residentFound;
       const message = isOk
         ? "Successfully retrieved property resident owner"
