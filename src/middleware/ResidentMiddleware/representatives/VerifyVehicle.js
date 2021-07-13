@@ -7,16 +7,20 @@ const { ApiUtil } = require("../../../utils");
 
 /** Verify a specific vehicle (given a vehicle ID) */
 const verifyVehicle = async (req, res, next) => {
-  let filter = { id: req.params.vehicleId };
-  let updateData = { isVerified: true };
+  const isVerify = req.body.data.verify || false;
+
+  const filter = { id: req.params.vehicleId };
+  const updateData = { isVerified: isVerify };
 
   //
   ApiUtil.attachErrorHandler(
     res,
     ResidentService.updateVehicle(updateData, filter).then((_) => {
-      let apiResponse = ApiUtil.getResponse(
+      const verb = isVerify ? "verified" : "unverified";
+
+      const apiResponse = ApiUtil.getResponse(
         true,
-        "Successfully verified vehicle"
+        `Successfully ${verb} vehicle`
       );
 
       ApiUtil.printResponse(res, apiResponse);
