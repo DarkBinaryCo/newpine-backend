@@ -8,9 +8,6 @@ const { ApiUtil } = require("../../utils");
 // /PermissionMiddleware.UserLoggedIn,
 /** Only proceeds to the next middleware if an admin user is logged in based on the `AuthToken` passed in. */
 const residentRepLoggedIn = async (req, res, next) => {
-  UserLoggedIn(req, res, next);
-
-  //! -👇🏾 should not run
   let userData = req.userData;
 
   // No point checking if we have the right user type logged in if we have no logged in user data to check
