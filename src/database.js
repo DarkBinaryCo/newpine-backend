@@ -8,6 +8,9 @@ const sequelize = new Sequelize(
   DbConfig.password,
   {
     dialect: DbConfig.dialect,
+
+    //? Show SQL logs in the console (useful for debugging)
+    logging: false,
   }
 );
 
