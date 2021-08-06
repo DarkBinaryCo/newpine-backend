@@ -36,7 +36,11 @@ const createUser = async (insertData = {}) => {
         phone: insertData.phone,
       };
 
-      return updateUser(insertData, _updateFilter);
+      const userUpdateStatus = await updateUser(insertData, _updateFilter);
+      return {
+        message: "User exists. Updated the user instead!",
+        data: userUpdateStatus,
+      };
     }
   }
 
