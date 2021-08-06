@@ -45,6 +45,16 @@ SecurityGuard.init(
       allowNull: false,
       defaultValue: 1,
     },
+    addedByUserId: {
+      type: DataTypes.UUID,
+      references: {
+        model: "users",
+        key: "id",
+      },
+      allowNull: false,
+      comment:
+        "The user id of the security manager that added this security guard",
+    },
   },
   { sequelize, modelName: "SecurityGuard", tableName: "security_guards" }
 );
@@ -53,6 +63,7 @@ SecurityGuard.init(
 SecurityGuard.belongsTo(User, { foreignKey: "userId" });
 SecurityGuard.belongsTo(PropertyGroup, { foreignKey: "propertyGroupId" });
 SecurityGuard.belongsTo(SecurityShift, { foreignKey: "shiftId" });
+SecurityGuard.belongsTo(User, { foreignKey: "addedByUserId" });
 
 //* EXPORTS
 module.exports = SecurityGuard;
