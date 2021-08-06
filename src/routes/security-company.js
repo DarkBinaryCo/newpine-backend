@@ -8,22 +8,13 @@ const {
 } = require("../middleware");
 
 //* SECURITY MANAGER FUNCTIONALITY
-// Add security guard user accounts
-router.post(
-  "/manager/security-guard-users",
-  UtilityMiddleware.RequestDataIsProvided,
-  PermissionMiddleware.UserLoggedIn,
-  PermissionMiddleware.SecurityManagerLoggedIn,
-  SecurityCompanyMiddleware.CreateGuardUserAccounts
-);
-
 // Create multiple security guards ~ contains extra details about the guards ie. shift
 router.post(
-  "/manager/security-guards",
+  "/manager/security-guard",
   UtilityMiddleware.RequestDataIsProvided,
   PermissionMiddleware.UserLoggedIn,
   PermissionMiddleware.SecurityManagerLoggedIn,
-  SecurityCompanyMiddleware.CreateSecurityGuardBatch
+  SecurityCompanyMiddleware.CreateSecurityGuard
 );
 
 // Get security shifts
