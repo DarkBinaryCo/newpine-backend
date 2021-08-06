@@ -10,7 +10,13 @@ const { SecurityGuard } = require("../../../models");
 const createSecurityGuard = async (insertData) => {
   insertData.id = uuid.v4();
 
-  let settableFields = ["id", "userId", "propertyGroupId", "shiftId"];
+  let settableFields = [
+    "id",
+    "userId",
+    "propertyGroupId",
+    "shiftId",
+    "addedByUserId",
+  ];
 
   return SecurityGuard.create(insertData, {
     fields: settableFields,

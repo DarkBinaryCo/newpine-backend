@@ -9,6 +9,9 @@ const { ApiUtil } = require("../../../utils");
 const createSecurityGuard = (req, res, next) => {
   const { user: userData, securityGuard: securityGuardData } = req.body.data;
 
+  // Set blame for security guard created
+  securityGuardData.addedByUserId = req.userData.id;
+
   //
   ApiUtil.attachErrorHandler(
     res,
