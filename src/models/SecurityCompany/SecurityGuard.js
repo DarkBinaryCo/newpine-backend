@@ -56,7 +56,12 @@ SecurityGuard.init(
         "The user id of the security manager that added this security guard",
     },
   },
-  { sequelize, modelName: "SecurityGuard", tableName: "security_guards" }
+  {
+    sequelize,
+    modelName: "SecurityGuard",
+    tableName: "security_guards",
+    paranoid: true,
+  }
 );
 
 // Relationships
