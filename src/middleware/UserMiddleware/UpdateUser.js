@@ -8,7 +8,7 @@ const { ApiUtil } = require("../../utils");
 /** Update a user with the data provided */
 const updateUser = (req, res, _) => {
   let filter = {
-    id: req.userData.id,
+    id: req.params.userId,
   };
   let updateData = req.body.data;
 
