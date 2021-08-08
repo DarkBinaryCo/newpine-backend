@@ -1,5 +1,4 @@
 //* This middleware MUST be called after PermissionMiddleware.UserLoggedIn
-const { UserLoggedIn } = require(".");
 const { USER_TYPE } = require("../../config/auth");
 
 // Utils
