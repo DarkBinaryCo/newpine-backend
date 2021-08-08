@@ -9,13 +9,16 @@ const { ApiUtil } = require("../../../utils");
 const createSecurityGuard = (req, res, next) => {
   const { user: userData, securityGuard: securityGuardData } = req.body.data;
 
+  // Auto-verify new guards as they are added
+  userData.isVerified = true;
+
   // Set blame for security guard created
   securityGuardData.addedByUserId = req.userData.id;
 
   //
   ApiUtil.attachErrorHandler(
     res,
-    UserService.createUser(userData).then((createdUser) => {
+    UserService.createUser(userData, true).then((createdUser) => {
       // Get the id of the created user and set it as the security guard's user id
       securityGuardData.userId = createdUser.id;
 
