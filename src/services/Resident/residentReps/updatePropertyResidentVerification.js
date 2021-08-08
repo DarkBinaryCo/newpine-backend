@@ -1,5 +1,5 @@
 // Import directly from main service aggregator
-const { UserService } = require("../../");
+const UserService = require("../../User");
 
 // Import from within the same service but a different directory
 const { getResidents, updateResident } = require("../residents");
