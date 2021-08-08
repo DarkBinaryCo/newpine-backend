@@ -10,9 +10,10 @@ const updateUser = require("./updateUser");
 
 /** Create a new user with `insertData`
  * @param {Object} insertData Data to enter into the database
+ * @param {Boolean} isAdmin Admins can verify/unverify new accounts
  * @return {Promise<Object>} A promise that resolves to an object with the create operation information
  */
-const createUser = async (insertData = {}) => {
+const createUser = async (insertData = {}, isAdmin = false) => {
   let settableFields = [
     "firstName",
     "lastName",
@@ -25,6 +26,11 @@ const createUser = async (insertData = {}) => {
     "profileImgUrl",
     "profileImgThumbnailUrl",
   ];
+
+  // Admins can set verified status
+  if (isAdmin === true) {
+    settableFields.push("isVerified");
+  }
 
   // If phone number has been provided ~ check if a user with that phone number already exists
   if (insertData.phone) {
