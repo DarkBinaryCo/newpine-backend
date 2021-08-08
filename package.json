@@ -23,7 +23,7 @@
   },
   "scripts": {
     "start": "node src/server.js",
-    "debug": "nodemon --inspect src/server.js",
+    "debug": "nodemon --inspect --trace-warnings src/server.js",
     "test": "jest --watch",
     "dev-build": "sequelize-cli db:drop && sequelize-cli db:create && sequelize-cli db:migrate",
     "dev-seed": "sequelize-cli db:seed:all"
