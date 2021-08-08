@@ -23,6 +23,8 @@ const createUser = async (insertData = {}, isAdmin = false) => {
     "gender",
     "userTypeId",
     "bio",
+    "identificationTypeId",
+    "identificationNumber",
     "profileImgUrl",
     "profileImgThumbnailUrl",
   ];
