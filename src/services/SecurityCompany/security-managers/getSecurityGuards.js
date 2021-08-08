@@ -36,6 +36,8 @@ const getSecurityGuards = async (filter = {}) => {
     "lastName",
     "phone",
     "gender",
+    "identificationTypeId",
+    "identificationNumber",
     "isVerified",
     "isBanned",
   ];
