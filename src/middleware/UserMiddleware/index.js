@@ -7,6 +7,7 @@ const GetUserTypes = require("./GetUserTypes");
 
 const GetLoggedInUser = require("./GetLoggedInUser");
 const UpdateLoggedInUser = require("./UpdateLoggedInUser");
+const UpdateUser = require("./UpdateUser");
 
 //* EXPORTS
 module.exports = {
@@ -14,4 +15,5 @@ module.exports = {
   GetUserTypes,
   GetLoggedInUser,
   UpdateLoggedInUser,
+  UpdateUser,
 };
