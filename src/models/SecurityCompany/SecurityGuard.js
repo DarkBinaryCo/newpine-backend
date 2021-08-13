@@ -24,8 +24,8 @@ SecurityGuard.init(
         model: "users", //? Table name
         key: "id",
       },
-      allowNull: false,
       comment: "The user account this security guard belongs to",
+      onDelete: "CASCADE",
     },
     propertyGroupId: {
       type: DataTypes.INTEGER,
