@@ -1,4 +1,7 @@
 //* This middleware MUST be called after PermissionMiddleware.UserLoggedIn
+// Config
+const { USER_TYPE } = require("../../../config/auth");
+
 // Services
 const { SecurityCompanyService, UserService } = require("../../../services");
 
@@ -8,6 +11,9 @@ const { ApiUtil } = require("../../../utils");
 /** Create security guards checkin */
 const createSecurityGuard = (req, res, next) => {
   const { user: userData, securityGuard: securityGuardData } = req.body.data;
+
+  //
+  userData.userTypeId = USER_TYPE.SECURITY_GUARD;
 
   // Auto-verify new guards as they are added
   userData.isVerified = true;
