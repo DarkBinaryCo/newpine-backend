@@ -4,6 +4,7 @@ const { DataTypes, Model, Sequelize } = require("sequelize");
 // Model dependencies
 const VisitorInvitation = require("./VisitorInvitation");
 const { SecurityGuard } = require("../SecurityCompany");
+const { Property } = require("../Property");
 
 class VisitorCheckin extends Model {}
 
@@ -32,6 +33,16 @@ VisitorCheckin.init(
         key: "id",
       },
     },
+    propertyId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      comment:
+        "The id of the property group they are going to. Set here because guards may be re-assigned which may prevent us from being able to get accurate checkin data",
+      references: {
+        model: "properties", //? Table name
+        key: "id",
+      },
+    },
     isCheckin: {
       //? Used as such to prevent complications of trying to figure out whether we should update an existing checkin or create a new checkin/checkout
       type: DataTypes.BOOLEAN,
@@ -56,6 +67,9 @@ VisitorCheckin.init(
 VisitorCheckin.belongsTo(VisitorInvitation, {
   foreignKey: "visitorInvitationId",
 });
+
+VisitorCheckin.belongsTo(Property, { foreignKey: "propertyId" });
+
 VisitorCheckin.belongsTo(SecurityGuard, { foreignKey: "securityGuardId" });
 
 //* EXPORTS
