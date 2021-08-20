@@ -2,9 +2,10 @@ const sequelize = require("../../database");
 const { DataTypes, Model, Sequelize } = require("sequelize");
 
 // Model dependencies
-const { Vehicle } = require("../Vehicle");
-const { SecurityGuard } = require("../SecurityCompany");
 const { PropertyGroup } = require("../Property");
+const Resident = require("../Resident/Resident");
+const { SecurityGuard } = require("../SecurityCompany");
+const { Vehicle } = require("../Vehicle");
 
 class ResidentCheckin extends Model {}
 
@@ -16,6 +17,14 @@ ResidentCheckin.init(
       defaultValue: Sequelize.UUIDV4,
       primaryKey: true,
       allowNull: false,
+    },
+    residentId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: "residents",
+        key: "id",
+      },
     },
     vehicleId: {
       type: DataTypes.UUID,
@@ -67,11 +76,13 @@ ResidentCheckin.init(
 );
 
 // Relationships
-ResidentCheckin.belongsTo(Vehicle, { foreignKey: "vehicleId" });
-
 ResidentCheckin.belongsTo(PropertyGroup, { foreignKey: "propertyGroupId" });
 
+ResidentCheckin.belongsTo(Resident, { foreignKey: "residentId" });
+
 ResidentCheckin.belongsTo(SecurityGuard, { foreignKey: "securityGuardId" });
+
+ResidentCheckin.belongsTo(Vehicle, { foreignKey: "vehicleId" });
 
 //* EXPORTS
 module.exports = ResidentCheckin;
