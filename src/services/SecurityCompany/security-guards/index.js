@@ -6,9 +6,7 @@ const createResidentCheckin = require("./createResidentCheckin");
 const createVisitorCheckin = require("./createVisitorCheckin");
 
 const getResidentCheckins = require("./getResidentCheckins");
-const getSingleResidentCheckin = require("./getSingleResidentCheckin");
 const getVisitorCheckins = require("./getVisitorCheckins");
-const getSingleVisitorCheckin = require("./getSingleVisitorCheckin");
 
 const removeResidentCheckin = require("./removeResidentCheckin");
 const removeVisitorCheckin = require("./removeVisitorCheckin");
@@ -18,9 +16,7 @@ module.exports = {
   createResidentCheckin,
   createVisitorCheckin,
   getResidentCheckins,
-  getSingleResidentCheckin,
   getVisitorCheckins,
-  getSingleVisitorCheckin,
   removeResidentCheckin,
   removeVisitorCheckin,
 };
