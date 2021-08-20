@@ -51,23 +51,13 @@ router.delete(
 
 //* SECURITY GUARD FUNCTIONALITY
 
-// Create resident checkin
+// Checkin an individual
 router.post(
-  "/guard/resident-checkin",
+  "/guard/checkin",
   UtilityMiddleware.RequestDataIsProvided,
   PermissionMiddleware.UserLoggedIn,
   PermissionMiddleware.SecurityGuardLoggedIn,
-  SecurityCompanyMiddleware.CreateResidentCheckin
-);
-
-// Create visitor checkin
-router.post(
-  "/guard/visitor-checkin",
-  UtilityMiddleware.RequestDataIsProvided,
-  PermissionMiddleware.UserLoggedIn,
-  PermissionMiddleware.SecurityGuardLoggedIn,
-  PermissionMiddleware.VisitorCanCheckin,
-  SecurityCompanyMiddleware.CreateVisitorCheckin
+  SecurityCompanyMiddleware.CreateCheckin
 );
 
 // Get resident checkins
