@@ -1,5 +1,5 @@
 // Models
-const { Vehicle } = require("../../models");
+const { Vehicle } = require("../../../models");
 
 /** Get a single vehicle that matches the filter provided
  * @param {Object} filter The sequelize filter the vehicle has to match to be returned
