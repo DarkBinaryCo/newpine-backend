@@ -54,13 +54,13 @@ const getCheckinResponse = (ok, checkinType, isCheckin) => {
 /** Checkin visitor - Includes internal error handling */
 const checkinVisitor = async (
   visitorInvitationFound,
-  securityGuard_Id,
+  securityGuardId,
   isCheckin
 ) => {
   try {
     await SecurityCompanyService.createVisitorCheckin(
       visitorInvitationFound.id,
-      securityGuard_Id,
+      securityGuardId,
       isCheckin,
       { propertyId: visitorInvitationFound.Resident.propertyId }
     );
@@ -88,7 +88,8 @@ const handleVehicleCheckin = async (
     await SecurityCompanyService.createResidentCheckin(
       vehicleFound.residentId,
       securityGuard.id,
-      isCheckin
+      isCheckin,
+      { propertyGroupId: securityGuard.propertyGroupId }
     );
 
     return getCheckinResponse(true, "resident", isCheckin, vehicleFound);
@@ -115,7 +116,8 @@ const handleVehicleCheckin = async (
       await SecurityCompanyService.createResidentCheckin(
         residentFound.id,
         securityGuard.id,
-        isCheckin
+        isCheckin,
+        { propertyGroupId: securityGuard.propertyGroupId }
       );
 
       return getCheckinResponse(true, "resident", isCheckin);
