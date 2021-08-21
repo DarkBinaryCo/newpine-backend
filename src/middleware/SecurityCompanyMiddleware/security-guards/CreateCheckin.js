@@ -51,6 +51,26 @@ const getCheckinResponse = (ok, checkinType, isCheckin) => {
   return response;
 };
 
+/** Checkin visitor - Includes internal error handling */
+const checkinVisitor = async (
+  visitorInvitationFound,
+  securityGuardId,
+  isCheckin
+) => {
+  try {
+    await SecurityCompanyService.createVisitorCheckin(
+      visitorInvitationFound.id,
+      securityGuardId,
+      isCheckin,
+      { propertyId: visitorInvitationFound.Resident.propertyId }
+    );
+
+    return true;
+  } catch (err) {
+    return ApiUtil.getError(err.message, err);
+  }
+};
+
 // Vehicle checkin
 const handleVehicleCheckin = async (
   isCheckin = true,
@@ -108,7 +128,6 @@ const handleVehicleCheckin = async (
       { identificationNumber: idNumber || "" },
       { vehicleNumberplate: numberplate },
     ],
-    isActive: true, //? Only check for active invitations (aka, unused invitations)
   };
 
   const visitorInvitationFound =
@@ -116,14 +135,15 @@ const handleVehicleCheckin = async (
 
   if (visitorInvitationFound) {
     //* Checkin visitor
-    SecurityCompanyService.createVisitorCheckin(
-      visitorInvitationFound.id,
+    const checkinStatus = await checkinVisitor(
+      visitorInvitationFound,
       securityGuardId,
-      isCheckin,
-      { propertyId: visitorInvitationFound.Resident.propertyId }
+      isCheckin
     );
 
-    return getCheckinResponse(true, "visitor", isCheckin);
+    return checkinStatus === true
+      ? getCheckinResponse(true, "visitor", isCheckin)
+      : checkinStatus;
   }
 
   //? Getting here means neither a resident nor a visitor invitation matching the criteria specified was found
@@ -160,14 +180,15 @@ const handleFootCheckin = async (
 
   if (visitorInvitationFound) {
     //* Checkin visitor
-    SecurityCompanyService.createVisitorCheckin(
-      visitorInvitationFound.id,
+    const checkinStatus = await checkinVisitor(
+      visitorInvitationFound,
       securityGuardId,
-      isCheckin,
-      { propertyId: visitorInvitationFound.Resident.propertyId }
+      isCheckin
     );
 
-    return getCheckinResponse(true, "visitor", isCheckin);
+    return checkinStatus === true
+      ? getCheckinResponse(true, "visitor", isCheckin)
+      : checkinStatus;
   }
 
   //? Getting here means no visitor invitation was found for the criteria provided
