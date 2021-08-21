@@ -8,7 +8,13 @@ const { Vehicle } = require("../../../models");
  */
 const getSingleVehicle = async (filter, extraAttributesToInclude = []) => {
   //
-  let attributesToInclude = ["id", "name", "model", "numberplate"];
+  let attributesToInclude = [
+    "id",
+    "name",
+    "model",
+    "numberplate",
+    "residentId",
+  ];
 
   // Add extra attributes
   attributesToInclude = attributesToInclude.concat(extraAttributesToInclude);
