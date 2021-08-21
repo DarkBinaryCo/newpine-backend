@@ -9,6 +9,7 @@ const { User } = require("../../models");
 const getSingleUser = async (filter, extraAttributesToInclude = []) => {
   //TODO : Refactor defaults to config file
   let attributesToInclude = [
+    "id",
     "firstName",
     "lastName",
     "phone",
