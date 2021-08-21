@@ -49,7 +49,10 @@ const createVisitorCheckin = async (
   let updateFilter = { id: visitorInvitationId };
 
   // De-activating means the visitor can be checked out but they cannot use the same invitation to get in
-  VisitorService.updateVisitorInvitation(updateFilter, { isActive: false });
+  await VisitorService.updateVisitorInvitation(
+    { isActive: false },
+    updateFilter
+  );
 
   // Explicitly add the and security guard id data to the `insertData` object
   insertData = {
