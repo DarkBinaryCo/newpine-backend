@@ -34,7 +34,7 @@ Vehicle.init(
       allowNull: true,
       defaultValue: null,
     },
-    numberPlate: {
+    numberplate: {
       type: DataTypes.STRING(10),
       allowNull: true,
       defaultValue: null,
