@@ -4,6 +4,9 @@ const { VisitorCheckin } = require("../../../models");
 //! Find a way to use the services aggregator
 const VisitorService = require("../../../services/Visitor");
 
+// Internal functions
+const getSingleVisitorCheckin = require("./_getSingleVisitorCheckin");
+
 /** Create a resident checkin
  * @param {UUID} visitorInvitationId The id of the visitor invitation
  * @param {UUID} securityGuardId The id of the security guard checking in the resident
@@ -17,6 +20,7 @@ const createVisitorCheckin = async (
   isCheckin,
   insertData = {}
 ) => {
+  //! This function has a lot of potential database requests -> mostly get requests used for confirmation
   let settableFields = [
     "propertyId",
     "securityGuardId",
@@ -35,14 +39,38 @@ const createVisitorCheckin = async (
   }
 
   //* Getting here means there was a visitor invitation found that had the provided visitor invitation id
+  const existingCheckinFound = await getSingleVisitorCheckin({
+    visitorInvitationId,
+    isCheckin: true,
+  });
+
+  // When a user attempts to checkout before ever checking in
+  if (!isCheckin && !existingCheckinFound) {
+    throw new Error(
+      "Checkout failed. You need to checkin the visitor in first before trying to check them out."
+    );
+  }
+
   // When we attempt to checkin a visitor with an invitation that has already been used, don't allow them to  checkin
-  if (!invitationFound.isActive && isCheckin) {
+  else if (!invitationFound.isActive && isCheckin) {
     throw new Error(
       "Checkin failed. The visitor matching the criteria has already been checked in and cannot be checked in again using the same invitation."
     );
   }
 
-  //* Getting here means the visitor invitation has not yet been used or the user is checking out
+  const exisitingCheckoutFound = await getSingleVisitorCheckin({
+    visitorInvitationId,
+    isCheckin: false,
+  });
+
+  // Check if a user has been checked out before
+  if (exisitingCheckoutFound) {
+    throw new Error(
+      "Checkout failed. This visitor has already been checked out before."
+    );
+  }
+
+  //* Getting here means the visitor invitation has not yet been used and the user has not been checked out
   // De-activate the visitor invitation as soon as they have been checked-in
   let updateFilter = { id: visitorInvitationId };
 

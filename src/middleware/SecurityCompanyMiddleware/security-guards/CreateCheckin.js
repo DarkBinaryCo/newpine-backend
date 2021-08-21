@@ -24,7 +24,7 @@ const { ApiUtil, FormatUtil } = require("../../../utils");
  * @return {ApiReponse} An API response object with the
  */
 const getCheckinResponse = (ok, checkinType, isCheckin) => {
-  const messageAction = isCheckin ? "Check in" : "Check out";
+  const messageAction = isCheckin ? "check in" : "check out";
   let message;
 
   if (checkinType) {
