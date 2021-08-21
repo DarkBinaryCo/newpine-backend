@@ -10,7 +10,7 @@ const addVehicle = async (insertData) => {
     "model",
     "color",
     "year",
-    "numberPlate",
+    "numberplate",
     "residentId",
   ];
 
