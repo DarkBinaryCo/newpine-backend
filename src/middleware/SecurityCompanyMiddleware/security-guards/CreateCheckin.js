@@ -231,7 +231,7 @@ const createCheckin = async (req, res, next) => {
   let apiResponse;
 
   try {
-    if ((transportMode || "").toLowerCase() === "vehicle") {
+    if (transportMode?.toLowerCase() === "vehicle") {
       apiResponse = await handleVehicleCheckin(
         isCheckin,
         metadata.numberplate,
