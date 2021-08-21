@@ -24,12 +24,21 @@ const { ApiUtil, FormatUtil } = require("../../../utils");
  * @return {ApiReponse} An API response object with the
  */
 const getCheckinResponse = (ok, checkinType, isCheckin) => {
-  // Sentence construction for the response message
-  const messageAction = isCheckin ? "check in" : "check out";
-  const messageStatus = ok ? "successful" : "failed";
-  const message = `${_.upperFirst(
-    checkinType.toLowerCase()
-  )} ${messageAction} ${messageStatus}`;
+  const messageAction = isCheckin ? "Check in" : "Check out";
+  let message;
+
+  if (checkinType) {
+    // Sentence construction for the response message
+    const messageStatus = ok ? "successful" : "failed";
+
+    message = `${_.upperFirst(
+      checkinType?.toLowerCase()
+    )} ${messageAction} ${messageStatus}`;
+  } else {
+    message = `${_.upperFirst(
+      messageAction
+    )} failed. No records were found matching the criteria provided.`;
+  }
 
   // Data to be returned as part of the API response
   const data = {
@@ -51,7 +60,7 @@ const handleVehicleCheckin = async (
 ) => {
   //? Check resident vehicles - likely that someone in a vehicle is a resident
   // Check by numberplate
-  const vehicleFilter = { [Op.like]: `%${numberplate}%` };
+  const vehicleFilter = { numberplate: { [Op.like]: `%${numberplate}%` } };
   const vehicleFound = await ResidentService.getSingleVehicle(vehicleFilter);
 
   if (vehicleFound) {
@@ -96,7 +105,7 @@ const handleVehicleCheckin = async (
   //* Check visitor invitations
   const visitorFilter = {
     [Op.or]: [
-      { identificationNumber: idNumber },
+      { identificationNumber: idNumber || "" },
       { vehicleNumberplate: numberplate },
     ],
     isActive: true, //? Only check for active invitations (aka, unused invitations)
@@ -195,6 +204,7 @@ const handleFootCheckin = async (
 
 /** Create resident checkin */
 const createCheckin = async (req, res, next) => {
+  const currentSecurityGuard = req.securityGuardData;
   let { isCheckin, metadata, transportMode } = req.body.data || {};
 
   let apiResponse;
@@ -204,7 +214,8 @@ const createCheckin = async (req, res, next) => {
       apiResponse = await handleVehicleCheckin(
         isCheckin,
         metadata.numberplate,
-        metadata.idNumber
+        metadata.idNumber,
+        currentSecurityGuard.id
       );
     } else {
       const { idMethod } = metadata;
@@ -216,12 +227,19 @@ const createCheckin = async (req, res, next) => {
         idNumber = FormatUtil.getPhoneInternationalFormat(idNumber);
       }
 
-      apiResponse = await handleFootCheckin(isCheckin, idMethod, idNumber);
+      apiResponse = await handleFootCheckin(
+        isCheckin,
+        idMethod,
+        idNumber,
+        currentSecurityGuard.id
+      );
     }
 
     // Print the API resonse and end this middleware's execution
     ApiUtil.printResponse(res, apiResponse);
   } catch (err) {
+    console.error("[error]", err);
+
     apiResponse = ApiUtil.getError(
       "Something went wrong while trying to create a checkin/out",
       err
