@@ -31,16 +31,14 @@ const createVisitorCheckin = async (
 
   // No point going on if there is no visitor invitation to map to the checkin
   if (!invitationFound) {
-    throw new Error(
-      "Could not find a visitor invitation with that ID. Please try again with a valid visitor invitation id"
-    );
+    throw new Error("Could not find that visitor invitation");
   }
 
   //* Getting here means there was a visitor invitation found that had the provided visitor invitation id
   // When we attempt to checkin a visitor with an invitation that has already been used, don't allow them to  checkin
   if (!invitationFound.isActive && isCheckin) {
     throw new Error(
-      "Checkin failed. That invitation id has already been used and cannot be re-used."
+      "Checkin failed. The visitor matching the criteria has already been checked in and cannot be checked in again using the same invitation."
     );
   }
 
