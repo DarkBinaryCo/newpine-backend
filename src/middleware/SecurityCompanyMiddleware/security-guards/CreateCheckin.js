@@ -54,13 +54,13 @@ const getCheckinResponse = (ok, checkinType, isCheckin) => {
 /** Checkin visitor - Includes internal error handling */
 const checkinVisitor = async (
   visitorInvitationFound,
-  securityGuardId,
+  securityGuard_Id,
   isCheckin
 ) => {
   try {
     await SecurityCompanyService.createVisitorCheckin(
       visitorInvitationFound.id,
-      securityGuardId,
+      securityGuard_Id,
       isCheckin,
       { propertyId: visitorInvitationFound.Resident.propertyId }
     );
@@ -76,7 +76,7 @@ const handleVehicleCheckin = async (
   isCheckin = true,
   numberplate,
   idNumber = null,
-  securityGuardId
+  securityGuard
 ) => {
   //? Check resident vehicles - likely that someone in a vehicle is a resident
   // Check by numberplate
@@ -87,7 +87,7 @@ const handleVehicleCheckin = async (
     //* Checkin resident
     await SecurityCompanyService.createResidentCheckin(
       vehicleFound.residentId,
-      securityGuardId,
+      securityGuard.id,
       isCheckin
     );
 
@@ -114,7 +114,7 @@ const handleVehicleCheckin = async (
       //* Checkin resident
       await SecurityCompanyService.createResidentCheckin(
         residentFound.id,
-        securityGuardId,
+        securityGuard.id,
         isCheckin
       );
 
@@ -137,7 +137,7 @@ const handleVehicleCheckin = async (
     //* Checkin visitor
     const checkinStatus = await checkinVisitor(
       visitorInvitationFound,
-      securityGuardId,
+      securityGuard.id,
       isCheckin
     );
 
@@ -155,7 +155,7 @@ const handleFootCheckin = async (
   isCheckin = true,
   idMethod = "id",
   idNumber = null,
-  securityGuardId
+  securityGuard
 ) => {
   // idMethod has to be one of these options to be considered valid
   const idOptions = ["id", "phone"];
@@ -182,7 +182,7 @@ const handleFootCheckin = async (
     //* Checkin visitor
     const checkinStatus = await checkinVisitor(
       visitorInvitationFound,
-      securityGuardId,
+      securityGuard.id,
       isCheckin
     );
 
@@ -212,8 +212,9 @@ const handleFootCheckin = async (
     //* Checkin resident
     await SecurityCompanyService.createResidentCheckin(
       residentFound.id,
-      securityGuardId,
-      isCheckin
+      securityGuard.id,
+      isCheckin,
+      { propertyGroupId: securityGuard.propertyGroupId }
     );
 
     // Return a success response
@@ -236,7 +237,7 @@ const createCheckin = async (req, res, next) => {
         isCheckin,
         metadata.numberplate,
         metadata.idNumber,
-        currentSecurityGuard.id
+        currentSecurityGuard
       );
     } else {
       const { idMethod } = metadata;
@@ -252,7 +253,7 @@ const createCheckin = async (req, res, next) => {
         isCheckin,
         idMethod,
         idNumber,
-        currentSecurityGuard.id
+        currentSecurityGuard
       );
     }
 

@@ -15,6 +15,7 @@ const createResidentCheckin = async (
 ) => {
   let settableFields = [
     "residentId",
+    "propertyGroupId",
     "securityGuardId",
     "vehicleId",
     "isCheckin",
