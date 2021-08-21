@@ -49,7 +49,8 @@ ResidentCheckin.init(
       type: DataTypes.INTEGER,
       comment:
         "The id of the property group they are going to. Set here because guards may be re-assigned which may prevent us from being able to get accurate checkin data",
-      allowNull: false,
+      allowNull: true,
+      defaultValue: null,
       references: {
         model: "property_groups", //? Table name
         key: "id",
