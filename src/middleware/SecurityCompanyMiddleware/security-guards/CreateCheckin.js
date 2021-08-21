@@ -172,7 +172,6 @@ const handleFootCheckin = async (
   // Check visitors - likely that someone on foot is a visitor rather than a resident
   const visitorFilter = {
     [Op.or]: [{ phone: idNumber }, { identificationNumber: idNumber }],
-    isActive: true,
   };
 
   const visitorInvitationFound =
