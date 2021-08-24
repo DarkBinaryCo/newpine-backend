@@ -10,7 +10,12 @@ const updateUser = (req, res, _) => {
   let filter = {
     id: req.params.userId,
   };
-  let updateData = req.body.data;
+
+  if (req.body.filter) {
+    filter = { ...filter, ...req.body.filter };
+  }
+
+  const updateData = req.body.data;
 
   // A user is no longer considered new when they are updated via this middleware
   updateData.isNew = false;
