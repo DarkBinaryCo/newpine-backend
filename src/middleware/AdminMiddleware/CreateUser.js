@@ -7,7 +7,7 @@ const { UserService } = require("../../services");
 // Utils
 const { ApiUtil } = require("../../utils");
 
-/**  Add a security manager account. This is simply a user account with a userType of Security manager */
+/**  Add a user */
 const createUser = (req, res, _) => {
   let userData = req.body.data || {};
   const { userTypeId } = req.params;
@@ -36,7 +36,7 @@ const createUser = (req, res, _) => {
     UserService.createUser(userData, true).then((_) => {
       let apiResponse = ApiUtil.getResponse(
         true,
-        "Successfully created security manager account",
+        "Successfully created user",
         null,
         201
       );
