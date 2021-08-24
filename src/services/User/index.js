@@ -4,9 +4,12 @@
 */
 const createUser = require("./createUser");
 const createUserBatch = require("./createUserBatch");
+
 const getIdentificationTypes = require("./getIdentificationTypes");
 const getUserTypes = require("./getUserTypes");
+
 const getSingleUser = require("./getSingleUser");
+const getUsers = require("./getUsers");
 const updateUser = require("./updateUser");
 
 //* EXPORTS
@@ -16,5 +19,6 @@ module.exports = {
   getIdentificationTypes,
   getUserTypes,
   getSingleUser,
+  getUsers,
   updateUser,
 };
