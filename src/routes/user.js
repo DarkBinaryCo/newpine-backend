@@ -31,12 +31,5 @@ router.get(
   UserMiddleware.GetIdentificationTypes
 );
 
-// Get user types
-router.get(
-  "/user-types",
-  PermissionMiddleware.UserLoggedIn,
-  UserMiddleware.GetUserTypes
-);
-
 //* EXPORTS
 module.exports = router;
