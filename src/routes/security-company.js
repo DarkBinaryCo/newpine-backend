@@ -1,11 +1,16 @@
 const express = require("express");
 const router = express.Router();
 
+// Middleware
 const {
   PermissionMiddleware,
   SecurityCompanyMiddleware,
+  UserMiddleware,
   UtilityMiddleware,
 } = require("../middleware");
+
+// Filters
+const { UserFilter } = require("../filters");
 
 //* SECURITY MANAGER FUNCTIONALITY
 // Create multiple security guards ~ contains extra details about the guards ie. shift
@@ -30,6 +35,16 @@ router.get(
   PermissionMiddleware.UserLoggedIn,
   PermissionMiddleware.SecurityManagerLoggedIn,
   SecurityCompanyMiddleware.GetGuards
+);
+
+// Update user
+router.patch(
+  "/manager/security-guard/user/:userId",
+  UtilityMiddleware.RequestDataIsProvided,
+  PermissionMiddleware.UserLoggedIn,
+  PermissionMiddleware.SecurityManagerLoggedIn,
+  UserFilter.SecurityGuardOnly,
+  UserMiddleware.UpdateUser
 );
 
 // Update security guard
