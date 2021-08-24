@@ -1,3 +1,6 @@
+// Config
+const { USER_TYPE } = require("../../config/auth");
+
 // Services
 const { AuthService } = require("../../services");
 
@@ -8,7 +11,17 @@ const { ApiUtil, FormatUtil } = require("../../utils");
 const sendOtp = (req, res, next) => {
   const { phone } = req.body.data;
 
+  // Only allow certain user types a user can create (only resident and resident rep)
+  const userTypesAllowed = [USER_TYPE.RESIDENT, USER_TYPE.RESIDENT_REP];
   const typeOfUserToCreate = req.body.data.userType;
+
+  // Don't allow creation of any other type of user that isn't explicitly allowed here
+  if (!userTypesAllowed.includes(typeOfUserToCreate)) {
+    const error = new Error("Signup is not available for that account type");
+
+    const apiResponse = ApiUtil.getError(error.message, error, 400);
+    return ApiUtil.printResponse(res, apiResponse);
+  }
 
   // Convert the phone number to international so that our SMS provider API is not angry
   //TODO: Add country code logic
