@@ -7,13 +7,14 @@ const {
   UtilityMiddleware,
 } = require("../middleware");
 
-// Create a security manager account
+// Create a user account
+//? Any account created by an admin is automatically verified
 router.post(
-  "/security-manager",
+  "/user/:userTypeId",
   UtilityMiddleware.RequestDataIsProvided,
   PermissionMiddleware.UserLoggedIn,
   PermissionMiddleware.AdminLoggedIn,
-  AdminMiddleware.AddSecurityManager
+  AdminMiddleware.CreateUser
 );
 
 //* EXPORTS
