@@ -24,15 +24,6 @@ router.patch(
   UserMiddleware.UpdateLoggedInUser
 );
 
-//! Possible issue
-// Update user
-router.patch(
-  "/:userId",
-  UtilityMiddleware.RequestDataIsProvided,
-  PermissionMiddleware.UserLoggedIn,
-  UserMiddleware.UpdateUser
-);
-
 // Get identification types
 router.get(
   "/id-types",
