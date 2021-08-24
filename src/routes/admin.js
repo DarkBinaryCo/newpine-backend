@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
+// Middleware
 const {
   PermissionMiddleware,
   AdminMiddleware,
@@ -8,12 +9,24 @@ const {
   UserMiddleware,
 } = require("../middleware");
 
+// Filters
+const { UserFilter } = require("../filters");
+
 // Get user types
 router.get(
   "/user-types",
   PermissionMiddleware.UserLoggedIn,
   PermissionMiddleware.AdminLoggedIn,
   UserMiddleware.GetUserTypes
+);
+
+// Get users
+router.get(
+  "/users",
+  PermissionMiddleware.UserLoggedIn,
+  PermissionMiddleware.AdminLoggedIn,
+  UserFilter.AdminEditableUsers,
+  AdminMiddleware.GetUsers
 );
 
 // Create a user account
