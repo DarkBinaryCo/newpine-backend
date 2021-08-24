@@ -6,7 +6,7 @@ const { User } = require("../../models");
  * @return {Array<Object>} An array containing a list of user types found matching the given filter
  */
 const getUsers = (filter = {}) => {
-  return User.findAll({ where: filter });
+  return User.findAll({ where: filter, order: [["updatedAt", "DESC"]] });
 };
 
 //* EXPORTS
