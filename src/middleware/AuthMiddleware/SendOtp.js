@@ -2,30 +2,35 @@
 const { USER_TYPE } = require("../../config/auth");
 
 // Services
-const { AuthService } = require("../../services");
+const { AuthService, UserService } = require("../../services");
 
 // Utils
 const { ApiUtil, FormatUtil } = require("../../utils");
 
 /** Send an OTP the provided phone number */
-const sendOtp = (req, res, next) => {
+const sendOtp = async (req, res, next) => {
   const { phone } = req.body.data;
+
+  // Convert the phone number to international so that our SMS provider API is not angry
+  //TODO: Add country code logic
+  const phoneInternational = FormatUtil.getPhoneInternationalFormat(phone);
 
   // Only allow certain user types a user can create (only resident and resident rep)
   const userTypesAllowed = [USER_TYPE.RESIDENT, USER_TYPE.RESIDENT_REP];
   const typeOfUserToCreate = req.body.data.userType;
 
-  // Don't allow creation of any other type of user that isn't explicitly allowed here
-  if (!userTypesAllowed.includes(typeOfUserToCreate)) {
+  // Check if the user already exists -> Allow them to signin if so
+  const userExists = await UserService.getSingleUser({
+    phone: phoneInternational,
+  });
+
+  // Don't allow creation of any other type of user that isn't explicitly allowed here and doesn't already have an account
+  if (!userExists && !userTypesAllowed.includes(typeOfUserToCreate)) {
     const error = new Error("Signup is not available for that account type");
 
     const apiResponse = ApiUtil.getError(error.message, error, 400);
     return ApiUtil.printResponse(res, apiResponse);
   }
-
-  // Convert the phone number to international so that our SMS provider API is not angry
-  //TODO: Add country code logic
-  const phoneInternational = FormatUtil.getPhoneInternationalFormat(phone);
 
   ApiUtil.attachErrorHandler(
     res,
