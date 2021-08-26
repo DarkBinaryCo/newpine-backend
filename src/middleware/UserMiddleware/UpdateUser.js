@@ -6,7 +6,7 @@ const { UserService } = require("../../services");
 const { ApiUtil } = require("../../utils");
 
 /** Update a user with the data provided */
-const updateUser = (req, res, _) => {
+const updateUser = (req, res, _next) => {
   filter = { id: req.params.userId, ...req.body.filter };
 
   const updateData = req.body.data;

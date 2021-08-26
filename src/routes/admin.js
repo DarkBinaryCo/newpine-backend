@@ -29,6 +29,15 @@ router.get(
   AdminMiddleware.GetUsers
 );
 
+// Update a specific user account
+router.patch(
+  "/user/:userId",
+  PermissionMiddleware.UserLoggedIn,
+  PermissionMiddleware.AdminLoggedIn,
+  UserFilter.AdminEditableUsers,
+  UserMiddleware.UpdateUser
+);
+
 // Create a user account
 //? Any account created by an admin is automatically verified
 router.post(
