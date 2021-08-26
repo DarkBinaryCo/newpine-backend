@@ -17,7 +17,7 @@ const updateUser = (req, res, _next) => {
   //
   ApiUtil.attachErrorHandler(
     res,
-    UserService.updateUser(updateData, filter).then((_) => {
+    UserService.updateUser(updateData, filter, true).then((_) => {
       let apiResponse = ApiUtil.getResponse(true, "Successfully updated user");
 
       ApiUtil.printResponse(res, apiResponse);
