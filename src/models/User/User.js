@@ -41,11 +41,13 @@ User.init(
           FormatUtil.getPhoneInternationalFormat(value)
         );
       },
+      unique: true,
     },
     email: {
       type: DataTypes.STRING(50),
       allowNull: true,
       defaultValue: null,
+      unique: true,
     },
     dob: {
       type: DataTypes.DATEONLY,
@@ -87,6 +89,7 @@ User.init(
       type: DataTypes.TEXT,
       allowNull: true,
       defaultValue: null,
+      unique: true,
     },
     otp: {
       type: DataTypes.STRING(128),
