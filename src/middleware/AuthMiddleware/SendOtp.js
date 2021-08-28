@@ -24,8 +24,12 @@ const sendOtp = async (req, res, next) => {
     phone: phoneInternational,
   });
 
+  const isValidUserType = typeOfUserToCreate
+    ? userTypesAllowed.includes(parseInt(typeOfUserToCreate))
+    : true;
+
   // Don't allow creation of any other type of user that isn't explicitly allowed here and doesn't already have an account
-  if (!userExists && !userTypesAllowed.includes(typeOfUserToCreate)) {
+  if (!userExists && !isValidUserType) {
     const error = new Error("Signup is not available for that account type");
 
     const apiResponse = ApiUtil.getError(error.message, error, 400);
