@@ -16,6 +16,16 @@ UserType.init(
       type: DataTypes.STRING(20),
       allowNull: false,
     },
+    friendlyName: {
+      type: DataTypes.STRING(50),
+      allowNull: true,
+      default: null,
+    },
+    isAdminEditable: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      default: false,
+    },
     description: {
       type: DataTypes.STRING(100),
       allowNull: false,
