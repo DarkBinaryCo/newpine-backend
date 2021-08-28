@@ -6,7 +6,7 @@ const { ApiUtil } = require("../../utils");
 const userIsVerified = async (req, res, next) => {
   if (!req.userData) {
     let responseMessage =
-      "It would appear you attempted to verify a user without first confirming that the user is logged in. Please call PermissionMiddleware.userLoggedIn before attempting to verify user.";
+      "It would appear you attempted to verify a user without first confirming that the user is logged in. Please call PermissionMiddleware.UserLoggedIn before attempting to verify user.";
     let apiResponse = ApiUtil.getError(responseMessage, {});
 
     ApiUtil.printResponse(res, apiResponse);
