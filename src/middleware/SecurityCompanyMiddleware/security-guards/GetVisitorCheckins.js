@@ -7,7 +7,7 @@ const { ApiUtil } = require("../../../utils");
 
 /** Get visitor checkins */
 const getVisitorCheckins = (req, res, next) => {
-  let filter = { ...JSON.parse(req.query.filter), ...req.body.filter };
+  let filter = { ...JSON.parse(req.query.filter || "{}"), ...req.body.filter };
 
   //
   ApiUtil.attachErrorHandler(

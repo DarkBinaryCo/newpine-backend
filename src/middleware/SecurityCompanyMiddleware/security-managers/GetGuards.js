@@ -7,7 +7,7 @@ const { ApiUtil } = require("../../../utils");
 
 /** Get security guards */
 const getGuards = (req, res, next) => {
-  let filter = { ...JSON.parse(req.query.filter), ...req.body.filter };
+  let filter = { ...JSON.parse(req.query.filter || "{}"), ...req.body.filter };
 
   ApiUtil.attachErrorHandler(
     res,

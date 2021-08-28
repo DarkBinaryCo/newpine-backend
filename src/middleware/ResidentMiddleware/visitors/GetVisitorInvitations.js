@@ -6,7 +6,7 @@ const { ApiUtil } = require("../../../utils");
 
 /** Get visitor invitations for the currently logged in resident */
 const getVisitorInvitations = (req, res, next) => {
-  let filter = { ...JSON.parse(req.query.filter), ...req.body.filter };
+  let filter = { ...JSON.parse(req.query.filter || "{}"), ...req.body.filter };
 
   // Get the residents that were invited by the currently logged in user
   filter.residentInviterId = req.residentData.id;
