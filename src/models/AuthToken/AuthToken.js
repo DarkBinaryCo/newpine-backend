@@ -39,7 +39,7 @@ AuthToken.init(
 );
 
 // Relationships
-AuthToken.belongsTo(User, { foreignKey: "userId" });
+AuthToken.belongsTo(User, { foreignKey: "userId", onDelete: "CASCADE" });
 
 //* EXPORTS
 module.exports = AuthToken;
