@@ -29,7 +29,7 @@ const createUser = (req, res, _) => {
 
   //* Getting here means we are allowed to create the user type
   userData.userTypeId = parseInt(userTypeId);
-  userData.isActive = true;
+  userData.isVerified = true;
 
   //
   ApiUtil.attachErrorHandler(
