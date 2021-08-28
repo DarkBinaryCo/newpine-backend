@@ -7,7 +7,7 @@ const { ApiUtil } = require("../../../utils");
 
 /** Create resident checkin */
 const getResidentCheckins = (req, res, next) => {
-  let filter = req.body.filter || {};
+  let filter = { ...JSON.parse(req.query.filter), ...req.body.filter };
 
   //
   ApiUtil.attachErrorHandler(

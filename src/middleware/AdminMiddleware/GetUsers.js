@@ -14,6 +14,7 @@ const getUsers = (req, res, _next) => {
     id: {
       [Op.not]: req.userData.id, // Exclude the currently logged in user
     },
+    ...JSON.parse(req.query.filter),
     ...req.body.filter,
   };
 

@@ -7,7 +7,7 @@ const { ApiUtil } = require("../../utils");
 
 /** Get user types */
 const getUserTypes = (req, res, next) => {
-  let filter = req.body.filter || {};
+  let filter = { ...JSON.parse(req.query.filter), ...req.body.filter };
 
   //
   ApiUtil.attachErrorHandler(
