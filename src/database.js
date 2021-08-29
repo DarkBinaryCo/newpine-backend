@@ -15,7 +15,6 @@ switch (process.env.ENVIRONMENT) {
       host: process.env.DB_HOST,
       dialectOptions: {
         ssl: {
-          require: true,
           rejectUnauthorized: false,
         },
       },
