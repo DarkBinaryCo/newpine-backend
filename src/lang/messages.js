@@ -4,9 +4,10 @@
  * @param {String|Number} otp A multi-digit One time password
  * @return {String} The message
  */
-const sendConfirmOtpMessage = (otp) => `${otp} is your HipGlam OTP. Use this to verify your account. Do not share this with anyone.`
+const sendConfirmOtpMessage = (otp) =>
+  `${otp} is your Newpine OTP. Use this to verify your account. Do not share this with anyone.`;
 
 //* EXPORTS
 module.exports = {
-    sendConfirmOtpMessage
+  sendConfirmOtpMessage,
 };
