@@ -8,7 +8,7 @@ let sequelize;
 // Local versions will use environment settings while production versions will use connection string ("more secure")
 switch (process.env.ENVIRONMENT) {
   case "production":
-    sequelize = new Sequelize(`${process.env.DATABASE_URL}?sslmode=require`, {
+    sequelize = new Sequelize(`${process.env.DATABASE_URL}`, {
       dialect: process.env.DB_DIALECT,
     });
     break;
