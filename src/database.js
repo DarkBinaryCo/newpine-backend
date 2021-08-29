@@ -11,6 +11,7 @@ switch (process.env.ENVIRONMENT) {
     sequelize = new Sequelize(`${process.env.DATABASE_URL}?sslmode=require`, {
       dialect: "postgres",
       protocol: "postgres",
+      native: true,
       dialectOptions: {
         ssl: {
           require: true,
