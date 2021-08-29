@@ -1,5 +1,6 @@
+require("dotenv").config();
+
 const Sequelize = require("sequelize");
-const DbConfig = require("./config/database");
 
 //* Database setup
 let sequelize;
@@ -12,11 +13,11 @@ switch (process.env.ENVIRONMENT) {
 
   default:
     sequelize = new Sequelize(
-      DbConfig.database,
-      DbConfig.username,
-      DbConfig.password,
+      process.env.DB_NAME,
+      process.env.DB_USERNAME,
+      process.env.DB_PASSWORD,
       {
-        dialect: DbConfig.dialect,
+        dialect: process.env.DB_DIALECT,
 
         //? Show SQL logs in the console (useful for debugging)
         logging: false,
