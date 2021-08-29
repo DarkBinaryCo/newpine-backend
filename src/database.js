@@ -12,6 +12,7 @@ switch (process.env.ENVIRONMENT) {
       dialect: "postgres",
       protocol: "postgres",
       native: true,
+      host: process.env.DB_HOST,
       dialectOptions: {
         ssl: {
           require: true,
