@@ -12,6 +12,7 @@ module.exports = [
     name: "MZone",
     friendlyName: "Mansionette",
     description: "A mansionette zone",
+    isIndependentCluster: false,
     canHaveResidentAccount: true,
   },
   {
