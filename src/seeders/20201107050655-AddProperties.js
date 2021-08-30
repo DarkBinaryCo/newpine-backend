@@ -1,4 +1,7 @@
 "use strict";
+// Helpers
+const setDefaultDates = require("./helpers/setDefaultDates");
+
 const courtList = require("../../data/courts");
 const mZoneList = require("../../data/mansionetteZones");
 
@@ -212,10 +215,7 @@ module.exports = {
     insertData = insertData.flat(1).filter((data) => data);
 
     try {
-      let insertStatus = await queryInterface.bulkInsert(
-        TABLE_NAME,
-        insertData
-      );
+      await queryInterface.bulkInsert(TABLE_NAME, setDefaultDates(insertData,Sequelize));
     } catch (e) {
       console.error("Error found while trying to add properties: ", e.errors);
     }

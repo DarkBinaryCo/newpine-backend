@@ -1,4 +1,7 @@
 "use strict";
+// Helpers
+const setDefaultDates = require("./helpers/setDefaultDates");
+
 //
 const TABLE_NAME = "user_types";
 
@@ -58,7 +61,10 @@ module.exports = {
     // Clear the table before trying to insert data
     await queryInterface.bulkDelete(TABLE_NAME);
 
-    queryInterface.bulkInsert(TABLE_NAME, DEFAULT_USER_TYPES);
+    queryInterface.bulkInsert(
+      TABLE_NAME,
+      setDefaultDates(DEFAULT_USER_TYPES, Sequelize)
+    );
   },
 
   down: async (queryInterface, Sequelize) => {

@@ -1,4 +1,7 @@
 "use strict";
+// Helpers
+const setDefaultDates = require("./helpers/setDefaultDates");
+
 const courtList = require("../../data/courts");
 const mZoneList = require("../../data/mansionetteZones");
 
@@ -47,7 +50,10 @@ module.exports = {
     await queryInterface.bulkDelete(TABLE_NAME);
 
     let insertData = getPropertyGroups();
-    queryInterface.bulkInsert(TABLE_NAME, insertData);
+    queryInterface.bulkInsert(
+      TABLE_NAME,
+      setDefaultDates(insertData, Sequelize)
+    );
   },
 
   down: async (queryInterface, Sequelize) => {

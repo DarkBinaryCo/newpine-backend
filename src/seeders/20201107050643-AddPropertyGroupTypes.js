@@ -1,4 +1,7 @@
 "use strict";
+// Helpers
+const setDefaultDates = require("./helpers/setDefaultDates");
+
 const propertyGroupTypes = require("../../data/propertyGroupTypes");
 
 //
@@ -11,7 +14,10 @@ module.exports = {
     queryInterface.bulkDelete(TABLE_NAME);
 
     let insertData = propertyGroupTypes;
-    queryInterface.bulkInsert(TABLE_NAME, insertData);
+    queryInterface.bulkInsert(
+      TABLE_NAME,
+      setDefaultDates(insertData, Sequelize)
+    );
   },
 
   down: async (queryInterface, Sequelize) => {

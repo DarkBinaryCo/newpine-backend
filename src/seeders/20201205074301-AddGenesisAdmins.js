@@ -4,6 +4,9 @@ const uuid = require("uuid");
 // Config
 const { USER_TYPE } = require("../config/auth");
 
+// Helpers
+const setDefaultDates = require("./helpers/setDefaultDates");
+
 // Add the first admins user accounts that can be used to manage everything else
 const TABLE_NAME = "users";
 
@@ -19,8 +22,6 @@ const DEFAULT_ADMIN_USERS = [
     userTypeId: USER_TYPE.ADMIN,
     identificationTypeId: 1,
     isVerified: true,
-    createdAt: new Date(),
-    updatedAt: new Date(),
   },
 ];
 
@@ -30,7 +31,7 @@ module.exports = {
     // queryInterface.bulkDelete(TABLE_NAME);
     let insertion = await queryInterface.bulkInsert(
       TABLE_NAME,
-      DEFAULT_ADMIN_USERS
+      setDefaultDates(DEFAULT_ADMIN_USERS, Sequelize)
     );
 
     console.log(insertion);

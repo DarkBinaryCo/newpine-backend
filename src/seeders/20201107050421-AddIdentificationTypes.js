@@ -1,5 +1,8 @@
 "use strict";
+// Helpers
+const setDefaultDates = require("./helpers/setDefaultDates");
 
+//
 const TABLE_NAME = "identification_types";
 
 const DEFAULT_IDENTIFICATION_TYPES = [
@@ -18,7 +21,10 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     queryInterface.bulkDelete(TABLE_NAME);
 
-    queryInterface.bulkInsert(TABLE_NAME, DEFAULT_IDENTIFICATION_TYPES);
+    queryInterface.bulkInsert(
+      TABLE_NAME,
+      setDefaultDates(DEFAULT_IDENTIFICATION_TYPES, Sequelize)
+    );
   },
 
   down: async (queryInterface, Sequelize) => {
