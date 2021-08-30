@@ -5,9 +5,13 @@ const Sequelize = require("sequelize");
 //* Database setup
 let sequelize;
 
+console.debug("Environment: ", process.env.ENVIRONMENT);
+
 // Local versions will use environment settings while production versions will use connection string ("more secure")
 switch (process.env.ENVIRONMENT) {
   case "production":
+    console.debug("Database url: ", process.env.DATABASE_URL, "\n");
+
     sequelize = new Sequelize(`${process.env.DATABASE_URL}?sslmode=require`, {
       dialect: "postgres",
       protocol: "postgres",
