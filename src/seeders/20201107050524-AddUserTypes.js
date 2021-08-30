@@ -9,6 +9,7 @@ const DEFAULT_USER_TYPES = [
     name: "admin",
     friendlyName: "Administrator",
     description: "Administrator - ideally Dark Binary.",
+    isAdminEditable: true,
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ const DEFAULT_USER_TYPES = [
     friendlyName: "Sales",
     description:
       "Sales account - used for sending out messages to users of the system",
+    isAdminEditable: true,
   },
   {
     id: 3,
@@ -23,6 +25,7 @@ const DEFAULT_USER_TYPES = [
     friendlyName: "Security manager",
     description:
       "Security management representative - can checkin security and add guards",
+    isAdminEditable: true,
   },
   {
     id: 4,
@@ -30,6 +33,7 @@ const DEFAULT_USER_TYPES = [
     friendlyName: "Security guard",
     description:
       "Security guard. Can checkin/checkout residents, visitors and stuff",
+    isAdminEditable: true,
   },
   {
     id: 5,
@@ -37,12 +41,14 @@ const DEFAULT_USER_TYPES = [
     friendlyName: "Resident representative",
     description:
       "Resident representative - can activate resident accounts as well as resident vehicles",
+    isAdminEditable: true,
   },
   {
     id: 6,
     name: "resident",
     friendlyName: "Resident",
     description: "Resident. Includes co-residents",
+    isAdminEditable: false,
   },
 ];
 
