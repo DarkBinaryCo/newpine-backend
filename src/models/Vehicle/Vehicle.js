@@ -53,7 +53,7 @@ Vehicle.init(
       defaultValue: false,
     },
   },
-  { sequelize, modelName: "Vehicle" }
+  { sequelize, modelName: "Vehicle", tableName: "vehicles" }
 );
 
 // Relationships

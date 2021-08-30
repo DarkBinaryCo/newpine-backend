@@ -130,7 +130,7 @@ User.init(
       defaultValue: false,
     },
   },
-  { sequelize, modelName: "User" }
+  { sequelize, modelName: "User", tableName: "users" }
 );
 
 // Relationships

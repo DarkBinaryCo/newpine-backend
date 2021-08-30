@@ -63,7 +63,7 @@ Resident.init(
       defaultValue: false,
     },
   },
-  { sequelize, modelName: "Resident", paranoid: true }
+  { sequelize, modelName: "Resident", tableName: "residents", paranoid: true }
 );
 
 Resident.belongsTo(User, { foreignKey: "userId" });

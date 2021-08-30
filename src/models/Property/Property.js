@@ -38,7 +38,7 @@ Property.init(
       },
     },
   },
-  { sequelize, modelName: "Property" }
+  { sequelize, modelName: "Property", tableName: "properties" }
 );
 
 // Relationships

@@ -49,7 +49,7 @@ Payment.init(
       allowNull: true,
     },
   },
-  { sequelize, modelName: "Payment" }
+  { sequelize, modelName: "Payment", tableName: "payments" }
 );
 
 //* EXPORTS
