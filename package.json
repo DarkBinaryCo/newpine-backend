@@ -13,7 +13,7 @@
     "moment": "^2.29.1",
     "morgan": "^1.10.0",
     "mysql2": "^2.2.5",
-    "pg": "8.2.1",
+    "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.3.5",
     "sequelize-cli": "^6.2.0",
@@ -26,8 +26,8 @@
     "start": "node src/server.js",
     "debug": "nodemon --inspect --trace-warnings src/server.js",
     "test": "jest --watch",
-    "dev-build": "sequelize-cli db:drop && sequelize-cli db:create && sequelize-cli db:migrate",
-    "dev-seed": "sequelize-cli db:seed:all"
+    "dev:db:init": "sequelize-cli db:drop && sequelize-cli db:create && sequelize-cli db:migrate && sequelize-cli db:seed:all",
+    "db:seed": "sequelize-cli db:seed:all"
   },
   "repository": {
     "type": "git",
