@@ -16,6 +16,11 @@ Community.init(
       type: DataTypes.STRING(20),
       allowNull: false,
     },
+    type: {
+      type: DataTypes.ENUM,
+      defaultValue: "residential",
+      values: ["residential", "commercial"],
+    },
     description: {
       type: DataTypes.TEXT,
       allowNull: true,

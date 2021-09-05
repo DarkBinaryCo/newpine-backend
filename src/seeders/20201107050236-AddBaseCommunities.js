@@ -8,6 +8,7 @@ const TABLE_NAME = "communities";
 const BASE_COMMUNITIES = [
   {
     name: "Nyayo Estate",
+    type: "residential",
     description:
       "The largest and cleanest estate in East Africa built by NSSF in the 90s",
     location: "Nyayo Estate Embakasi, Nairobi",
