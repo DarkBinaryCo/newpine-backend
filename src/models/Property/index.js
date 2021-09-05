@@ -3,6 +3,7 @@
     This file does not implement any logic of its own and simply serves the purpose of importing models and exporting them out together so that they can be loaded from one file.
     Access to individual files is restricted only to files in the same directory or children of that directory
 */
+const Community = require("./Community");
 const Property = require("./Property");
 const PropertyType = require("./PropertyType");
 const PropertyGroup = require("./PropertyGroup");
@@ -10,6 +11,7 @@ const PropertyGroupType = require("./PropertyGroupType");
 
 //* EXPORTS
 module.exports = {
+  Community,
   Property,
   PropertyType,
   PropertyGroup,
