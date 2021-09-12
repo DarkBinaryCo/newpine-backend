@@ -48,5 +48,32 @@ router.post(
   AdminMiddleware.CreateUser
 );
 
+//* Community stuff
+//
+router.get(
+  "/communities",
+  PermissionMiddleware.UserLoggedIn,
+  PermissionMiddleware.AdminLoggedIn,
+  AdminMiddleware.GetCommunities
+);
+
+//
+router.post(
+  "/community",
+  UtilityMiddleware.RequestDataIsProvided,
+  PermissionMiddleware.UserLoggedIn,
+  PermissionMiddleware.AdminLoggedIn,
+  AdminMiddleware.CreateCommunity
+);
+
+//
+router.patch(
+  "/community/:communityId",
+  UtilityMiddleware.RequestDataIsProvided,
+  PermissionMiddleware.UserLoggedIn,
+  PermissionMiddleware.AdminLoggedIn,
+  AdminMiddleware.UpdateCommunity
+);
+
 //* EXPORTS
 module.exports = router;
