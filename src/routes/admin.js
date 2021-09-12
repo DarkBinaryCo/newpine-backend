@@ -50,13 +50,30 @@ router.post(
 
 //* Community stuff
 //
-router.get("/communities", AdminMiddleware.GetCommunities);
+router.get(
+  "/communities",
+  PermissionMiddleware.UserLoggedIn,
+  PermissionMiddleware.AdminLoggedIn,
+  AdminMiddleware.GetCommunities
+);
 
 //
-router.post("/community", AdminMiddleware.CreateCommunity);
+router.post(
+  "/community",
+  UtilityMiddleware.RequestDataIsProvided,
+  PermissionMiddleware.UserLoggedIn,
+  PermissionMiddleware.AdminLoggedIn,
+  AdminMiddleware.CreateCommunity
+);
 
 //
-router.patch("/community/:communityId", AdminMiddleware.UpdateCommunity);
+router.patch(
+  "/community/:communityId",
+  UtilityMiddleware.RequestDataIsProvided,
+  PermissionMiddleware.UserLoggedIn,
+  PermissionMiddleware.AdminLoggedIn,
+  AdminMiddleware.UpdateCommunity
+);
 
 //* EXPORTS
 module.exports = router;
