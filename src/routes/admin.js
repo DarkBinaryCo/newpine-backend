@@ -48,5 +48,15 @@ router.post(
   AdminMiddleware.CreateUser
 );
 
+//* Community stuff
+//
+router.get("/communities", AdminMiddleware.GetCommunities);
+
+//
+router.post("/community", AdminMiddleware.CreateCommunity);
+
+//
+router.patch("/community/:communityId", AdminMiddleware.UpdateCommunity);
+
 //* EXPORTS
 module.exports = router;
