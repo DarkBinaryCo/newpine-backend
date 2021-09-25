@@ -4,7 +4,7 @@ const { DataTypes, Model, Sequelize } = require("sequelize");
 // Model dependencies
 const VisitorInvitation = require("./VisitorInvitation");
 const { SecurityGuard } = require("../SecurityCompany");
-const { Property } = require("../Property");
+const { Property, Community } = require("../Property");
 
 class VisitorCheckin extends Model {}
 
@@ -54,6 +54,14 @@ VisitorCheckin.init(
       allowNull: false,
       defaultValue: Sequelize.NOW,
     },
+    communityId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: "communities",
+        key: "id",
+      },
+    },
   },
   {
     sequelize,
@@ -63,7 +71,8 @@ VisitorCheckin.init(
   }
 );
 
-//
+// Relationships
+VisitorCheckin.belongsTo(Community, { foreignKey: "communityId" });
 VisitorCheckin.belongsTo(VisitorInvitation, {
   foreignKey: "visitorInvitationId",
 });

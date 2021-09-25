@@ -2,7 +2,7 @@ const sequelize = require("../../database");
 const { DataTypes, Model, Sequelize } = require("sequelize");
 
 // Model dependencies
-const { PropertyGroup } = require("../Property");
+const { PropertyGroup, Community } = require("../Property");
 const Resident = require("../Resident/Resident");
 const { SecurityGuard } = require("../SecurityCompany");
 const { Vehicle } = require("../Vehicle");
@@ -67,6 +67,14 @@ ResidentCheckin.init(
       allowNull: false,
       defaultValue: Sequelize.NOW,
     },
+    communityId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: "communities",
+        key: "id",
+      },
+    },
   },
   {
     sequelize,
@@ -77,8 +85,8 @@ ResidentCheckin.init(
 );
 
 // Relationships
+ResidentCheckin.belongsTo(Community, { foreignKey: "communityId" });
 ResidentCheckin.belongsTo(PropertyGroup, { foreignKey: "propertyGroupId" });
-
 ResidentCheckin.belongsTo(Resident, { foreignKey: "residentId" });
 
 ResidentCheckin.belongsTo(SecurityGuard, { foreignKey: "securityGuardId" });

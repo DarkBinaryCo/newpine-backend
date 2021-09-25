@@ -1,6 +1,8 @@
 const sequelize = require("../../database");
 const { DataTypes, Model, Sequelize } = require("sequelize");
 
+const Community = require("./Community");
+
 class PropertyGroupType extends Model {}
 
 // Schema definition
@@ -37,6 +39,14 @@ PropertyGroupType.init(
       allowNull: false,
       defaultValue: true,
     },
+    communityId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: "communities",
+        key: "id",
+      },
+    },
   },
   {
     sequelize,
@@ -44,6 +54,9 @@ PropertyGroupType.init(
     tableName: "property_group_types",
   }
 );
+
+// Relationships
+PropertyGroupType.belongsTo(Community, { foreignKey: "communityId" });
 
 //* EXPORTS
 module.exports = PropertyGroupType;
