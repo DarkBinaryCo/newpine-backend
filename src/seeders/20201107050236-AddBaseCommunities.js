@@ -1,4 +1,7 @@
 "use strict";
+
+const { DEFAULT_COMMUNITY_ID } = require("config");
+
 // Helpers
 const setDefaultDates = require("./helpers/setDefaultDates");
 const setUUIDIds = require("./helpers/setUUIDIds");
@@ -7,6 +10,7 @@ const TABLE_NAME = "communities";
 
 const BASE_COMMUNITIES = [
   {
+    id: DEFAULT_COMMUNITY_ID,
     name: "Nyayo Estate",
     type: "residential",
     description:
