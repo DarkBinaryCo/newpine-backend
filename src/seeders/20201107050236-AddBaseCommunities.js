@@ -1,6 +1,6 @@
 "use strict";
 
-const { DEFAULT_COMMUNITY_ID } = require("config");
+const { DEFAULT_COMMUNITY_ID } = require("./config");
 
 // Helpers
 const setDefaultDates = require("./helpers/setDefaultDates");
