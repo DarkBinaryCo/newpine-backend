@@ -6,7 +6,10 @@ const uuid = require("uuid");
  */
 module.exports = setUUIDIds = (arr) => {
   arr = arr.map((val) => {
-    val.id = uuid.v4();
+    // Only set the ID if there is no id provided
+    if (!val.id) {
+      val.id = uuid.v4();
+    }
 
     return val;
   });
