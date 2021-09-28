@@ -6,7 +6,13 @@ const { Resident } = require("../../../models");
  * @return {Promise<Object>} A promise that resolves to an object with the create operation information
  */
 const createResident = async (insertData, isResidentOwner = false) => {
-  let settableFields = ["userId", "mpesaPhone", "residentType", "propertyId"];
+  let settableFields = [
+    "userId",
+    "mpesaPhone",
+    "residentType",
+    "propertyId",
+    "communityId",
+  ];
 
   // Non-resident owners can set their resident owner's id
   if (!isResidentOwner) {
