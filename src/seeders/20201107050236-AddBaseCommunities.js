@@ -1,6 +1,6 @@
 "use strict";
 
-const { DEFAULT_COMMUNITY_ID } = require("./config");
+const { DEFAULT_COMMUNITY_ID, DEFAULT_HOST } = require("./config");
 
 // Helpers
 const setDefaultDates = require("./helpers/setDefaultDates");
@@ -12,6 +12,7 @@ const BASE_COMMUNITIES = [
   {
     id: DEFAULT_COMMUNITY_ID,
     name: "Nyayo Estate",
+    host: DEFAULT_HOST,
     type: "residential",
     description:
       "The largest and cleanest estate in East Africa built by NSSF in the 90s",
