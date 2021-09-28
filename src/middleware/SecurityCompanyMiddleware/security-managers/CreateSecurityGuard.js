@@ -12,6 +12,8 @@ const { ApiUtil } = require("../../../utils");
 const createSecurityGuard = (req, res, next) => {
   const { user: userData, securityGuard: securityGuardData } = req.body.data;
 
+  userData.communityId = req.userData.communityId;
+
   //
   userData.userTypeId = USER_TYPE.SECURITY_GUARD;
 
