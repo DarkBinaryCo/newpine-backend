@@ -37,7 +37,17 @@ const sendOtp = async (req, res, next) => {
         throw new Error("Signup is not available for that account type");
       }
 
-      const newUserData = { phone };
+      const { host } = req.body;
+      const communityFound = await PropertyService.getSingleCommunity({ host });
+      //
+      if (!communityFound) {
+        throw new Error(
+          `Community for the host "${host}" is currently unavailable. Kindly contact support of the error persists.`
+        );
+      }
+
+      const communityId = communityFound?.id;
+      const newUserData = { phone, communityId };
 
       //
       if (typeOfUserToCreate) {
