@@ -9,6 +9,7 @@ const createResident = async (req, res, next) => {
 
   // The resident created
   insertData.userId = req.userData.id;
+  insertData.communityId = req.userData.communityId;
 
   //* Getting here means this is a valid co-resident request
   ApiUtil.attachErrorHandler(

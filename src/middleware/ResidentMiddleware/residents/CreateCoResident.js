@@ -14,6 +14,9 @@ const createCoResident = async (req, res, next) => {
   // Get the user data from the request data
   let { user } = req.body.data || {};
 
+  const { communityId } = req.userData;
+  user.communityId = communityId;
+
   // Create user the co-resident would belong to
   let coResidentUserCreated = await UserService.createUser(user);
 
@@ -23,6 +26,7 @@ const createCoResident = async (req, res, next) => {
     userId: coResidentUserCreated.id,
     residentOwnerId: req.residentData.id,
     propertyId: req.residentData.propertyId,
+    communityId,
   };
 
   // Create the actual resident & send API response
