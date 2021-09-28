@@ -10,6 +10,7 @@ const addVehicle = (req, res, next) => {
 
   // Set the resident ID to the currently logged in resident
   vehicleData.residentId = req.residentData.id;
+  vehicleData.communityId = req.userData.communityId;
 
   //
   ApiUtil.attachErrorHandler(
