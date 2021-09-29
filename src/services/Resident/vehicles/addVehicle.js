@@ -12,6 +12,7 @@ const addVehicle = async (insertData) => {
     "year",
     "numberplate",
     "residentId",
+    "communityId",
   ];
 
   return Vehicle.create(insertData, {

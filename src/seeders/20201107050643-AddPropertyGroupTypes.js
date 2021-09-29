@@ -1,5 +1,6 @@
 "use strict";
 // Helpers
+const setDefaultCommunity = require("./helpers/setDefaultCommunity");
 const setDefaultDates = require("./helpers/setDefaultDates");
 
 const propertyGroupTypes = require("../../data/propertyGroupTypes");
@@ -16,7 +17,7 @@ module.exports = {
     let insertData = propertyGroupTypes;
     queryInterface.bulkInsert(
       TABLE_NAME,
-      setDefaultDates(insertData, Sequelize)
+      setDefaultCommunity(setDefaultDates(insertData, Sequelize))
     );
   },
 

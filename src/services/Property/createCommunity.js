@@ -9,6 +9,7 @@ const { Community } = require("../../models");
 const createCommunity = async (insertData = {}) => {
   let settableFields = [
     "name",
+    "host",
     "type",
     "description",
     "location",

@@ -5,6 +5,7 @@
 // Community stuff
 const createCommunity = require("./createCommunity");
 const getCommunities = require("./getCommunities");
+const getSingleCommunity = require("./getSingleCommunity");
 const updateCommunity = require("./updateCommunity");
 
 // Property stuff
@@ -18,6 +19,7 @@ const getPropertyTypes = require("./getPropertyTypes");
 module.exports = {
   createCommunity,
   getCommunities,
+  getSingleCommunity,
   updateCommunity,
 
   getProperties,

@@ -4,6 +4,7 @@ const { DataTypes, Model } = require("sequelize");
 // Model dependencies
 const PropertyType = require("./PropertyType");
 const PropertyGroup = require("./PropertyGroup");
+const Community = require("./Community");
 
 //
 class Property extends Model {}
@@ -37,11 +38,20 @@ Property.init(
         key: "id",
       },
     },
+    communityId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: "communities",
+        key: "id",
+      },
+    },
   },
   { sequelize, modelName: "Property", tableName: "properties" }
 );
 
 // Relationships
+Property.belongsTo(Community, { foreignKey: "communityId" });
 Property.belongsTo(PropertyType, { foreignKey: "propertyTypeId" });
 Property.belongsTo(PropertyGroup, { foreignKey: "propertyGroupId" });
 

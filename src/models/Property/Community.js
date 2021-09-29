@@ -16,6 +16,13 @@ Community.init(
       type: DataTypes.STRING(20),
       allowNull: false,
     },
+    host: {
+      type: DataTypes.STRING(50),
+      allowNull: true,
+      default: null,
+      comment:
+        "The name of the host of this community for example: nyayo.estate",
+    },
     type: {
       type: DataTypes.ENUM,
       defaultValue: "residential",

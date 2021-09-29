@@ -2,6 +2,8 @@ const sequelize = require("../../database");
 const { DataTypes, Model, Sequelize } = require("sequelize");
 
 const Resident = require("../Resident/Resident");
+const { Community } = require("../Property");
+
 //
 class Vehicle extends Model {}
 
@@ -52,11 +54,20 @@ Vehicle.init(
       allowNull: false,
       defaultValue: false,
     },
+    communityId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: "communities",
+        key: "id",
+      },
+    },
   },
   { sequelize, modelName: "Vehicle", tableName: "vehicles" }
 );
 
 // Relationships
+Vehicle.belongsTo(Community, { foreignKey: "communityId" });
 Vehicle.belongsTo(Resident, { foreignKey: "residentId" });
 
 //* EXPORTS

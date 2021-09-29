@@ -9,6 +9,7 @@ const { FormatUtil } = require("../../utils");
 
 // Dependencies
 //! TODO: Find a way to use model aggregator ~ currently throws an error (can't find reference)
+const { Community } = require("../Property");
 const IdentificationType = require("./IdentificationType");
 const UserType = require("./UserType");
 
@@ -129,11 +130,20 @@ User.init(
       allowNull: false,
       defaultValue: false,
     },
+    communityId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: "communities",
+        key: "id",
+      },
+    },
   },
   { sequelize, modelName: "User", tableName: "users" }
 );
 
 // Relationships
+User.belongsTo(Community, { foreignKey: "communityId" });
 User.belongsTo(UserType, { foreignKey: "userTypeId" });
 User.belongsTo(IdentificationType, { foreignKey: "identificationTypeId" });
 

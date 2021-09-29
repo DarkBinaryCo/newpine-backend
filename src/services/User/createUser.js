@@ -27,6 +27,7 @@ const createUser = async (insertData = {}, isAdmin = false) => {
     "identificationNumber",
     "profileImgUrl",
     "profileImgThumbnailUrl",
+    "communityId",
   ];
 
   // Admins can set verified status

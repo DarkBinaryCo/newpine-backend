@@ -5,6 +5,7 @@ const uuid = require("uuid");
 const { USER_TYPE } = require("../config/auth");
 
 // Helpers
+const setDefaultCommunity = require("./helpers/setDefaultCommunity");
 const setDefaultDates = require("./helpers/setDefaultDates");
 
 // Add the first admins user accounts that can be used to manage everything else
@@ -31,7 +32,7 @@ module.exports = {
     // queryInterface.bulkDelete(TABLE_NAME);
     let insertion = await queryInterface.bulkInsert(
       TABLE_NAME,
-      setDefaultDates(DEFAULT_ADMIN_USERS, Sequelize)
+      setDefaultCommunity(setDefaultDates(DEFAULT_ADMIN_USERS, Sequelize))
     );
 
     console.log(insertion);

@@ -6,7 +6,7 @@ const { FormatUtil } = require("../../utils");
 
 // Model dependencies
 const { User } = require("../User");
-const { Property } = require("../Property");
+const { Property, Community } = require("../Property");
 
 class Resident extends Model {}
 
@@ -62,10 +62,19 @@ Resident.init(
       allowNull: false,
       defaultValue: false,
     },
+    communityId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: "communities",
+        key: "id",
+      },
+    },
   },
   { sequelize, modelName: "Resident", tableName: "residents", paranoid: true }
 );
 
+Resident.belongsTo(Community, { foreignKey: "communityId" });
 Resident.belongsTo(User, { foreignKey: "userId" });
 Resident.belongsTo(Property, { foreignKey: "propertyId" });
 

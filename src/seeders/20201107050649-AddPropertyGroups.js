@@ -1,5 +1,6 @@
 "use strict";
 // Helpers
+const setDefaultCommunity = require("./helpers/setDefaultCommunity");
 const setDefaultDates = require("./helpers/setDefaultDates");
 
 const courtList = require("../../data/courts");
@@ -52,7 +53,7 @@ module.exports = {
     let insertData = getPropertyGroups();
     queryInterface.bulkInsert(
       TABLE_NAME,
-      setDefaultDates(insertData, Sequelize)
+      setDefaultCommunity(setDefaultDates(insertData, Sequelize))
     );
   },
 

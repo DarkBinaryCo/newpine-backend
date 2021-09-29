@@ -7,6 +7,7 @@ const { ApiUtil } = require("../../../utils");
 /** Invite a visitor */
 const inviteVisitor = (req, res, next) => {
   let inviteData = req.body.data || {};
+  inviteData.communityId = req.userData.communityId;
 
   // Set the resident inviter to the currently logged in resident
   inviteData.residentInviterId = req.residentData.id;

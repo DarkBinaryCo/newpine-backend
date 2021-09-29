@@ -1,5 +1,6 @@
 "use strict";
 // Helpers
+const setDefaultCommunity = require("./helpers/setDefaultCommunity");
 const setDefaultDates = require("./helpers/setDefaultDates");
 
 const courtList = require("../../data/courts");
@@ -215,7 +216,10 @@ module.exports = {
     insertData = insertData.flat(1).filter((data) => data);
 
     try {
-      await queryInterface.bulkInsert(TABLE_NAME, setDefaultDates(insertData,Sequelize));
+      await queryInterface.bulkInsert(
+        TABLE_NAME,
+        setDefaultCommunity(setDefaultDates(insertData, Sequelize))
+      );
     } catch (e) {
       console.error("Error found while trying to add properties: ", e.errors);
     }

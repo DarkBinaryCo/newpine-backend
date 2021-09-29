@@ -17,6 +17,7 @@ const inviteVisitor = (inviteData) => {
     "isAdult",
     "hasLuggage",
     "luggageDetails",
+    "communityId",
   ];
 
   return VisitorInvitation.create(inviteData, {

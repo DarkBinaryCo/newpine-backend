@@ -1,6 +1,7 @@
 const sequelize = require("../../database");
 const { DataTypes, Model, Sequelize } = require("sequelize");
 
+const { Community } = require("../Property");
 const { Resident } = require("../Resident");
 const { IdentificationType } = require("../User");
 //
@@ -89,6 +90,14 @@ VisitorInvitation.init(
       defaultValue: true,
       allowNull: false,
     },
+    communityId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: "communities",
+        key: "id",
+      },
+    },
   },
   {
     sequelize,
@@ -99,6 +108,7 @@ VisitorInvitation.init(
 );
 
 // Relationships
+VisitorInvitation.belongsTo(Community, { foreignKey: "communityId" });
 VisitorInvitation.belongsTo(Resident, { foreignKey: "residentInviterId" });
 VisitorInvitation.belongsTo(IdentificationType, {
   foreignKey: "identificationTypeId",

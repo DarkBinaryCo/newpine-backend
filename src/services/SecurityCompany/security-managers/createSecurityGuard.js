@@ -16,6 +16,7 @@ const createSecurityGuard = async (insertData) => {
     "propertyGroupId",
     "shiftId",
     "addedByUserId",
+    "communityId",
   ];
 
   return SecurityGuard.create(insertData, {

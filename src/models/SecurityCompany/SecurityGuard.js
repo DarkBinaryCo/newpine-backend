@@ -2,7 +2,7 @@ const sequelize = require("../../database");
 const { DataTypes, Model, Sequelize } = require("sequelize");
 
 //! TODO: Find way to use model aggregator to fetch this information
-const { PropertyGroup } = require("../Property");
+const { PropertyGroup, Community } = require("../Property");
 const { User } = require("../User");
 const SecurityShift = require("./SecurityShift");
 
@@ -55,6 +55,14 @@ SecurityGuard.init(
       comment:
         "The user id of the security manager that added this security guard",
     },
+    communityId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: "communities",
+        key: "id",
+      },
+    },
   },
   {
     sequelize,
@@ -65,6 +73,7 @@ SecurityGuard.init(
 );
 
 // Relationships
+SecurityGuard.belongsTo(Community, { foreignKey: "communityId" });
 SecurityGuard.belongsTo(User, { foreignKey: "userId" });
 SecurityGuard.belongsTo(PropertyGroup, { foreignKey: "propertyGroupId" });
 SecurityGuard.belongsTo(SecurityShift, { foreignKey: "shiftId" });
