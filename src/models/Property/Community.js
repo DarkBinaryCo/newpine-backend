@@ -28,6 +28,11 @@ Community.init(
       defaultValue: "residential",
       values: ["residential", "commercial"],
     },
+    propertyCount: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+      allowNull: false,
+    },
     description: {
       type: DataTypes.TEXT,
       allowNull: true,
@@ -47,6 +52,11 @@ Community.init(
       type: DataTypes.DOUBLE,
       allowNull: true,
       default: null,
+    },
+    isActive: {
+      type: DataTypes.BOOLEAN,
+      default: true,
+      allowNull: false,
     },
   },
   { sequelize, modelName: "Community", tableName: "communities" }
