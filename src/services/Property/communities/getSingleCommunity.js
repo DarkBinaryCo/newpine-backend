@@ -1,5 +1,5 @@
 // Models
-const { Community } = require("../../models");
+const { Community } = require("../../../models");
 
 /** Get a single community that matches the filter provided
  * @param {Object} filter The sequelize filter the community has to match to be returned

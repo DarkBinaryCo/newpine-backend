@@ -1,5 +1,5 @@
 // Models
-const { Community } = require("../../models");
+const { Community } = require("../../../models");
 
 /** Update a community matching the `filter` with `updateData`
  * @param {Object} updateData Database information to update

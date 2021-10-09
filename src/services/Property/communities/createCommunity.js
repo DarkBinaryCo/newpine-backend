@@ -1,5 +1,5 @@
 // Models
-const { Community } = require("../../models");
+const { Community } = require("../../../models");
 
 /** Create a new community with `insertData`
  * @param {Object} insertData Data to enter into the database
