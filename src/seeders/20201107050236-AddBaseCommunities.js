@@ -14,11 +14,13 @@ const BASE_COMMUNITIES = [
     name: "Nyayo Estate",
     host: DEFAULT_HOST,
     type: "residential",
+    propertyCount: 4774,
     description:
       "The largest and cleanest estate in East Africa built by NSSF in the 90s",
     location: "Nyayo Estate Embakasi, Nairobi",
     latitude: -1.3365,
     longitude: 36.9244,
+    isActive: true,
   },
 ];
 
