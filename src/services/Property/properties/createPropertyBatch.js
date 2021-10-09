@@ -1,4 +1,3 @@
-const _ = require("lodash");
 // Models
 const { Community, Property } = require("../../../models");
 
