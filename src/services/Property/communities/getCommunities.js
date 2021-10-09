@@ -1,5 +1,5 @@
 // Models
-const { Community } = require("../../models");
+const { Community } = require("../../../models");
 
 /** Get all communities matching a filter
  * @param {Object} filter Query filter. Defaults to `{}` thus fetching all communities

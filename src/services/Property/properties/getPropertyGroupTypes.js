@@ -1,5 +1,5 @@
 // Models
-const { PropertyGroupType } = require("../../models");
+const { PropertyGroupType } = require("../../../models");
 
 /** Get all property groups matching a filter
  * @param {Object} filter Query filter. Defaults to `{}` thus fetching all property groups

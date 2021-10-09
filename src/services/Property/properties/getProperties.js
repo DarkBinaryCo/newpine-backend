@@ -1,5 +1,5 @@
 // Models
-const { Property } = require("../../models");
+const { Property } = require("../../../models");
 
 /** Get all properties matching a filter
  * @param {Object} filter Query filter. Defaults to `{}` thus fetching all properties
