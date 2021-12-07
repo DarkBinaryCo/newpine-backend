@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express();
 
+const { USER_TYPE } = require("../config/auth");
 const {
   PermissionMiddleware,
   OwnershipMiddleware,
@@ -12,8 +13,7 @@ const {
 // Get the current resident
 router.get(
   "/",
-  PermissionMiddleware.UserLoggedIn,
-  PermissionMiddleware.ResidentLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.RESIDENT),
   ResidentMiddleware.GetCurrentResident
 );
 
@@ -21,7 +21,7 @@ router.get(
 router.post(
   "/",
   UtilityMiddleware.RequestDataIsProvided,
-  PermissionMiddleware.UserLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.RESIDENT),
   ResidentMiddleware.CreateResident
 );
 
@@ -29,8 +29,7 @@ router.post(
 router.patch(
   "/",
   UtilityMiddleware.RequestDataIsProvided,
-  PermissionMiddleware.UserLoggedIn,
-  PermissionMiddleware.ResidentLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.RESIDENT),
   ResidentMiddleware.UpdateLoggedInResident
 );
 
@@ -38,7 +37,7 @@ router.patch(
 // Get personal check-ins/check-outs
 router.get(
   "/summary",
-  PermissionMiddleware.UserLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.RESIDENT),
   PermissionMiddleware.ResidentLoggedIn
   //TODO: Add implementation
 );
@@ -48,8 +47,7 @@ router.get(
 router.post(
   "/co-resident",
   UtilityMiddleware.RequestDataIsProvided,
-  PermissionMiddleware.UserLoggedIn,
-  PermissionMiddleware.ResidentLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.RESIDENT),
   OwnershipMiddleware.LoggedInUserIsResidentOwner,
   ResidentMiddleware.CreateCoResident
 );
@@ -57,8 +55,7 @@ router.post(
 // Get a list of co-residents belonging to a resident
 router.get(
   "/co-residents",
-  PermissionMiddleware.UserLoggedIn,
-  PermissionMiddleware.ResidentLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.RESIDENT),
   OwnershipMiddleware.LoggedInUserIsResidentOwner,
   ResidentMiddleware.GetCoResidentsByOwner
 );
@@ -66,8 +63,7 @@ router.get(
 // Remove co-resident
 router.delete(
   "/co-resident/:residentId",
-  PermissionMiddleware.UserLoggedIn,
-  PermissionMiddleware.ResidentLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.RESIDENT),
   OwnershipMiddleware.LoggedInUserIsResidentOwner,
   ResidentMiddleware.RemoveCoResident
 );
@@ -77,16 +73,14 @@ router.delete(
 router.post(
   "/vehicle",
   UtilityMiddleware.RequestDataIsProvided,
-  PermissionMiddleware.UserLoggedIn,
-  PermissionMiddleware.ResidentLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.RESIDENT),
   ResidentMiddleware.AddVehicle
 );
 
 // Get vehicles
 router.get(
   "/vehicles",
-  PermissionMiddleware.UserLoggedIn,
-  PermissionMiddleware.ResidentLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.RESIDENT),
   ResidentMiddleware.GetResidentVehicles
 );
 
@@ -94,16 +88,14 @@ router.get(
 router.patch(
   "/vehicle/:vehicleId",
   UtilityMiddleware.RequestDataIsProvided,
-  PermissionMiddleware.UserLoggedIn,
-  PermissionMiddleware.ResidentLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.RESIDENT),
   ResidentMiddleware.UpdateVehicle
 );
 
 // Remove vehicle
 router.delete(
   "/vehicle/:vehicleId",
-  PermissionMiddleware.UserLoggedIn,
-  PermissionMiddleware.ResidentLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.RESIDENT),
   ResidentMiddleware.RemoveVehicle
 );
 
@@ -112,24 +104,21 @@ router.delete(
 router.post(
   "/visitor/invite",
   UtilityMiddleware.RequestDataIsProvided,
-  PermissionMiddleware.UserLoggedIn,
-  PermissionMiddleware.ResidentLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.RESIDENT),
   ResidentMiddleware.InviteVisitor
 );
 
 // Get currently logged in resident's visitor invitations
 router.get(
   "/visitor/invitations",
-  PermissionMiddleware.UserLoggedIn,
-  PermissionMiddleware.ResidentLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.RESIDENT),
   ResidentMiddleware.GetVisitorInvitations
 );
 
 // Revoke visitor invitation
 router.delete(
   "/visitor/revoke/:invitationId",
-  PermissionMiddleware.UserLoggedIn,
-  PermissionMiddleware.ResidentLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.RESIDENT),
   ResidentMiddleware.RevokeVisitorInvitation
 );
 

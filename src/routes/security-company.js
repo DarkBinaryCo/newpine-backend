@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
+const { USER_TYPE } = require("../config/auth");
+
 // Middleware
 const {
   PermissionMiddleware,
@@ -17,23 +19,21 @@ const { UserFilter } = require("../filters");
 router.post(
   "/manager/security-guard",
   UtilityMiddleware.RequestDataIsProvided,
-  PermissionMiddleware.UserLoggedIn,
-  PermissionMiddleware.SecurityManagerLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.SECURITY_MANAGER),
   SecurityCompanyMiddleware.CreateSecurityGuard
 );
 
 // Get security shifts
 router.get(
   "/manager/security-shifts",
-  PermissionMiddleware.UserLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.SECURITY_MANAGER),
   SecurityCompanyMiddleware.GetSecurityShifts
 );
 
 // Get security guards
 router.get(
   "/manager/security-guards",
-  PermissionMiddleware.UserLoggedIn,
-  PermissionMiddleware.SecurityManagerLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.SECURITY_MANAGER),
   SecurityCompanyMiddleware.GetGuards
 );
 
@@ -41,8 +41,7 @@ router.get(
 router.patch(
   "/manager/security-guard/user/:userId",
   UtilityMiddleware.RequestDataIsProvided,
-  PermissionMiddleware.UserLoggedIn,
-  PermissionMiddleware.SecurityManagerLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.SECURITY_MANAGER),
   UserFilter.SecurityGuardOnly,
   UserMiddleware.UpdateUser
 );
@@ -51,16 +50,14 @@ router.patch(
 router.patch(
   "/manager/security-guard/:securityGuardId",
   UtilityMiddleware.RequestDataIsProvided,
-  PermissionMiddleware.UserLoggedIn,
-  PermissionMiddleware.SecurityManagerLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.SECURITY_MANAGER),
   SecurityCompanyMiddleware.UpdateGuard
 );
 
 // Remove security guard
 router.delete(
   "/manager/security-guard/:securityGuardId",
-  PermissionMiddleware.UserLoggedIn,
-  PermissionMiddleware.SecurityManagerLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.SECURITY_MANAGER),
   SecurityCompanyMiddleware.RemoveGuard
 );
 
@@ -70,7 +67,7 @@ router.delete(
 router.post(
   "/guard/checkin",
   UtilityMiddleware.RequestDataIsProvided,
-  PermissionMiddleware.UserLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.SECURITY_GUARD),
   PermissionMiddleware.SecurityGuardLoggedIn,
   SecurityCompanyMiddleware.CreateCheckin
 );
@@ -78,7 +75,7 @@ router.post(
 // Get resident checkins
 router.get(
   "/guard/resident-checkins",
-  PermissionMiddleware.UserLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.SECURITY_GUARD),
   PermissionMiddleware.SecurityGuardLoggedIn,
   SecurityCompanyMiddleware.GetResidentCheckins
 );
@@ -86,7 +83,7 @@ router.get(
 // Get visitor checkins
 router.get(
   "/guard/visitor-checkins",
-  PermissionMiddleware.UserLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.SECURITY_GUARD),
   PermissionMiddleware.SecurityGuardLoggedIn,
   SecurityCompanyMiddleware.GetVisitorCheckins
 );
@@ -94,7 +91,7 @@ router.get(
 // Remove resident checkin
 router.delete(
   "/guard/resident-checkin/:checkinId",
-  PermissionMiddleware.UserLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.SECURITY_GUARD),
   PermissionMiddleware.SecurityGuardLoggedIn,
   SecurityCompanyMiddleware.RemoveResidentCheckin
 );
@@ -102,7 +99,7 @@ router.delete(
 // Remove visitor checkin
 router.delete(
   "/guard/visitor-checkin/:checkinId",
-  PermissionMiddleware.UserLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.SECURITY_GUARD),
   PermissionMiddleware.SecurityGuardLoggedIn,
   SecurityCompanyMiddleware.RemoveVisitorCheckin
 );

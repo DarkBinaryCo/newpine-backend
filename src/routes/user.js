@@ -12,14 +12,14 @@ const {
 // Get the currently logged in user's details
 router.get(
   "/",
-  PermissionMiddleware.UserLoggedIn,
+  PermissionMiddleware.UserLoggedIn(),
   UserMiddleware.GetLoggedInUser
 );
 
 // Update the currently logged in user
 router.patch(
   "/",
-  PermissionMiddleware.UserLoggedIn,
+  PermissionMiddleware.UserLoggedIn(),
   UtilityMiddleware.RequestDataIsProvided,
   UserMiddleware.UpdateLoggedInUser
 );
@@ -27,7 +27,7 @@ router.patch(
 // Get identification types
 router.get(
   "/id-types",
-  PermissionMiddleware.UserLoggedIn,
+  PermissionMiddleware.UserLoggedIn(),
   UserMiddleware.GetIdentificationTypes
 );
 

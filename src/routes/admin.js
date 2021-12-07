@@ -1,12 +1,16 @@
 const express = require("express");
 const router = express.Router();
 
+// Config
+const { USER_TYPE } = require("../config/auth");
+
 // Middleware
 const {
   PermissionMiddleware,
   AdminMiddleware,
   UtilityMiddleware,
   UserMiddleware,
+  PropertyMiddleware,
 } = require("../middleware");
 
 // Filters
@@ -15,16 +19,14 @@ const { UserFilter } = require("../filters");
 // Get user types
 router.get(
   "/user-types",
-  PermissionMiddleware.UserLoggedIn,
-  PermissionMiddleware.AdminLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.ADMIN),
   UserMiddleware.GetUserTypes
 );
 
 // Get users
 router.get(
   "/users",
-  PermissionMiddleware.UserLoggedIn,
-  PermissionMiddleware.AdminLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.ADMIN),
   UserFilter.AdminEditableUsers,
   AdminMiddleware.GetUsers
 );
@@ -32,8 +34,7 @@ router.get(
 // Update a specific user account
 router.patch(
   "/user/:userId",
-  PermissionMiddleware.UserLoggedIn,
-  PermissionMiddleware.AdminLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.ADMIN),
   UserFilter.AdminEditableUsers,
   UserMiddleware.UpdateUser
 );
@@ -43,8 +44,7 @@ router.patch(
 router.post(
   "/user/:userTypeId",
   UtilityMiddleware.RequestDataIsProvided,
-  PermissionMiddleware.UserLoggedIn,
-  PermissionMiddleware.AdminLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.ADMIN),
   AdminMiddleware.CreateUser
 );
 
@@ -52,8 +52,7 @@ router.post(
 //
 router.get(
   "/communities",
-  PermissionMiddleware.UserLoggedIn,
-  PermissionMiddleware.AdminLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.ADMIN),
   AdminMiddleware.GetCommunities
 );
 
@@ -61,8 +60,7 @@ router.get(
 router.post(
   "/community",
   UtilityMiddleware.RequestDataIsProvided,
-  PermissionMiddleware.UserLoggedIn,
-  PermissionMiddleware.AdminLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.ADMIN),
   AdminMiddleware.CreateCommunity
 );
 
@@ -70,10 +68,15 @@ router.post(
 router.patch(
   "/community/:communityId",
   UtilityMiddleware.RequestDataIsProvided,
-  PermissionMiddleware.UserLoggedIn,
-  PermissionMiddleware.AdminLoggedIn,
+  PermissionMiddleware.UserLoggedIn(USER_TYPE.ADMIN),
   AdminMiddleware.UpdateCommunity
 );
 
+//* Property stuff
+router.post(
+  "/properties/:communityId",
+  UtilityMiddleware.RequestDataIsProvided,
+  PropertyMiddleware.CreatePropertyBatch
+);
 //* EXPORTS
 module.exports = router;

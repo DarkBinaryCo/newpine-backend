@@ -7,28 +7,28 @@ const { PermissionMiddleware, PropertyMiddleware } = require("../middleware");
 // Get properties by filter
 router.get(
   "/phases",
-  PermissionMiddleware.UserLoggedIn,
+  PermissionMiddleware.UserLoggedIn(),
   PropertyMiddleware.GetPhases
 );
 
 // Get properties by filter
 router.get(
   "/properties",
-  PermissionMiddleware.UserLoggedIn,
+  PermissionMiddleware.UserLoggedIn(),
   PropertyMiddleware.GetProperties
 );
 
 // Get properties by filter
 router.get(
   "/groups",
-  PermissionMiddleware.UserLoggedIn,
+  PermissionMiddleware.UserLoggedIn(),
   PropertyMiddleware.GetPropertyGroups
 );
 
 // Get properties by filter
 router.get(
   "/group-types",
-  PermissionMiddleware.UserLoggedIn,
+  PermissionMiddleware.UserLoggedIn(),
   PropertyMiddleware.GetPropertyGroupTypes
 );
 
